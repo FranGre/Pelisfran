@@ -9,6 +9,7 @@ namespace Pelisfran.Contexto
     {
         public DbSet<Rol> Roles { get; set; }
         public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<Genero> Generos { get; set; }
 
         public PelisFranDBContexto() : base(CrearConexion(), true) { }
 
