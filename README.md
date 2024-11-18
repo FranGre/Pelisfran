@@ -2,11 +2,11 @@
 
 ## Tabla de Contenidos
 1. [Introducción](#Introducción)
-2. [Descripción del proyecto](#Descripción del proyecto)
+2. [Descripción del proyecto](#Descripción-del-proyecto)
 3. [Requisitos](#Requisitos)
 4. [Instalación](#Instalación)
 5. [Uso](#Uso)
-6. [Estructura del Proyecto](#Estructura del Proyecto)
+6. [Estructura del Proyecto](#Estructura-del-Proyecto)
 7. [Licencia](#licencia)
 
 ## Introducción
