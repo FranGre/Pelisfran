@@ -87,6 +87,7 @@
       <DependentUpon>default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modelos\Genero.cs" />
+    <Compile Include="Modelos\GeneroPelicula.cs" />
     <Compile Include="Modelos\Pelicula.cs" />
     <Compile Include="Modelos\PortadaPelicula.cs" />
     <Compile Include="Modelos\Rol.cs" />
