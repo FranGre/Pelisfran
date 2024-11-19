@@ -13,7 +13,7 @@ namespace Pelisfran.Contexto
         public DbSet<PortadaPelicula> PortadasPeliculas { get; set; }
         public DbSet<Pelicula> Peliculas { get; set; }
         public DbSet<GeneroPelicula> GenerosPeliculas { get; set; }
-
+        public DbSet<PeliculaFavorita> PeliculasFavoritas { get; set; }
 
         public PelisFranDBContexto() : base(CrearConexion(), true) { }
 
