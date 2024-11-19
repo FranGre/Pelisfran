@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Pelisfran.Enums;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -7,9 +8,11 @@ namespace Pelisfran.Modelos
     [Table("Roles")]
     public class Rol
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
+        [Required]
+        public TipoRolesEnum Tipo { get; set; }
         [Required, MaxLength(30)]
-        public string Tipo { get; set; }
+        public string Nombre { get; set; }
         public DateTime CreadoEn { get; set; }
         public DateTime? ActualizadoEn { get; set; }
     }
