@@ -2,6 +2,7 @@
 using System.Configuration;
 using System.Data.Common;
 using System.Data.Entity;
+using System.Reflection.Emit;
 
 namespace Pelisfran.Contexto
 {
@@ -22,6 +23,15 @@ namespace Pelisfran.Contexto
             var conexion = DbProviderFactories.GetFactory(ConfigurationManager.ConnectionStrings["PelisFranConexion"].ProviderName).CreateConnection();
             conexion.ConnectionString = ConfigurationManager.ConnectionStrings["PelisFranConexion"].ConnectionString;
             return conexion;
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Pelicula>()
+                .HasOptional(pelicula => pelicula.PortadaPelicula)
+                .WithRequired(portadaPelicula => portadaPelicula.Pelicula);
+
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

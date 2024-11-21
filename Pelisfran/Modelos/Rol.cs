@@ -1,5 +1,6 @@
 ﻿using Pelisfran.Enums;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -15,5 +16,7 @@ namespace Pelisfran.Modelos
         public string Nombre { get; set; }
         public DateTime CreadoEn { get; set; }
         public DateTime? ActualizadoEn { get; set; }
+
+        public ICollection<Usuario> Usuarios { get; set; }
     }
 }
