@@ -17,7 +17,7 @@
 
     <div>
         <asp:Label ID="lbPassword" runat="server" Text="Password" />
-        <asp:TextBox ID="txtPassword" runat="server"></asp:TextBox>
+        <asp:TextBox ID="txtPassword" runat="server" TextMode="Password"></asp:TextBox>
         <asp:RequiredFieldValidator ID="reqPassword" runat="server" ControlToValidate="txtPassword" ErrorMessage="Campo obligatorio" />
     </div>
 
