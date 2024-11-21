@@ -9,25 +9,24 @@ namespace Pelisfran
 {
     public partial class login : Page
     {
+        private PelisFranDBContexto _db = new PelisFranDBContexto();
+
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            rangeFechaNacimiento.MaximumValue = DateTime.Now.ToString("dd/MM/yyyy");
         }
 
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
             if (!Page.IsValid) { return; }
 
-            var db = new PelisFranDBContexto();
             /*
-            if (!db.Roles.Any())
+            if (!_db.Roles.Any())
             {
                 SeederRoles seederRoles = new SeederRoles();
                 seederRoles.Insertar();
             }
             */
-
-            if (db.Usuarios.Where(u => u.Email == txtEmail.Text).FirstOrDefault() != null) { return; }
 
             Usuario usuario = new Usuario
             {
@@ -41,8 +40,21 @@ namespace Pelisfran
                 CreadoEn = DateTime.Now
             };
 
-            db.Usuarios.Add(usuario);
-            db.SaveChanges();
+            _db.Usuarios.Add(usuario);
+            _db.SaveChanges();
+        }
+
+        protected void custEmail_ServerValidate(object source, System.Web.UI.WebControls.ServerValidateEventArgs args)
+        {
+            bool existeUsuario = _db.Usuarios.Where(u => u.Email == txtEmail.Text).FirstOrDefault() != null;
+            if (existeUsuario)
+            {
+                custEmail.ErrorMessage = "Email en uso";
+                args.IsValid = false;
+                return;
+            }
+            custEmail.ErrorMessage = string.Empty;
+            args.IsValid = true;
         }
     }
 }

@@ -42,6 +42,15 @@ namespace Pelisfran
         protected global::System.Web.UI.WebControls.RequiredFieldValidator reqNombreUsuario;
 
         /// <summary>
+        /// Control regexNombreUsuario.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator regexNombreUsuario;
+
+        /// <summary>
         /// Control lbEmail.
         /// </summary>
         /// <remarks>
@@ -67,6 +76,24 @@ namespace Pelisfran
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator reqEmail;
+
+        /// <summary>
+        /// Control regexEmail.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator regexEmail;
+
+        /// <summary>
+        /// Control custEmail.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator custEmail;
 
         /// <summary>
         /// Control lbPassword.
@@ -96,6 +123,15 @@ namespace Pelisfran
         protected global::System.Web.UI.WebControls.RequiredFieldValidator reqPassword;
 
         /// <summary>
+        /// Control regexPaswword.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator regexPaswword;
+
+        /// <summary>
         /// Control lbFechaNacimiento.
         /// </summary>
         /// <remarks>
@@ -121,6 +157,15 @@ namespace Pelisfran
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator reqFechaNacimiento;
+
+        /// <summary>
+        /// Control rangeFechaNacimiento.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator rangeFechaNacimiento;
 
         /// <summary>
         /// Control btnAceptar.
