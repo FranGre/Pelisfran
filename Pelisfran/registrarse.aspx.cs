@@ -1,15 +1,15 @@
-﻿using Pelisfran.Contexto;
-using Pelisfran.Modelos;
+﻿using Pelisfran.Modelos;
 using Pelisfran.SeedersBaseDatos;
+using Pelisfran.Servicios;
 using System;
-using System.Linq;
 using System.Web.UI;
+using System.Web.UI.WebControls;
 
 namespace Pelisfran
 {
     public partial class login : Page
     {
-        private PelisFranDBContexto _db = new PelisFranDBContexto();
+        private UsuarioServicio usuarioServicio = new UsuarioServicio();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -40,14 +40,12 @@ namespace Pelisfran
                 CreadoEn = DateTime.Now
             };
 
-            _db.Usuarios.Add(usuario);
-            _db.SaveChanges();
+            usuarioServicio.RegistrarUsuario(usuario);
         }
 
-        protected void custEmail_ServerValidate(object source, System.Web.UI.WebControls.ServerValidateEventArgs args)
+        protected void custEmail_ServerValidate(object source, ServerValidateEventArgs args)
         {
-            bool existeUsuario = _db.Usuarios.Where(u => u.Email == txtEmail.Text).FirstOrDefault() != null;
-            if (existeUsuario)
+            if (usuarioServicio.ExisteUsuarioConEmail(txtEmail.Text))
             {
                 custEmail.ErrorMessage = "Email en uso";
                 args.IsValid = false;
