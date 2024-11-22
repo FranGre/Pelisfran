@@ -2,6 +2,7 @@
 using Pelisfran.SeedersBaseDatos;
 using Pelisfran.Servicios;
 using System;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -41,6 +42,9 @@ namespace Pelisfran
             };
 
             usuarioServicio.RegistrarUsuario(usuario);
+
+            FormsAuthentication.SetAuthCookie(usuario.Id.ToString(), false);
+            Response.Redirect("autenticado.aspx");
         }
 
         protected void custEmail_ServerValidate(object source, ServerValidateEventArgs args)

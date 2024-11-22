@@ -74,11 +74,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="autenticado.aspx" />
     <Content Include="default.aspx" />
+    <Content Include="login.aspx" />
     <Content Include="registrarse.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="autenticado.aspx.cs">
+      <DependentUpon>autenticado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="autenticado.aspx.designer.cs">
+      <DependentUpon>autenticado.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Contexto\PelisFranDBContexto.cs" />
     <Compile Include="default.aspx.cs">
       <DependentUpon>default.aspx</DependentUpon>
@@ -88,6 +97,13 @@
       <DependentUpon>default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Enums\TipoRolesEnum.cs" />
+    <Compile Include="login.aspx.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="login.aspx.designer.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
     <Compile Include="registrarse.aspx.cs">
       <DependentUpon>registrarse.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
