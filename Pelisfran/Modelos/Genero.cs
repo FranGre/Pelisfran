@@ -10,7 +10,7 @@ namespace Pelisfran.Modelos
     {
         public Guid Id { get; set; }
         [Required, MaxLength(40)]
-        public string Tipo { get; set; }
+        public string Nombre { get; set; }
         [Required]
         public DateTime CreadoEn { get; set; }
         public DateTime? ActualizadoEn { get; set; }
