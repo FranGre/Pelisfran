@@ -5,26 +5,26 @@ namespace Pelisfran.Servicios
 {
     public class AutenticacionServicio
     {
-        private UsuarioServicio usuarioServicio;
+        private UsuarioServicio _usuarioServicio;
 
         public AutenticacionServicio()
         {
-            usuarioServicio = new UsuarioServicio();
+            _usuarioServicio = new UsuarioServicio();
         }
 
         public bool AutenticarUsuario(string email, string password)
         {
-            if (!usuarioServicio.ExisteUsuarioRegistrado(email))
+            if (!_usuarioServicio.ExisteUsuarioRegistrado(email))
             {
                 return false;
             }
 
-            if (!usuarioServicio.ExisteUsuarioConCredenciales(email, password))
+            if (!_usuarioServicio.ExisteUsuarioConCredenciales(email, password))
             {
                 return false;
             }
 
-            Usuario usuario = usuarioServicio.ObtenerUsuario(email);
+            Usuario usuario = _usuarioServicio.ObtenerUsuario(email);
             FormsAuthentication.SetAuthCookie(usuario.Id.ToString(), false);
             return true;
         }

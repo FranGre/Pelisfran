@@ -21,13 +21,10 @@ namespace Pelisfran
         {
             if (!Page.IsValid) { return; }
 
-            /*
-            if (!_db.Roles.Any())
-            {
+            
                 SeederRoles seederRoles = new SeederRoles();
                 seederRoles.Insertar();
-            }
-            */
+            
 
             Usuario usuario = new Usuario
             {

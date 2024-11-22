@@ -5,26 +5,26 @@ namespace Pelisfran.Servicios
 {
     public class UsuarioServicio
     {
-        private UsuarioRepositorio usuarioRepositorio;
+        private UsuarioRepositorio _usuarioRepositorio;
 
         public UsuarioServicio()
         {
-            usuarioRepositorio = new UsuarioRepositorio();
+            _usuarioRepositorio = new UsuarioRepositorio();
         }
 
         public void RegistrarUsuario(Usuario usuario)
         {
-            usuarioRepositorio.Crear(usuario);
+            _usuarioRepositorio.Crear(usuario);
         }
 
         public bool ExisteUsuarioRegistrado(string email)
         {
-            return usuarioRepositorio.ExisteUsuario(email);
+            return _usuarioRepositorio.ExisteUsuario(email);
         }
 
         public bool ExisteUsuarioConCredenciales(string email, string password)
         {
-            Usuario usuario = usuarioRepositorio.ObtenerUsuario(email);
+            Usuario usuario = _usuarioRepositorio.ObtenerUsuario(email);
 
             if (usuario == null) { return false; }
 
@@ -35,7 +35,7 @@ namespace Pelisfran.Servicios
 
         public Usuario ObtenerUsuario(string email)
         {
-            return usuarioRepositorio.ObtenerUsuario(email);
+            return _usuarioRepositorio.ObtenerUsuario(email);
         }
     }
 }
