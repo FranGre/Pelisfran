@@ -19,9 +19,16 @@ namespace Pelisfran.Repositorios
             _db.SaveChanges();
         }
 
-        public bool ExisteEmail(string email)
+        public bool ExisteUsuario(string email)
         {
             return _db.Usuarios.Where(u => u.Email == email).FirstOrDefault() != null ? true : false;
+        }
+
+        public Usuario ObtenerUsuario(string email)
+        {
+            if (!ExisteUsuario(email)) { return null; }
+
+            return _db.Usuarios.Where(u => u.Email == email).FirstOrDefault();
         }
     }
 }

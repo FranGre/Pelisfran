@@ -17,9 +17,25 @@ namespace Pelisfran.Servicios
             usuarioRepositorio.Crear(usuario);
         }
 
-        public bool ExisteUsuarioConEmail(string email)
+        public bool ExisteUsuarioRegistrado(string email)
         {
-            return usuarioRepositorio.ExisteEmail(email);
+            return usuarioRepositorio.ExisteUsuario(email);
+        }
+
+        public bool ExisteUsuarioConCredenciales(string email, string password)
+        {
+            Usuario usuario = usuarioRepositorio.ObtenerUsuario(email);
+
+            if (usuario == null) { return false; }
+
+            if (usuario.Password != password) { return false; }
+
+            return true;
+        }
+
+        public Usuario ObtenerUsuario(string email)
+        {
+            return usuarioRepositorio.ObtenerUsuario(email);
         }
     }
 }

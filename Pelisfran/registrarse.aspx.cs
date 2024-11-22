@@ -2,7 +2,6 @@
 using Pelisfran.SeedersBaseDatos;
 using Pelisfran.Servicios;
 using System;
-using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -11,6 +10,7 @@ namespace Pelisfran
     public partial class login : Page
     {
         private UsuarioServicio usuarioServicio = new UsuarioServicio();
+        private AutenticacionServicio autenticacionServicio = new AutenticacionServicio();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -42,19 +42,20 @@ namespace Pelisfran
             };
 
             usuarioServicio.RegistrarUsuario(usuario);
+            autenticacionServicio.AutenticarUsuario(usuario.Email, usuario.Password);
 
-            FormsAuthentication.SetAuthCookie(usuario.Id.ToString(), false);
             Response.Redirect("autenticado.aspx");
         }
 
         protected void custEmail_ServerValidate(object source, ServerValidateEventArgs args)
         {
-            if (usuarioServicio.ExisteUsuarioConEmail(txtEmail.Text))
+            if (usuarioServicio.ExisteUsuarioRegistrado(txtEmail.Text))
             {
                 custEmail.ErrorMessage = "Email en uso";
                 args.IsValid = false;
                 return;
             }
+
             custEmail.ErrorMessage = string.Empty;
             args.IsValid = true;
         }
