@@ -8,9 +8,9 @@ namespace Pelisfran.Modelos
     public class Pelicula
     {
         public Guid Id { get; set; }
-        [Required, MaxLength(35)]
+        [Required, MaxLength(50)]
         public string Titulo { get; set; }
-        [Required, MaxLength(200)]
+        [Required, MaxLength(350)]
         public string SinopsisBreve { get; set; }
         [Required]
         public DateTime FechaLanzamiento { get; set; }
