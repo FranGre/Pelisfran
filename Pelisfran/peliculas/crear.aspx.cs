@@ -12,7 +12,7 @@ namespace Pelisfran.peliculas
 {
     public partial class crear : Page
     {
-        private PelisFranDBContexto _db = new PelisFranDBContexto();
+        private GeneroServicio _generoServicio = new GeneroServicio();
         private PeliculaServicio _peliculaServicio = new PeliculaServicio();
         private GeneroPeliculaServicio generoPeliculaServicio = new GeneroPeliculaServicio();
 
@@ -20,9 +20,9 @@ namespace Pelisfran.peliculas
         {
             if (!Page.IsPostBack)
             {
-                var generos = _db.Generos.ToList();
+                // GeneroRepositorio GeneroServicio Refactorizar generosSeleccionados
 
-                repGeneros.DataSource = generos;
+                repGeneros.DataSource = _generoServicio.ObtenerListaDeGeneros();
                 repGeneros.DataBind();
             }
         }
