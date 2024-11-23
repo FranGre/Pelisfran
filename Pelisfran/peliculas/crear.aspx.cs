@@ -14,6 +14,7 @@ namespace Pelisfran.peliculas
     {
         private PelisFranDBContexto _db = new PelisFranDBContexto();
         private PeliculaServicio _peliculaServicio = new PeliculaServicio();
+        private GeneroPeliculaServicio generoPeliculaServicio = new GeneroPeliculaServicio();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -80,8 +81,7 @@ namespace Pelisfran.peliculas
                     GeneroId = genero.Id,
                     CreadoEn = DateTime.Now
                 };
-                _db.GenerosPeliculas.Add(generoPelicula);
-                _db.SaveChanges();
+                generoPeliculaServicio.AgregarGeneroAPelicula(generoPelicula);
             }
         }
     }
