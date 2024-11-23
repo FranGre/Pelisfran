@@ -1,5 +1,6 @@
 ﻿using Pelisfran.Contexto;
 using Pelisfran.Modelos;
+using Pelisfran.Servicios;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace Pelisfran.peliculas
     public partial class crear : Page
     {
         private PelisFranDBContexto _db = new PelisFranDBContexto();
+        private PeliculaServicio _peliculaServicio = new PeliculaServicio();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -51,8 +53,7 @@ namespace Pelisfran.peliculas
                 UsuarioId = usuarioId,
             };
 
-            _db.Peliculas.Add(pelicula);
-            _db.SaveChanges();
+            _peliculaServicio.CrearPelicula(pelicula);
 
             var generosSeleccionados = new List<Genero>();
             foreach (var item in repGeneros.Items)
