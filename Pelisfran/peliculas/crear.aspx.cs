@@ -1,9 +1,7 @@
-﻿using Pelisfran.Contexto;
-using Pelisfran.Modelos;
+﻿using Pelisfran.Modelos;
 using Pelisfran.Servicios;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -20,8 +18,6 @@ namespace Pelisfran.peliculas
         {
             if (!Page.IsPostBack)
             {
-                // GeneroRepositorio GeneroServicio Refactorizar generosSeleccionados
-
                 repGeneros.DataSource = _generoServicio.ObtenerListaDeGeneros();
                 repGeneros.DataBind();
             }
@@ -30,7 +26,6 @@ namespace Pelisfran.peliculas
         protected void repGeneros_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
             var cbGenero = (CheckBox)e.Item.FindControl("cbGenero");
-
             var genero = (Genero)e.Item.DataItem;
 
             cbGenero.Text = genero.Nombre;
@@ -56,6 +51,21 @@ namespace Pelisfran.peliculas
 
             _peliculaServicio.CrearPelicula(pelicula);
 
+            foreach (Genero genero in ObtenerGenerosSeleccionados())
+            {
+                GeneroPelicula generoPelicula = new GeneroPelicula
+                {
+                    Id = Guid.NewGuid(),
+                    PeliculaId = pelicula.Id,
+                    GeneroId = genero.Id,
+                    CreadoEn = DateTime.Now
+                };
+                generoPeliculaServicio.AgregarGeneroAPelicula(generoPelicula);
+            }
+        }
+
+        private List<Genero> ObtenerGenerosSeleccionados()
+        {
             var generosSeleccionados = new List<Genero>();
             foreach (var item in repGeneros.Items)
             {
@@ -71,18 +81,7 @@ namespace Pelisfran.peliculas
                     generosSeleccionados.Add(genero);
                 }
             }
-
-            foreach (Genero genero in generosSeleccionados)
-            {
-                GeneroPelicula generoPelicula = new GeneroPelicula
-                {
-                    Id = Guid.NewGuid(),
-                    PeliculaId = pelicula.Id,
-                    GeneroId = genero.Id,
-                    CreadoEn = DateTime.Now
-                };
-                generoPeliculaServicio.AgregarGeneroAPelicula(generoPelicula);
-            }
+            return generosSeleccionados;
         }
     }
 }
