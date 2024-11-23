@@ -142,6 +142,7 @@
       <DependentUpon>Site1.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositorios\GeneroPeliculaRepositorio.cs" />
     <Compile Include="Repositorios\GeneroRepositorio.cs" />
     <Compile Include="Repositorios\PeliculaRepositorio.cs" />
     <Compile Include="Repositorios\UsuarioRepositorio.cs" />
