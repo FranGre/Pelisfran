@@ -69,6 +69,19 @@ namespace Pelisfran.peliculas
                     generosSeleccionados.Add(genero);
                 }
             }
+
+            foreach (Genero genero in generosSeleccionados)
+            {
+                GeneroPelicula generoPelicula = new GeneroPelicula
+                {
+                    Id = Guid.NewGuid(),
+                    PeliculaId = pelicula.Id,
+                    GeneroId = genero.Id,
+                    CreadoEn = DateTime.Now
+                };
+                _db.GenerosPeliculas.Add(generoPelicula);
+                _db.SaveChanges();
+            }
         }
     }
 }
