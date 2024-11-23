@@ -42,6 +42,15 @@ namespace Pelisfran.peliculas
         protected global::System.Web.UI.WebControls.RequiredFieldValidator reqTitulo;
 
         /// <summary>
+        /// Control regexTitulo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator regexTitulo;
+
+        /// <summary>
         /// Control lbSinopsisBreve.
         /// </summary>
         /// <remarks>
@@ -67,6 +76,15 @@ namespace Pelisfran.peliculas
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator reqSinopsisBreve;
+
+        /// <summary>
+        /// Control regexSinopsisBreve.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator regexSinopsisBreve;
 
         /// <summary>
         /// Control lbFechaLanzamiento.
@@ -96,6 +114,15 @@ namespace Pelisfran.peliculas
         protected global::System.Web.UI.WebControls.RequiredFieldValidator reqFechaLanzamiento;
 
         /// <summary>
+        /// Control rangeFechaLanzamiento.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator rangeFechaLanzamiento;
+
+        /// <summary>
         /// Control lbDuracion.
         /// </summary>
         /// <remarks>
@@ -121,6 +148,15 @@ namespace Pelisfran.peliculas
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator reqDuracion;
+
+        /// <summary>
+        /// Control rangeDuracion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator rangeDuracion;
 
         /// <summary>
         /// Control repGeneros.

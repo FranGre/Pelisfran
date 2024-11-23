@@ -18,6 +18,9 @@ namespace Pelisfran.peliculas
         {
             if (!Page.IsPostBack)
             {
+                rangeFechaLanzamiento.MinimumValue = DateTime.Now.AddYears(-100).ToShortDateString();
+                rangeFechaLanzamiento.MaximumValue = DateTime.Now.ToShortDateString();
+                rangeFechaLanzamiento.ErrorMessage = $"Debe estar entre {rangeFechaLanzamiento.MinimumValue} y {rangeFechaLanzamiento.MaximumValue}";
                 repGeneros.DataSource = _generoServicio.ObtenerListaDeGeneros();
                 repGeneros.DataBind();
             }
