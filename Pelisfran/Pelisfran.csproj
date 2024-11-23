@@ -148,6 +148,7 @@
     <Compile Include="Repositorios\UsuarioRepositorio.cs" />
     <Compile Include="SeedersBaseDatos\SeederRoles.cs" />
     <Compile Include="Servicios\AutenticacionServicio.cs" />
+    <Compile Include="Servicios\GeneroPeliculaServicio.cs" />
     <Compile Include="Servicios\GeneroServicio.cs" />
     <Compile Include="Servicios\PeliculaServicio.cs" />
     <Compile Include="Servicios\UsuarioServicio.cs" />
