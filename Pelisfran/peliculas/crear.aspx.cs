@@ -1,4 +1,5 @@
-﻿using Pelisfran.Modelos;
+﻿using Pelisfran.Contexto;
+using Pelisfran.Modelos;
 using Pelisfran.Servicios;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ namespace Pelisfran.peliculas
         private GeneroServicio _generoServicio = new GeneroServicio();
         private PeliculaServicio _peliculaServicio = new PeliculaServicio();
         private GeneroPeliculaServicio generoPeliculaServicio = new GeneroPeliculaServicio();
+        private PelisFranDBContexto _db = new PelisFranDBContexto();
 
         protected void Page_Load(object sender, EventArgs e)
 
@@ -76,14 +78,17 @@ namespace Pelisfran.peliculas
                 };
                 generoPeliculaServicio.AgregarGeneroAPelicula(generoPelicula);
             }
-            var carpetaDestino = Server.MapPath($"~/Uploads/Portadas/Peliculas/{pelicula.Id}");
+            string carpetaDestino = $"~/Uploads/Portadas/Peliculas/{pelicula.Id}";
+            var rutaAbsolutaCarpetaDestino = Server.MapPath($"~/Uploads/Portadas/Peliculas/{pelicula.Id}");
+            _db.PortadasPeliculas.Add(new PortadaPelicula { Id = pelicula.Id, Nombre = Guid.NewGuid().ToString(), NombreOriginal = fuPortada.FileName, Extension = Path.GetExtension(fuPortada.FileName), Ruta = carpetaDestino });
+            _db.SaveChanges();
 
-            if (!Directory.Exists(carpetaDestino))
+            if (!Directory.Exists(rutaAbsolutaCarpetaDestino))
             {
-                Directory.CreateDirectory(carpetaDestino);
+                Directory.CreateDirectory(rutaAbsolutaCarpetaDestino);
             }
 
-            fuPortada.SaveAs($"{carpetaDestino}/{fuPortada.FileName}");
+            fuPortada.SaveAs($"{rutaAbsolutaCarpetaDestino}/{fuPortada.FileName}");
         }
 
         private List<Genero> ObtenerGenerosSeleccionados()
