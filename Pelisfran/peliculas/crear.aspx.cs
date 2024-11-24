@@ -2,6 +2,7 @@
 using Pelisfran.Servicios;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -75,6 +76,14 @@ namespace Pelisfran.peliculas
                 };
                 generoPeliculaServicio.AgregarGeneroAPelicula(generoPelicula);
             }
+            var carpetaDestino = Server.MapPath($"~/Uploads/Portadas/Peliculas/{pelicula.Id}");
+
+            if (!Directory.Exists(carpetaDestino))
+            {
+                Directory.CreateDirectory(carpetaDestino);
+            }
+
+            fuPortada.SaveAs($"{carpetaDestino}/{fuPortada.FileName}");
         }
 
         private List<Genero> ObtenerGenerosSeleccionados()

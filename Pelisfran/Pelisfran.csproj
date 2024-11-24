@@ -80,6 +80,8 @@
     <Content Include="login.aspx" />
     <Content Include="peliculas\crear.aspx" />
     <Content Include="registrarse.aspx" />
+    <Content Include="Uploads\Portadas\Peliculas\33ed2267-658c-4a37-b620-bff6bae50049\wallpaperbetter.com_1920x1080.jpg" />
+    <Content Include="Uploads\Portadas\Peliculas\bd33d0c3-5159-484d-8855-533fd9644000\wallpaperbetter.com_1920x1080.jpg" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -163,6 +165,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

@@ -40,5 +40,11 @@
         <span id="reqGeneros" runat="server" />
     </div>
 
+    <div>
+        <asp:Label ID="lbPortada" runat="server" Text="Portada" />
+        <asp:FileUpload ID="fuPortada" runat="server" />
+        <asp:RequiredFieldValidator ID="reqPortada" runat="server" ControlToValidate="fuPortada" ErrorMessage="Campo Obligatorio" Display="Dynamic" />
+    </div>
+
     <asp:Button ID="btnAceptar" runat="server" Text="Crear" OnClick="btnAceptar_Click" />
 </asp:Content>
