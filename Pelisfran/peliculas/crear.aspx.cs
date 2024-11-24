@@ -15,6 +15,7 @@ namespace Pelisfran.peliculas
         private GeneroPeliculaServicio generoPeliculaServicio = new GeneroPeliculaServicio();
 
         protected void Page_Load(object sender, EventArgs e)
+
         {
             if (!Page.IsPostBack)
             {
@@ -39,6 +40,15 @@ namespace Pelisfran.peliculas
         {
             if (!Page.IsValid) { return; }
 
+            var generosSeleccionados = ObtenerGenerosSeleccionados();
+
+            reqGeneros.InnerText = string.Empty;
+            if (generosSeleccionados.Count == 0)
+            {
+                reqGeneros.InnerText = "Debes escoger minimo un genero";
+                return;
+            }
+
             Guid usuarioId = Guid.Parse(HttpContext.Current.User.Identity.Name);
 
             Pelicula pelicula = new Pelicula
@@ -54,7 +64,7 @@ namespace Pelisfran.peliculas
 
             _peliculaServicio.CrearPelicula(pelicula);
 
-            foreach (Genero genero in ObtenerGenerosSeleccionados())
+            foreach (Genero genero in generosSeleccionados)
             {
                 GeneroPelicula generoPelicula = new GeneroPelicula
                 {

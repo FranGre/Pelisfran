@@ -37,6 +37,7 @@
                 <asp:CheckBox ID="cbGenero" runat="server" />
             </ItemTemplate>
         </asp:Repeater>
+        <span id="reqGeneros" runat="server"></span>
     </div>
 
     <asp:Button ID="btnAceptar" runat="server" Text="Crear" OnClick="btnAceptar_Click" />
