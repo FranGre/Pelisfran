@@ -15,6 +15,7 @@ namespace Pelisfran.peliculas
         private GeneroServicio _generoServicio = new GeneroServicio();
         private PeliculaServicio _peliculaServicio = new PeliculaServicio();
         private GeneroPeliculaServicio generoPeliculaServicio = new GeneroPeliculaServicio();
+        private PortadaPeliculaServicio _portadaPeliculaServicio = new PortadaPeliculaServicio();
         private PelisFranDBContexto _db = new PelisFranDBContexto();
 
         protected void Page_Load(object sender, EventArgs e)
@@ -78,10 +79,13 @@ namespace Pelisfran.peliculas
                 };
                 generoPeliculaServicio.AgregarGeneroAPelicula(generoPelicula);
             }
+
+            // refactorizar
             string carpetaDestino = $"~/Uploads/Portadas/Peliculas/{pelicula.Id}";
             var rutaAbsolutaCarpetaDestino = Server.MapPath($"~/Uploads/Portadas/Peliculas/{pelicula.Id}");
-            _db.PortadasPeliculas.Add(new PortadaPelicula { Id = pelicula.Id, Nombre = Guid.NewGuid().ToString(), NombreOriginal = fuPortada.FileName, Extension = Path.GetExtension(fuPortada.FileName), Ruta = carpetaDestino });
-            _db.SaveChanges();
+
+            PortadaPelicula portada = new PortadaPelicula { Id = pelicula.Id, Nombre = Guid.NewGuid().ToString(), NombreOriginal = fuPortada.FileName, Extension = Path.GetExtension(fuPortada.FileName), Ruta = carpetaDestino };
+            _portadaPeliculaServicio.AgregarPortadaAPelicula(portada);
 
             if (!Directory.Exists(rutaAbsolutaCarpetaDestino))
             {

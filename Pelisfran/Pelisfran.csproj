@@ -145,12 +145,14 @@
     <Compile Include="Repositorios\GeneroPeliculaRepositorio.cs" />
     <Compile Include="Repositorios\GeneroRepositorio.cs" />
     <Compile Include="Repositorios\PeliculaRepositorio.cs" />
+    <Compile Include="Repositorios\PortadaPeliculaRepositorio.cs" />
     <Compile Include="Repositorios\UsuarioRepositorio.cs" />
     <Compile Include="SeedersBaseDatos\SeederRoles.cs" />
     <Compile Include="Servicios\AutenticacionServicio.cs" />
     <Compile Include="Servicios\GeneroPeliculaServicio.cs" />
     <Compile Include="Servicios\GeneroServicio.cs" />
     <Compile Include="Servicios\PeliculaServicio.cs" />
+    <Compile Include="Servicios\PortadaPeliculaServicio.cs" />
     <Compile Include="Servicios\UsuarioServicio.cs" />
   </ItemGroup>
   <ItemGroup>
