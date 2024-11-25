@@ -79,6 +79,7 @@
     <Content Include="generos\crear.aspx" />
     <Content Include="login.aspx" />
     <Content Include="peliculas\crear.aspx" />
+    <Content Include="peliculas\default.aspx" />
     <Content Include="registrarse.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -119,6 +120,13 @@
     </Compile>
     <Compile Include="peliculas\crear.aspx.designer.cs">
       <DependentUpon>crear.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="peliculas\default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="peliculas\default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
     </Compile>
     <Compile Include="registrarse.aspx.cs">
       <DependentUpon>registrarse.aspx</DependentUpon>
