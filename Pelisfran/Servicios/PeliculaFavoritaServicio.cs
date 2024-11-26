@@ -1,5 +1,6 @@
 ﻿using Pelisfran.Modelos;
 using Pelisfran.Repositorios;
+using System;
 
 namespace Pelisfran.Servicios
 {
@@ -15,6 +16,11 @@ namespace Pelisfran.Servicios
         public void MarcarPeliculaComoFavorita(PeliculaFavorita peliculaFavorita)
         {
             _peliculaFavoritaRepositorio.Crear(peliculaFavorita);
+        }
+
+        public bool PeliculaEstaMarcadaComoFavorita(Guid usuarioId, Guid peliculaId)
+        {
+            return _peliculaFavoritaRepositorio.ExistePeliculaFavorita(usuarioId, peliculaId);
         }
     }
 }

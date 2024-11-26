@@ -53,7 +53,7 @@ namespace Pelisfran.peliculas
                 PeliculaId = peliculaId
             };
 
-            if (_db.PeliculasFavoritas.Where(item => item.UsuarioId == usuarioId && item.PeliculaId == peliculaId) != null)
+            if (_peliculaFavoritaServicio.PeliculaEstaMarcadaComoFavorita(usuarioId, peliculaId))
             {
                 return;
             }

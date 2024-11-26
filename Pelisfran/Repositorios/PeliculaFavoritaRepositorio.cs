@@ -1,5 +1,7 @@
 ﻿using Pelisfran.Contexto;
 using Pelisfran.Modelos;
+using System;
+using System.Linq;
 
 namespace Pelisfran.Repositorios
 {
@@ -16,6 +18,11 @@ namespace Pelisfran.Repositorios
         {
             _db.PeliculasFavoritas.Add(peliculaFavorita);
             _db.SaveChanges();
+        }
+
+        public bool ExistePeliculaFavorita(Guid usuarioId, Guid peliculaId)
+        {
+            return _db.PeliculasFavoritas.Where(item => item.UsuarioId == usuarioId && item.PeliculaId == peliculaId) != null;
         }
     }
 }
