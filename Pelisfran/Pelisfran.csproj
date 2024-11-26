@@ -169,6 +169,7 @@
     <Compile Include="Servicios\FileServicio.cs" />
     <Compile Include="Servicios\GeneroPeliculaServicio.cs" />
     <Compile Include="Servicios\GeneroServicio.cs" />
+    <Compile Include="Servicios\PeliculaFavoritaServicio.cs" />
     <Compile Include="Servicios\PeliculaServicio.cs" />
     <Compile Include="Servicios\PortadaPeliculaServicio.cs" />
     <Compile Include="Servicios\UsuarioServicio.cs" />

@@ -10,6 +10,7 @@ namespace Pelisfran.peliculas
     public partial class ver : System.Web.UI.Page
     {
         private PeliculaServicio _peliculaServicio = new PeliculaServicio();
+        private PeliculaFavoritaServicio _peliculaFavoritaServicio = new PeliculaFavoritaServicio();
         private PelisFranDBContexto _db = new PelisFranDBContexto();
 
         protected void Page_Load(object sender, EventArgs e)
@@ -57,8 +58,7 @@ namespace Pelisfran.peliculas
                 return;
             }
 
-            _db.PeliculasFavoritas.Add(peliculaFavorita);
-            _db.SaveChanges();
+            _peliculaFavoritaServicio.MarcarPeliculaComoFavorita(peliculaFavorita);
         }
     }
 }
