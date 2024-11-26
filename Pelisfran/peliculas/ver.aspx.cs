@@ -36,7 +36,16 @@ namespace Pelisfran.peliculas
                 descripcion.InnerText = pelicula.SinopsisBreve;
                 hfId.Value = pelicula.Id.ToString();
 
+                Guid usuarioId = Guid.Parse(HttpContext.Current.User.Identity.Name);
+
+                if (_peliculaFavoritaServicio.PeliculaEstaMarcadaComoFavorita(usuarioId, peliculaId))
+                {
+                    btnFavorito.Text = "Eliminar de Favoritos";
+                    upBotonFavorito.Update();
+                    return;
+                }
                 btnFavorito.Text = "Anadir a Favoritos";
+                upBotonFavorito.Update();
             }
         }
 
@@ -45,6 +54,14 @@ namespace Pelisfran.peliculas
             Guid peliculaId = Guid.Parse(hfId.Value);
             Guid usuarioId = Guid.Parse(HttpContext.Current.User.Identity.Name);
 
+            if (_peliculaFavoritaServicio.PeliculaEstaMarcadaComoFavorita(usuarioId, peliculaId))
+            {
+                _peliculaFavoritaServicio.DesmarcarPeliculaComoFavorita(usuarioId, peliculaId);
+                btnFavorito.Text = "Anadir a Favoritos";
+                upBotonFavorito.Update();
+                return;
+            }
+
             PeliculaFavorita peliculaFavorita = new PeliculaFavorita
             {
                 Id = Guid.NewGuid(),
@@ -52,13 +69,9 @@ namespace Pelisfran.peliculas
                 UsuarioId = usuarioId,
                 PeliculaId = peliculaId
             };
-
-            if (_peliculaFavoritaServicio.PeliculaEstaMarcadaComoFavorita(usuarioId, peliculaId))
-            {
-                return;
-            }
-
             _peliculaFavoritaServicio.MarcarPeliculaComoFavorita(peliculaFavorita);
+            btnFavorito.Text = "Eliminar de Favoritos";
+            upBotonFavorito.Update();
         }
     }
 }

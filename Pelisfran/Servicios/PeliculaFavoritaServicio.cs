@@ -22,5 +22,10 @@ namespace Pelisfran.Servicios
         {
             return _peliculaFavoritaRepositorio.ExistePeliculaFavorita(usuarioId, peliculaId);
         }
+
+        public void DesmarcarPeliculaComoFavorita(Guid usuarioId, Guid peliculaId)
+        {
+            _peliculaFavoritaRepositorio.Eliminar(usuarioId, peliculaId);
+        }
     }
 }

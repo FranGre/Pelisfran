@@ -22,7 +22,15 @@ namespace Pelisfran.Repositorios
 
         public bool ExistePeliculaFavorita(Guid usuarioId, Guid peliculaId)
         {
-            return _db.PeliculasFavoritas.Where(item => item.UsuarioId == usuarioId && item.PeliculaId == peliculaId) != null;
+            return _db.PeliculasFavoritas.Where(item => item.UsuarioId == usuarioId && item.PeliculaId == peliculaId).FirstOrDefault() != null;
+        }
+
+        public void Eliminar(Guid usuarioId, Guid peliculaId)
+        {
+            PeliculaFavorita peliculaFavorita = _db.PeliculasFavoritas.Where(item => item.UsuarioId == usuarioId && item.PeliculaId == peliculaId).FirstOrDefault();
+
+            _db.PeliculasFavoritas.Remove(peliculaFavorita);
+            _db.SaveChanges();
         }
     }
 }
