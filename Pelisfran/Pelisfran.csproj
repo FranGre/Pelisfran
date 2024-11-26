@@ -160,6 +160,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorios\GeneroPeliculaRepositorio.cs" />
     <Compile Include="Repositorios\GeneroRepositorio.cs" />
+    <Compile Include="Repositorios\PeliculaFavoritaRepositorio.cs" />
     <Compile Include="Repositorios\PeliculaRepositorio.cs" />
     <Compile Include="Repositorios\PortadaPeliculaRepositorio.cs" />
     <Compile Include="Repositorios\UsuarioRepositorio.cs" />
