@@ -2,7 +2,6 @@
 using Pelisfran.Modelos;
 using Pelisfran.Servicios;
 using System;
-using System.Linq;
 using System.Web;
 
 namespace Pelisfran.peliculas
@@ -11,7 +10,6 @@ namespace Pelisfran.peliculas
     {
         private PeliculaServicio _peliculaServicio = new PeliculaServicio();
         private PeliculaFavoritaServicio _peliculaFavoritaServicio = new PeliculaFavoritaServicio();
-        private PelisFranDBContexto _db = new PelisFranDBContexto();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -40,12 +38,10 @@ namespace Pelisfran.peliculas
 
                 if (_peliculaFavoritaServicio.PeliculaEstaMarcadaComoFavorita(usuarioId, peliculaId))
                 {
-                    btnFavorito.Text = "Eliminar de Favoritos";
-                    upBotonFavorito.Update();
+                    ActualizarPanelUpBotonFavorito("Eliminar de Favoritos");
                     return;
                 }
-                btnFavorito.Text = "Anadir a Favoritos";
-                upBotonFavorito.Update();
+                ActualizarPanelUpBotonFavorito("Anadir a Favoritos");
             }
         }
 
@@ -57,8 +53,7 @@ namespace Pelisfran.peliculas
             if (_peliculaFavoritaServicio.PeliculaEstaMarcadaComoFavorita(usuarioId, peliculaId))
             {
                 _peliculaFavoritaServicio.DesmarcarPeliculaComoFavorita(usuarioId, peliculaId);
-                btnFavorito.Text = "Anadir a Favoritos";
-                upBotonFavorito.Update();
+                ActualizarPanelUpBotonFavorito("Anadir a Favoritos");
                 return;
             }
 
@@ -70,7 +65,12 @@ namespace Pelisfran.peliculas
                 PeliculaId = peliculaId
             };
             _peliculaFavoritaServicio.MarcarPeliculaComoFavorita(peliculaFavorita);
-            btnFavorito.Text = "Eliminar de Favoritos";
+            ActualizarPanelUpBotonFavorito("Eliminar de Favoritos");
+        }
+
+        private void ActualizarPanelUpBotonFavorito(string mensaje)
+        {
+            btnFavorito.Text = mensaje;
             upBotonFavorito.Update();
         }
     }
