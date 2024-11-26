@@ -6,4 +6,6 @@
     <h2 id="titulo" runat="server"></h2>
     <p id="descripcion" runat="server"></p>
     <asp:HiddenField ID="hfId" runat="server" />
+
+    <asp:Button ID="btnFavorito" runat="server" OnClick="btnFavorito_Click" />
 </asp:Content>
