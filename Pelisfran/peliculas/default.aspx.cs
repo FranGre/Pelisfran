@@ -14,7 +14,7 @@ namespace Pelisfran.peliculas
         {
             if (!Page.IsPostBack)
             {
-                var peliculas = _db.Peliculas.ToList();
+                var peliculas = _db.Peliculas.Include("PortadaPelicula").ToList();
                 repPeliculas.DataSource = peliculas;
                 repPeliculas.DataBind();
             }
@@ -26,11 +26,14 @@ namespace Pelisfran.peliculas
 
             Literal titulo = (Literal)repeaterItem.FindControl("titulo");
             Literal fechaLanzamiento = (Literal)repeaterItem.FindControl("fechaLanzamiento");
+            Image portada = (Image)repeaterItem.FindControl("portada");
 
             Pelicula pelicula = (Pelicula)repeaterItem.DataItem;
+            PortadaPelicula portadaPelicula = pelicula.PortadaPelicula;
 
             titulo.Text = pelicula.Titulo;
             fechaLanzamiento.Text = pelicula.FechaLanzamiento.ToShortDateString();
+            portada.ImageUrl = ResolveUrl($"{portadaPelicula.Ruta}/{portadaPelicula.NombreOriginal}");
         }
     }
 }
