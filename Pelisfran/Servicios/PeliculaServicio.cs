@@ -1,5 +1,6 @@
 ﻿using Pelisfran.Modelos;
 using Pelisfran.Repositorios;
+using System;
 
 namespace Pelisfran.Servicios
 {
@@ -15,6 +16,11 @@ namespace Pelisfran.Servicios
         public void CrearPelicula(Pelicula pelicula)
         {
             _peliculaRepositorio.Crear(pelicula);
+        }
+
+        public Pelicula ObtenerPelicula(Guid id)
+        {
+            return _peliculaRepositorio.ObtenerPorId(id);
         }
     }
 }

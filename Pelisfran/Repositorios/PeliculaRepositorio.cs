@@ -1,5 +1,6 @@
 ﻿using Pelisfran.Contexto;
 using Pelisfran.Modelos;
+using System;
 
 namespace Pelisfran.Repositorios
 {
@@ -16,6 +17,11 @@ namespace Pelisfran.Repositorios
         {
             _db.Peliculas.Add(pelicula);
             _db.SaveChanges();
+        }
+
+        public Pelicula ObtenerPorId(Guid id)
+        {
+            return _db.Peliculas.Find(id);
         }
     }
 }

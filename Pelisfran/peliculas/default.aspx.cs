@@ -27,6 +27,7 @@ namespace Pelisfran.peliculas
             Literal titulo = (Literal)repeaterItem.FindControl("titulo");
             Literal fechaLanzamiento = (Literal)repeaterItem.FindControl("fechaLanzamiento");
             Image portada = (Image)repeaterItem.FindControl("portada");
+            LinkButton ver = (LinkButton)repeaterItem.FindControl("btnVer");
 
             Pelicula pelicula = (Pelicula)repeaterItem.DataItem;
             PortadaPelicula portadaPelicula = pelicula.PortadaPelicula;
@@ -34,6 +35,15 @@ namespace Pelisfran.peliculas
             titulo.Text = pelicula.Titulo;
             fechaLanzamiento.Text = pelicula.FechaLanzamiento.ToShortDateString();
             portada.ImageUrl = ResolveUrl($"{portadaPelicula.Ruta}/{portadaPelicula.NombreOriginal}");
+            ver.CommandArgument = pelicula.Id.ToString();
+        }
+
+        protected void btnVer_Click(object sender, EventArgs e)
+        {
+            var btn = (LinkButton)sender;
+            var peliculaId = btn.CommandArgument;
+
+            Response.Redirect($"~/peliculas/ver.aspx?id={peliculaId}", false);
         }
     }
 }
