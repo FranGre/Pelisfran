@@ -1,6 +1,7 @@
 ﻿using Pelisfran.Contexto;
 using Pelisfran.Modelos;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Pelisfran.Repositorios
@@ -31,6 +32,11 @@ namespace Pelisfran.Repositorios
 
             _db.PeliculasFavoritas.Remove(peliculaFavorita);
             _db.SaveChanges();
+        }
+
+        public List<PeliculaFavorita> ObtenerPeliculasFavoritasPorUsuario(Guid usuarioId)
+        {
+            return _db.PeliculasFavoritas.Where(peliculaFavorita => peliculaFavorita.UsuarioId == usuarioId).ToList();
         }
     }
 }

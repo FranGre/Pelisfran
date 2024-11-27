@@ -1,6 +1,8 @@
 ﻿using Pelisfran.Contexto;
 using Pelisfran.Modelos;
+using Pelisfran.Servicios;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -12,11 +14,12 @@ namespace Pelisfran.peliculas
     public partial class favoritas : Page
     {
         private PelisFranDBContexto _db = new PelisFranDBContexto();
+        private PeliculaFavoritaServicio _peliculaFavoritaServicio = new PeliculaFavoritaServicio();
 
         protected void Page_Load(object sender, EventArgs e)
         {
             Guid usuarioId = Guid.Parse(HttpContext.Current.User.Identity.Name);
-            var misPeliculasFavoritas = _db.PeliculasFavoritas.Where(peliculaFavorita => peliculaFavorita.UsuarioId == usuarioId).ToList();
+            List<PeliculaFavorita> misPeliculasFavoritas = _peliculaFavoritaServicio.ObtenerPeliculasMarcadasComoFavoritasDelUsuario(usuarioId);
             repPeliculas.DataSource = misPeliculasFavoritas;
             repPeliculas.DataBind();
         }

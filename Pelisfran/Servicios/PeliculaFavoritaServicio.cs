@@ -1,6 +1,7 @@
 ﻿using Pelisfran.Modelos;
 using Pelisfran.Repositorios;
 using System;
+using System.Collections.Generic;
 
 namespace Pelisfran.Servicios
 {
@@ -26,6 +27,11 @@ namespace Pelisfran.Servicios
         public void DesmarcarPeliculaComoFavorita(Guid usuarioId, Guid peliculaId)
         {
             _peliculaFavoritaRepositorio.Eliminar(usuarioId, peliculaId);
+        }
+
+        public List<PeliculaFavorita> ObtenerPeliculasMarcadasComoFavoritasDelUsuario(Guid usuarioId)
+        {
+            return _peliculaFavoritaRepositorio.ObtenerPeliculasFavoritasPorUsuario(usuarioId);
         }
     }
 }
