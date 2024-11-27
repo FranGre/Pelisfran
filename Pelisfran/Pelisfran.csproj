@@ -80,6 +80,7 @@
     <Content Include="login.aspx" />
     <Content Include="peliculas\crear.aspx" />
     <Content Include="peliculas\default.aspx" />
+    <Content Include="peliculas\favoritas.aspx" />
     <Content Include="peliculas\ver.aspx" />
     <Content Include="registrarse.aspx" />
     <Content Include="Web.config" />
@@ -128,6 +129,13 @@
     </Compile>
     <Compile Include="peliculas\default.aspx.designer.cs">
       <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="peliculas\favoritas.aspx.cs">
+      <DependentUpon>favoritas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="peliculas\favoritas.aspx.designer.cs">
+      <DependentUpon>favoritas.aspx</DependentUpon>
     </Compile>
     <Compile Include="peliculas\ver.aspx.cs">
       <DependentUpon>ver.aspx</DependentUpon>
