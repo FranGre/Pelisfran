@@ -22,5 +22,10 @@ namespace Pelisfran.Servicios
         {
             return _peliculaRepositorio.ObtenerPorId(id);
         }
+
+        public Pelicula ObtenerPeliculaIncluidaPortada(Guid peliculaId)
+        {
+            return _peliculaRepositorio.ObtenerConPortadaPorId(peliculaId);
+        }
     }
 }

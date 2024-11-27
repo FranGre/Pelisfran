@@ -3,7 +3,6 @@ using Pelisfran.Modelos;
 using Pelisfran.Servicios;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
@@ -13,8 +12,8 @@ namespace Pelisfran.peliculas
 {
     public partial class favoritas : Page
     {
-        private PelisFranDBContexto _db = new PelisFranDBContexto();
         private PeliculaFavoritaServicio _peliculaFavoritaServicio = new PeliculaFavoritaServicio();
+        private PeliculaServicio _peliculaServicio = new PeliculaServicio();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -30,7 +29,7 @@ namespace Pelisfran.peliculas
             HtmlGenericControl titulo = (HtmlGenericControl)e.Item.FindControl("titulo");
 
             PeliculaFavorita miPeliculaFavorita = (PeliculaFavorita)e.Item.DataItem;
-            Pelicula pelicula = _db.Peliculas.Include("PortadaPelicula").Where(item => item.Id == miPeliculaFavorita.PeliculaId).FirstOrDefault();
+            Pelicula pelicula = _peliculaServicio.ObtenerPeliculaIncluidaPortada(miPeliculaFavorita.PeliculaId);
 
             var imageUrl = ResolveUrl($"{pelicula.PortadaPelicula.Ruta}/{pelicula.PortadaPelicula.NombreOriginal}");
             portada.ImageUrl = imageUrl;
