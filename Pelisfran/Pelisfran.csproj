@@ -83,6 +83,7 @@
     <Content Include="peliculas\favoritas.aspx" />
     <Content Include="peliculas\ver.aspx" />
     <Content Include="registrarse.aspx" />
+    <Content Include="series\crear.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -173,6 +174,13 @@
     <Compile Include="Repositorios\PortadaPeliculaRepositorio.cs" />
     <Compile Include="Repositorios\UsuarioRepositorio.cs" />
     <Compile Include="SeedersBaseDatos\SeederRoles.cs" />
+    <Compile Include="series\crear.aspx.cs">
+      <DependentUpon>crear.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="series\crear.aspx.designer.cs">
+      <DependentUpon>crear.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Servicios\AutenticacionServicio.cs" />
     <Compile Include="Servicios\FileServicio.cs" />
     <Compile Include="Servicios\GeneroPeliculaServicio.cs" />
