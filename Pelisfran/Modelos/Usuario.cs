@@ -27,6 +27,7 @@ namespace Pelisfran.Modelos
         public Rol Rol { get; set; }
         public ICollection<Genero> Generos { get; set; }
         public ICollection<PeliculaFavorita> PeliculaFavoritas { get; set; }
+        public ICollection<Pelicula> Peliculas { get; set; }
         public ICollection<Serie> Series { get; set; }
     }
 }
