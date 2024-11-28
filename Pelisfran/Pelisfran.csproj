@@ -117,6 +117,7 @@
     <Compile Include="login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Modelos\Serie.cs" />
     <Compile Include="peliculas\crear.aspx.cs">
       <DependentUpon>crear.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
