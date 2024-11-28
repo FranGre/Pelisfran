@@ -2,7 +2,6 @@
 using System.Configuration;
 using System.Data.Common;
 using System.Data.Entity;
-using System.Reflection.Emit;
 
 namespace Pelisfran.Contexto
 {
@@ -15,6 +14,7 @@ namespace Pelisfran.Contexto
         public DbSet<Pelicula> Peliculas { get; set; }
         public DbSet<GeneroPelicula> GenerosPeliculas { get; set; }
         public DbSet<PeliculaFavorita> PeliculasFavoritas { get; set; }
+        public DbSet<Serie> Series { get; set; }
 
         public PelisFranDBContexto() : base(CrearConexion(), true) { }
 
