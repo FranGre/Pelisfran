@@ -26,5 +26,12 @@
         <asp:RangeValidator ID="rangeFechaLanzamiento" runat="server" ControlToValidate="txtFechaLanzamiento" Display="Dynamic" Type="Date" />
     </div>
 
+    <div>
+        <asp:Label ID="lbNumeroTemporadas" runat="server" Text="Numero de Temporadas" />
+        <asp:TextBox ID="txtNumeroTemporadas" runat="server" TextMode="Number" Text="1" />
+        <asp:RequiredFieldValidator ID="reqTxtNumeroTemporadas" runat="server" ControlToValidate="txtNumeroTemporadas" ErrorMessage="Campo obligatorio" Display="Dynamic" />
+        <asp:RegularExpressionValidator ID="regexNumeroTemporadas" runat="server" ControlToValidate="txtNumeroTemporadas" ErrorMessage="Maximo 255" Display="Dynamic" ValidationExpression="^[0-9\s]{1,255}$" />
+    </div>
+
     <asp:Button ID="btnAceptar" runat="server" Text="Crear" OnClick="btnAceptar_Click" />
 </asp:Content>

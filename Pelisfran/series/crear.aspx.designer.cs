@@ -123,6 +123,42 @@ namespace Pelisfran.series
         protected global::System.Web.UI.WebControls.RangeValidator rangeFechaLanzamiento;
 
         /// <summary>
+        /// Control lbNumeroTemporadas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbNumeroTemporadas;
+
+        /// <summary>
+        /// Control txtNumeroTemporadas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtNumeroTemporadas;
+
+        /// <summary>
+        /// Control reqTxtNumeroTemporadas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqTxtNumeroTemporadas;
+
+        /// <summary>
+        /// Control regexNumeroTemporadas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator regexNumeroTemporadas;
+
+        /// <summary>
         /// Control btnAceptar.
         /// </summary>
         /// <remarks>

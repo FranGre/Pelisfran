@@ -42,6 +42,21 @@ namespace Pelisfran.series
             };
 
             _serieServicio.CrearSerie(serie);
+
+            byte numeroTemporadas = Convert.ToByte(txtNumeroTemporadas.Text);
+            for (byte i = 1; i <= numeroTemporadas; i++)
+            {
+                Temporada temporada = new Temporada
+                {
+                    Id = Guid.NewGuid(),
+                    NumeroTemporada = i,
+                    CreadoEn = DateTime.Now,
+                    UsuarioId = Guid.Parse(HttpContext.Current.User.Identity.Name),
+                    SerieId = serie.Id
+                };
+                _db.Temporadas.Add(temporada);
+                _db.SaveChanges();
+            }
         }
     }
 }
