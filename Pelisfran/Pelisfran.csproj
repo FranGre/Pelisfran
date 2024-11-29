@@ -191,6 +191,7 @@
     <Compile Include="Servicios\PeliculaFavoritaServicio.cs" />
     <Compile Include="Servicios\PeliculaServicio.cs" />
     <Compile Include="Servicios\PortadaPeliculaServicio.cs" />
+    <Compile Include="Servicios\SerieServicio.cs" />
     <Compile Include="Servicios\UsuarioServicio.cs" />
   </ItemGroup>
   <ItemGroup>
