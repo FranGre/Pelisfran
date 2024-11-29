@@ -1,5 +1,7 @@
 ﻿using Pelisfran.Contexto;
 using Pelisfran.Modelos;
+using Pelisfran.Repositorios;
+using Pelisfran.Servicios;
 using System;
 using System.Web;
 using System.Web.UI;
@@ -8,6 +10,7 @@ namespace Pelisfran.series
 {
     public partial class crear : Page
     {
+        private SerieServicio _serieServicio = new SerieServicio();
         PelisFranDBContexto _db = new PelisFranDBContexto();
 
         protected void Page_Load(object sender, EventArgs e)
@@ -38,9 +41,7 @@ namespace Pelisfran.series
                 UsuarioId = Guid.Parse(HttpContext.Current.User.Identity.Name)
             };
 
-
-            _db.Series.Add(serie);
-            _db.SaveChanges();
+            _serieServicio.CrearSerie(serie);
         }
     }
 }
