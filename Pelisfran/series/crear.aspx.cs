@@ -12,7 +12,16 @@ namespace Pelisfran.series
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!Page.IsPostBack)
+            {
+                DateTime fechaActual = DateTime.Now;
+                DateTime fechaLanzamientoMinima = fechaActual.AddYears(-120);
+                DateTime fechaLanzamientoMaxima = fechaActual.AddYears(3);
+                rangeFechaLanzamiento.MinimumValue = fechaLanzamientoMinima.ToShortDateString();
+                rangeFechaLanzamiento.MaximumValue = fechaLanzamientoMaxima.ToShortDateString();
 
+                rangeFechaLanzamiento.ErrorMessage = $"Debe estar entre {fechaLanzamientoMinima.ToShortDateString()} y {fechaLanzamientoMaxima.ToShortDateString()}";
+            }
         }
 
         protected void btnAceptar_Click(object sender, EventArgs e)

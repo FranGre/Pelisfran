@@ -42,6 +42,15 @@ namespace Pelisfran.series
         protected global::System.Web.UI.WebControls.RequiredFieldValidator reqTitulo;
 
         /// <summary>
+        /// Control regexTitulo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator regexTitulo;
+
+        /// <summary>
         /// Control lbSinopsisBreve.
         /// </summary>
         /// <remarks>
@@ -69,6 +78,15 @@ namespace Pelisfran.series
         protected global::System.Web.UI.WebControls.RequiredFieldValidator reqSinopsis;
 
         /// <summary>
+        /// Control regexSinopsis.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator regexSinopsis;
+
+        /// <summary>
         /// Control lbFechaLanzamiento.
         /// </summary>
         /// <remarks>
@@ -94,6 +112,15 @@ namespace Pelisfran.series
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator reqFechaLanzamiento;
+
+        /// <summary>
+        /// Control rangeFechaLanzamiento.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator rangeFechaLanzamiento;
 
         /// <summary>
         /// Control btnAceptar.
