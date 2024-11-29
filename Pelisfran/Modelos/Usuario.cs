@@ -29,5 +29,6 @@ namespace Pelisfran.Modelos
         public ICollection<PeliculaFavorita> PeliculaFavoritas { get; set; }
         public ICollection<Pelicula> Peliculas { get; set; }
         public ICollection<Serie> Series { get; set; }
+        public ICollection<Temporada> Temporadas { get; set; }
     }
 }
