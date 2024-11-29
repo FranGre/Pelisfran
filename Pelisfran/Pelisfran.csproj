@@ -118,6 +118,7 @@
       <DependentUpon>login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modelos\Serie.cs" />
+    <Compile Include="Modelos\Temporada.cs" />
     <Compile Include="peliculas\crear.aspx.cs">
       <DependentUpon>crear.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
