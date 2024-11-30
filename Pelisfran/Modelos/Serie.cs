@@ -21,6 +21,7 @@ namespace Pelisfran.Modelos
         [ForeignKey("Usuario")]
         public Guid UsuarioId { get; set; }
         public Usuario Usuario { get; set; }
+        public PortadaSerie PortadaSerie { get; set; }
         public ICollection<Temporada> Temporadas { get; set; }
     }
 }
