@@ -175,6 +175,7 @@
     <Compile Include="Repositorios\PeliculaRepositorio.cs" />
     <Compile Include="Repositorios\PortadaPeliculaRepositorio.cs" />
     <Compile Include="Repositorios\SerieRepositorio.cs" />
+    <Compile Include="Repositorios\TemporadaRepositorio.cs" />
     <Compile Include="Repositorios\UsuarioRepositorio.cs" />
     <Compile Include="SeedersBaseDatos\SeederRoles.cs" />
     <Compile Include="series\crear.aspx.cs">
