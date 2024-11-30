@@ -14,6 +14,7 @@ namespace Pelisfran.Contexto
         public DbSet<Pelicula> Peliculas { get; set; }
         public DbSet<GeneroPelicula> GenerosPeliculas { get; set; }
         public DbSet<PeliculaFavorita> PeliculasFavoritas { get; set; }
+        public DbSet<PortadaSerie> PortadasSeries { get; set; }
         public DbSet<Serie> Series { get; set; }
         public DbSet<Temporada> Temporadas { get; set; }
 
