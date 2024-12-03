@@ -1,5 +1,7 @@
 ﻿using Pelisfran.Contexto;
 using Pelisfran.Modelos;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Pelisfran.Repositorios
 {
@@ -16,6 +18,10 @@ namespace Pelisfran.Repositorios
         {
             _db.Series.Add(serie);
             _db.SaveChanges();
+        }
+        public List<Serie> Obtener()
+        {
+            return _db.Series.ToList();
         }
     }
 }

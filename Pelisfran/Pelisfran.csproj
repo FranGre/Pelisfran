@@ -84,6 +84,7 @@
     <Content Include="peliculas\ver.aspx" />
     <Content Include="registrarse.aspx" />
     <Content Include="series\crear.aspx" />
+    <Content Include="series\default.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -186,6 +187,13 @@
     </Compile>
     <Compile Include="series\crear.aspx.designer.cs">
       <DependentUpon>crear.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="series\default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="series\default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Servicios\AutenticacionServicio.cs" />
     <Compile Include="Servicios\FileServicio.cs" />

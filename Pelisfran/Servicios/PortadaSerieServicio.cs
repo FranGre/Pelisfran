@@ -1,5 +1,6 @@
 ﻿using Pelisfran.Modelos;
 using Pelisfran.Repositorios;
+using System;
 
 namespace Pelisfran.Servicios
 {
@@ -10,6 +11,11 @@ namespace Pelisfran.Servicios
         public PortadaSerieServicio()
         {
             _portadaSerieRepositorio = new PortadaSerieRepositorio();
+        }
+
+        public PortadaSerie ObtenerPortada(Guid portadaSerieId)
+        {
+            return _portadaSerieRepositorio.Obtener(portadaSerieId);
         }
 
         public void AgregarPortadaASerie(PortadaSerie portadaSerie)

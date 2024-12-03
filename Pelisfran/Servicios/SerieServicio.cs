@@ -1,5 +1,6 @@
 ﻿using Pelisfran.Modelos;
 using Pelisfran.Repositorios;
+using System.Collections.Generic;
 
 namespace Pelisfran.Servicios
 {
@@ -15,6 +16,11 @@ namespace Pelisfran.Servicios
         public void CrearSerie(Serie serie)
         {
             _serieRepositorio.Crear(serie);
+        }
+
+        public List<Serie> ObtenerSeries()
+        {
+            return _serieRepositorio.Obtener();
         }
     }
 }
