@@ -27,12 +27,13 @@ namespace Pelisfran.Servicios
 
         public void GuardarPortadaDeUnaSerie(FileUpload fileUpload, Guid serieId)
         {
-            GuardarArchivo(rutaCarpetaDondeSeAlojaPortadaDeUnaSerie, fileUpload, serieId);
+            var rutaCarpetaDestino = $"{rutaCarpetaDondeSeAlojaPortadaDeUnaSerie}/{serieId}";
+            GuardarArchivo(rutaCarpetaDestino, fileUpload, serieId);
         }
 
-        private void GuardarArchivo(string ruta, FileUpload fileUpload, Guid peliculaId)
+        private void GuardarArchivo(string ruta, FileUpload fileUpload, Guid identificador)
         {
-            var rutaCarpetaDestino = $"{ruta}/{peliculaId}";
+            var rutaCarpetaDestino = $"{ruta}/{identificador}";
 
             if (!Directory.Exists($"{ruta}"))
             {

@@ -1,6 +1,7 @@
 ﻿using Pelisfran.Modelos;
 using Pelisfran.Servicios;
 using System;
+using System.IO;
 using System.Web;
 using System.Web.UI;
 
@@ -10,6 +11,7 @@ namespace Pelisfran.series
     {
         private SerieServicio _serieServicio = new SerieServicio();
         private TemporadaServicio _temporadaServicio = new TemporadaServicio();
+        private PortadaSerieServicio _portadaSerieServicio = new PortadaSerieServicio();
         private FileServicio _fileServicio = new FileServicio();
 
         protected void Page_Load(object sender, EventArgs e)
@@ -42,6 +44,17 @@ namespace Pelisfran.series
 
             _serieServicio.CrearSerie(serie);
 
+            string carpetaDestino = $"~/Uploads/Portadas/Series/{serie.Id}";
+            PortadaSerie portadaSerie = new PortadaSerie
+            {
+                Id = serie.Id,
+                Nombre = fuPortada.FileName,
+                Extension = Path.GetExtension(fuPortada.FileName),
+                NombreOriginal = fuPortada.FileName,
+                Ruta = carpetaDestino
+            };
+
+            _portadaSerieServicio.AgregarPortadaASerie(portadaSerie);
             _fileServicio.GuardarPortadaDeUnaSerie(fuPortada, serie.Id);
 
             byte numeroTemporadas = Convert.ToByte(txtNumeroTemporadas.Text);
