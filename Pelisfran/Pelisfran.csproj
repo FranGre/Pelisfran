@@ -175,6 +175,7 @@
     <Compile Include="Repositorios\PeliculaFavoritaRepositorio.cs" />
     <Compile Include="Repositorios\PeliculaRepositorio.cs" />
     <Compile Include="Repositorios\PortadaPeliculaRepositorio.cs" />
+    <Compile Include="Repositorios\PortadaSerieRepositorio.cs" />
     <Compile Include="Repositorios\SerieRepositorio.cs" />
     <Compile Include="Repositorios\TemporadaRepositorio.cs" />
     <Compile Include="Repositorios\UsuarioRepositorio.cs" />
@@ -193,6 +194,7 @@
     <Compile Include="Servicios\PeliculaFavoritaServicio.cs" />
     <Compile Include="Servicios\PeliculaServicio.cs" />
     <Compile Include="Servicios\PortadaPeliculaServicio.cs" />
+    <Compile Include="Servicios\PortadaSerieServicio.cs" />
     <Compile Include="Servicios\SerieServicio.cs" />
     <Compile Include="Servicios\TemporadaServicio.cs" />
     <Compile Include="Servicios\UsuarioServicio.cs" />
