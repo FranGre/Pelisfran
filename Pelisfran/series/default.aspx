@@ -7,10 +7,13 @@
 
     <asp:Repeater ID="repSeries" runat="server" OnItemDataBound="repSeries_ItemDataBound">
         <ItemTemplate>
-            <div>
-                <asp:ImageButton ID="imgbPortada" runat="server" OnClick="imgbPortada_Click" />
-                <asp:Label ID="lbNombre" runat="server" />
-            </div>
+            <asp:LinkButton ID="btnVer" runat="server" Text="Ver" OnClick="btnVer_Click">
+                <div>
+                    <asp:Image ID="portada" runat="server" />
+                    <asp:Literal ID="titulo" runat="server"></asp:Literal>
+                    <asp:Literal ID="fechaLanzamiento" runat="server"></asp:Literal>
+                </div>
+            </asp:LinkButton>
         </ItemTemplate>
     </asp:Repeater>
 </asp:Content>

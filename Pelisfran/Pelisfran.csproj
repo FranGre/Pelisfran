@@ -85,6 +85,7 @@
     <Content Include="registrarse.aspx" />
     <Content Include="series\crear.aspx" />
     <Content Include="series\default.aspx" />
+    <Content Include="series\ver.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -194,6 +195,13 @@
     </Compile>
     <Compile Include="series\default.aspx.designer.cs">
       <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="series\ver.aspx.cs">
+      <DependentUpon>ver.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="series\ver.aspx.designer.cs">
+      <DependentUpon>ver.aspx</DependentUpon>
     </Compile>
     <Compile Include="Servicios\AutenticacionServicio.cs" />
     <Compile Include="Servicios\FileServicio.cs" />

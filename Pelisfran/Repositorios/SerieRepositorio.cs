@@ -1,5 +1,6 @@
 ﻿using Pelisfran.Contexto;
 using Pelisfran.Modelos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -22,6 +23,11 @@ namespace Pelisfran.Repositorios
         public List<Serie> Obtener()
         {
             return _db.Series.ToList();
+        }
+
+        public Serie Obtener(Guid serieId)
+        {
+            return _db.Series.Find(serieId);
         }
     }
 }

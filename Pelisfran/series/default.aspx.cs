@@ -13,31 +13,36 @@ namespace Pelisfran.series
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Page.IsPostBack)
+            if (!Page.IsPostBack)
             {
                 repSeries.DataSource = _serieServicio.ObtenerSeries();
                 repSeries.DataBind();
             }
         }
 
-        protected void imgbPortada_Click(object sender, ImageClickEventArgs e)
-        {
-
-        }
-
         protected void repSeries_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
-            RepeaterItem repeaterItem = (e.Item);
+            RepeaterItem repeaterItem = e.Item;
 
-            ImageButton portada = (ImageButton)repeaterItem.FindControl("imgbPortada");
-            Label nombre = (Label)repeaterItem.FindControl("lbNombre");
+            Literal titulo = (Literal)repeaterItem.FindControl("titulo");
+            Literal fechaLanzamiento = (Literal)repeaterItem.FindControl("fechaLanzamiento");
+            Image portada = (Image)repeaterItem.FindControl("portada");
+            LinkButton ver = (LinkButton)repeaterItem.FindControl("btnVer");
 
             Serie serie = (Serie)repeaterItem.DataItem;
             PortadaSerie portadaSerie = _portadaSerieServicio.ObtenerPortada(serie.Id);
 
             portada.ImageUrl = ResolveUrl($"{portadaSerie.Ruta}/{portadaSerie.NombreOriginal}");
-            nombre.Text = serie.Titulo;
+            titulo.Text = serie.Titulo;
+            fechaLanzamiento.Text = serie.FechaLanzamiento.ToShortDateString();
+            ver.CommandArgument = serie.Id.ToString();
+        }
 
+        protected void btnVer_Click(object sender, EventArgs e)
+        {
+            LinkButton btn = (LinkButton)sender;
+            string serieId = btn.CommandArgument;
+            Response.Redirect($"~/series/ver.aspx?id={serieId}");
         }
     }
 }
