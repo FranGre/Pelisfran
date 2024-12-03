@@ -121,6 +121,7 @@
     </Compile>
     <Compile Include="Modelos\PortadaSerie.cs" />
     <Compile Include="Modelos\Serie.cs" />
+    <Compile Include="Modelos\SerieFavorita.cs" />
     <Compile Include="Modelos\Temporada.cs" />
     <Compile Include="peliculas\crear.aspx.cs">
       <DependentUpon>crear.aspx</DependentUpon>
