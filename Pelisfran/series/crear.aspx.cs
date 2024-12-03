@@ -10,6 +10,7 @@ namespace Pelisfran.series
     {
         private SerieServicio _serieServicio = new SerieServicio();
         private TemporadaServicio _temporadaServicio = new TemporadaServicio();
+        private FileServicio _fileServicio = new FileServicio();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -40,6 +41,8 @@ namespace Pelisfran.series
             };
 
             _serieServicio.CrearSerie(serie);
+
+            _fileServicio.GuardarPortadaDeUnaSerie(fuPortada, serie.Id);
 
             byte numeroTemporadas = Convert.ToByte(txtNumeroTemporadas.Text);
             for (byte i = 1; i <= numeroTemporadas; i++)

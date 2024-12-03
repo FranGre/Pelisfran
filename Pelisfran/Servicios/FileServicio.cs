@@ -9,6 +9,7 @@ namespace Pelisfran.Servicios
     {
         private string rutaCarpetaDondeSeAlojaPortadaDeUnaPelicula = HttpContext.Current.Server.MapPath("~/Uploads/Portadas/Peliculas/");
         private string rutaCarpetaDondeSeAlojaVideoDeUnaPelicula = HttpContext.Current.Server.MapPath("~/Uploads/Videos/Peliculas/");
+        private string rutaCarpetaDondeSeAlojaPortadaDeUnaSerie = HttpContext.Current.Server.MapPath("~/Uploads/Portadas/Series/");
 
         public FileServicio() { }
 
@@ -22,6 +23,11 @@ namespace Pelisfran.Servicios
         {
             var rutaCarpetaDestino = $"{HttpContext.Current.Server.MapPath(rutaCarpetaDondeSeAlojaVideoDeUnaPelicula)}/{peliculaId}";
             GuardarArchivo(rutaCarpetaDestino, fileUpload, peliculaId);
+        }
+
+        public void GuardarPortadaDeUnaSerie(FileUpload fileUpload, Guid serieId)
+        {
+            GuardarArchivo(rutaCarpetaDondeSeAlojaPortadaDeUnaSerie, fileUpload, serieId);
         }
 
         private void GuardarArchivo(string ruta, FileUpload fileUpload, Guid peliculaId)

@@ -13,6 +13,12 @@
     </div>
 
     <div>
+        <asp:Label ID="lbPortada" runat="server">Portada</asp:Label>
+        <asp:FileUpload ID="fuPortada" runat="server" />
+        <asp:RequiredFieldValidator ID="reqPortada" runat="server" ControlToValidate="fuPortada" ErrorMessage="Campo obligatorio" Display="Dynamic" />
+    </div>
+
+    <div>
         <asp:Label ID="lbSinopsisBreve" runat="server" Text="Sinopsis" />
         <asp:TextBox ID="txtSinopsis" runat="server" />
         <asp:RequiredFieldValidator ID="reqSinopsis" runat="server" ControlToValidate="txtSinopsis" ErrorMessage="Campo obligatorio" Display="Dynamic" />

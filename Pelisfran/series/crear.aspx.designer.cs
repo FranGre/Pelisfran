@@ -51,6 +51,33 @@ namespace Pelisfran.series
         protected global::System.Web.UI.WebControls.RegularExpressionValidator regexTitulo;
 
         /// <summary>
+        /// Control lbPortada.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbPortada;
+
+        /// <summary>
+        /// Control fuPortada.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload fuPortada;
+
+        /// <summary>
+        /// Control reqPortada.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqPortada;
+
+        /// <summary>
         /// Control lbSinopsisBreve.
         /// </summary>
         /// <remarks>
