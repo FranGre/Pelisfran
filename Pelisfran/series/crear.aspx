@@ -33,6 +33,15 @@
     </div>
 
     <div>
+        <asp:Repeater ID="repGeneros" runat="server" OnItemDataBound="repGeneros_ItemDataBound">
+            <ItemTemplate>
+                <asp:CheckBox ID="cbGenero" runat="server" />
+            </ItemTemplate>
+        </asp:Repeater>
+        <span id="reqGeneros" runat="server" />
+    </div>
+
+    <div>
         <asp:Label ID="lbNumeroTemporadas" runat="server" Text="Numero de Temporadas" />
         <asp:TextBox ID="txtNumeroTemporadas" runat="server" TextMode="Number" Text="1" />
         <asp:RequiredFieldValidator ID="reqTxtNumeroTemporadas" runat="server" ControlToValidate="txtNumeroTemporadas" ErrorMessage="Campo obligatorio" Display="Dynamic" />

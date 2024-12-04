@@ -150,6 +150,24 @@ namespace Pelisfran.series
         protected global::System.Web.UI.WebControls.RangeValidator rangeFechaLanzamiento;
 
         /// <summary>
+        /// Control repGeneros.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater repGeneros;
+
+        /// <summary>
+        /// Control reqGeneros.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl reqGeneros;
+
+        /// <summary>
         /// Control lbNumeroTemporadas.
         /// </summary>
         /// <remarks>
