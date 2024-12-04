@@ -19,7 +19,7 @@ namespace Pelisfran.Modelos
         public DateTime? ActualizadoEn { get; set; }
 
         [ForeignKey("Usuario")]
-        public Guid UsuarioId { get; set; }
+        public Guid? UsuarioId { get; set; }
         public Usuario Usuario { get; set; }
         public PortadaSerie PortadaSerie { get; set; }
         public ICollection<Temporada> Temporadas { get; set; }
