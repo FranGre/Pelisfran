@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PaginasMaestras/Site1.Master" AutoEventWireup="true" CodeBehind="crear.aspx.cs" Inherits="Pelisfran.peliculas.crear" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
     <div>
@@ -8,6 +9,10 @@
         <asp:TextBox ID="txtTitulo" runat="server" />
         <asp:RequiredFieldValidator ID="reqTitulo" runat="server" ControlToValidate="txtTitulo" ErrorMessage="Campo obligatorio" Display="Dynamic" />
         <asp:RegularExpressionValidator ID="regexTitulo" runat="server" ControlToValidate="txtTitulo" ErrorMessage="Maximo 50 caracteres" Display="Dynamic" ValidationExpression="^[a-zA-Z0-9\s]{1,50}$" />
+    </div>
+
+    <div>
+        <input type="file" class="filepond" />
     </div>
 
     <div>
@@ -47,4 +52,10 @@
     </div>
 
     <asp:Button ID="btnAceptar" runat="server" Text="Crear" OnClick="btnAceptar_Click" />
+
+    <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
+
+    <script>
+        FilePond.parse(document.body);
+    </script>
 </asp:Content>
