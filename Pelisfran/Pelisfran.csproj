@@ -75,6 +75,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="autenticado.aspx" />
+    <Content Include="Content\FilePond\filepond.css" />
     <Content Include="default.aspx" />
     <Content Include="generos\crear.aspx" />
     <Content Include="login.aspx" />
@@ -83,6 +84,7 @@
     <Content Include="peliculas\favoritas.aspx" />
     <Content Include="peliculas\ver.aspx" />
     <Content Include="registrarse.aspx" />
+    <Content Include="Scripts\FilePond\filepond.js" />
     <Content Include="series\crear.aspx" />
     <Content Include="series\default.aspx" />
     <Content Include="series\ver.aspx" />
