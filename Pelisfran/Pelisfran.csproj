@@ -76,6 +76,7 @@
   <ItemGroup>
     <Content Include="autenticado.aspx" />
     <Content Include="Content\FilePond\filepond.css" />
+    <Content Include="Scripts\FilePond\plugins\filepond-plugin-file-validate-type.js" />
     <Content Include="default.aspx" />
     <Content Include="generos\crear.aspx" />
     <Content Include="login.aspx" />

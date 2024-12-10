@@ -54,8 +54,13 @@
     <asp:Button ID="btnAceptar" runat="server" Text="Crear" OnClick="btnAceptar_Click" />
 
     <script src="<%=ResolveUrl("~/Scripts/FilePond/filepond.js")%>" type="text/javascript"></script>
+    <script src="<%=ResolveUrl("~/Scripts/FilePond/plugins/filepond-plugin-file-validate-type.js")%>" type="text/javascript"></script>
 
     <script>
-        FilePond.parse(document.body);
+        FilePond.registerPlugin(FilePondPluginFileValidateType)
+        FilePond.create(document.querySelector(".filepond"), {
+            acceptedFileTypes: ['video/*'],
+            labelFileTypeNotAllowed: 'Archivo no valido'
+        })
     </script>
 </asp:Content>
