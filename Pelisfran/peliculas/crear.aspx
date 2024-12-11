@@ -55,19 +55,26 @@
 
     <script src="<%=ResolveUrl("~/Scripts/FilePond/filepond.js")%>" type="text/javascript"></script>
     <script src="<%=ResolveUrl("~/Scripts/FilePond/plugins/filepond-plugin-file-validate-type.js")%>" type="text/javascript"></script>
+    <script src="<%=ResolveUrl("~/Scripts/FilePond/plugins/filepond-plugin-file-validate-size.js")%>" type="text/javascript"></script>
 
     <script>
         FilePond.registerPlugin(FilePondPluginFileValidateType)
+        FilePond.registerPlugin(FilePondPluginFileValidateSize)
         FilePond.create(document.querySelector(".filepond-video"), {
             acceptedFileTypes: ['video/*'],
             fileValidateTypeLabelExpectedTypes: 'Admite .mp4 .mkv .webm',
-            labelFileTypeNotAllowed: 'Archivo no valido'
+            labelFileTypeNotAllowed: 'Archivo no válido'
         })
 
         FilePond.create(document.querySelector(".filepond-portada"), {
             acceptedFileTypes: ['image/webp', 'image/jpg', 'image/jpeg'],
             fileValidateTypeLabelExpectedTypes: 'Admite .webp .jpg .jpeg',
-            labelFileTypeNotAllowed: 'Archivo no valido'
+            labelFileTypeNotAllowed: 'Archivo no válido',
+
+            allowFileSizeValidation: true,
+            maxFileSize: 1 * 1024 * 1024,
+            labelMaxFileSizeExceeded: 'Fichero pesa mucho',
+            labelMaxFileSize: 'Máximo de 1 MB'
         })
     </script>
 </asp:Content>
