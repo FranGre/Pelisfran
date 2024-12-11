@@ -12,7 +12,7 @@
     </div>
 
     <div>
-        <input type="file" class="filepond" />
+        <input type="file" class="filepond-video" />
     </div>
 
     <div>
@@ -47,7 +47,7 @@
 
     <div>
         <asp:Label ID="lbPortada" runat="server" Text="Portada" />
-        <asp:FileUpload ID="fuPortada" runat="server" />
+        <asp:FileUpload ID="fuPortada" runat="server" CssClass="filepond-portada" />
         <asp:RequiredFieldValidator ID="reqPortada" runat="server" ControlToValidate="fuPortada" ErrorMessage="Campo Obligatorio" Display="Dynamic" />
     </div>
 
@@ -58,8 +58,15 @@
 
     <script>
         FilePond.registerPlugin(FilePondPluginFileValidateType)
-        FilePond.create(document.querySelector(".filepond"), {
+        FilePond.create(document.querySelector(".filepond-video"), {
             acceptedFileTypes: ['video/*'],
+            fileValidateTypeLabelExpectedTypes: 'Admite .mp4 .mkv .webm',
+            labelFileTypeNotAllowed: 'Archivo no valido'
+        })
+
+        FilePond.create(document.querySelector(".filepond-portada"), {
+            acceptedFileTypes: ['image/png', 'image/jpg', 'image/jpeg'],
+            fileValidateTypeLabelExpectedTypes: 'Admite .png .jpg .jpeg',
             labelFileTypeNotAllowed: 'Archivo no valido'
         })
     </script>
