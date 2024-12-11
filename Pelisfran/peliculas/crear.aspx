@@ -65,8 +65,8 @@
         })
 
         FilePond.create(document.querySelector(".filepond-portada"), {
-            acceptedFileTypes: ['image/png', 'image/jpg', 'image/jpeg'],
-            fileValidateTypeLabelExpectedTypes: 'Admite .png .jpg .jpeg',
+            acceptedFileTypes: ['image/webp', 'image/jpg', 'image/jpeg'],
+            fileValidateTypeLabelExpectedTypes: 'Admite .webp .jpg .jpeg',
             labelFileTypeNotAllowed: 'Archivo no valido'
         })
     </script>
