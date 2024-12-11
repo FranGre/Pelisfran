@@ -87,6 +87,7 @@
     <Content Include="peliculas\ver.aspx" />
     <Content Include="registrarse.aspx" />
     <Content Include="Scripts\FilePond\filepond.js" />
+    <Content Include="Scripts\FilePond\plugins\filepond-plugin-image-preview.js" />
     <Content Include="series\crear.aspx" />
     <Content Include="series\default.aspx" />
     <Content Include="series\ver.aspx" />
@@ -115,6 +116,9 @@
     </Compile>
     <Compile Include="generos\crear.aspx.designer.cs">
       <DependentUpon>crear.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\HttpHandler.ashx.cs">
+      <DependentUpon>HttpHandler.ashx</DependentUpon>
     </Compile>
     <Compile Include="login.aspx.cs">
       <DependentUpon>login.aspx</DependentUpon>
@@ -226,6 +230,7 @@
     <Compile Include="Servicios\UsuarioServicio.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Handlers\HttpHandler.ashx" />
     <None Include="packages.config" />
     <Content Include="PaginasMaestras\Site1.Master" />
     <None Include="Web.Debug.config">

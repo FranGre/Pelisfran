@@ -47,8 +47,7 @@
 
     <div>
         <asp:Label ID="lbPortada" runat="server" Text="Portada" />
-        <asp:FileUpload ID="fuPortada" runat="server" CssClass="filepond-portada" />
-        <asp:RequiredFieldValidator ID="reqPortada" runat="server" ControlToValidate="fuPortada" ErrorMessage="Campo Obligatorio" Display="Dynamic" />
+        <input type="file" name="fuPortada" runat="server" class="filepond-portada" />
     </div>
 
     <asp:Button ID="btnAceptar" runat="server" Text="Crear" OnClick="btnAceptar_Click" />
@@ -56,10 +55,12 @@
     <script src="<%=ResolveUrl("~/Scripts/FilePond/filepond.js")%>" type="text/javascript"></script>
     <script src="<%=ResolveUrl("~/Scripts/FilePond/plugins/filepond-plugin-file-validate-type.js")%>" type="text/javascript"></script>
     <script src="<%=ResolveUrl("~/Scripts/FilePond/plugins/filepond-plugin-file-validate-size.js")%>" type="text/javascript"></script>
+    <script src="<%=ResolveUrl("~/Scripts/FilePond/plugins/filepond-plugin-image-preview.js")%>" type="text/javascript"></script>
 
     <script>
         FilePond.registerPlugin(FilePondPluginFileValidateType)
         FilePond.registerPlugin(FilePondPluginFileValidateSize)
+        FilePond.registerPlugin(FilePondPluginImagePreview)
         FilePond.create(document.querySelector(".filepond-video"), {
             acceptedFileTypes: ['video/*'],
             fileValidateTypeLabelExpectedTypes: 'Admite .mp4 .mkv .webm',
@@ -67,6 +68,9 @@
         })
 
         FilePond.create(document.querySelector(".filepond-portada"), {
+            server: {
+                process: '/Handlers/HttpHandler.ashx'
+            },
             acceptedFileTypes: ['image/webp', 'image/jpg', 'image/jpeg'],
             fileValidateTypeLabelExpectedTypes: 'Admite .webp .jpg .jpeg',
             labelFileTypeNotAllowed: 'Archivo no válido',
@@ -74,7 +78,9 @@
             allowFileSizeValidation: true,
             maxFileSize: 1 * 1024 * 1024,
             labelMaxFileSizeExceeded: 'Fichero pesa mucho',
-            labelMaxFileSize: 'Máximo de 1 MB'
+            labelMaxFileSize: 'Máximo de 1 MB',
+
+            allowImagePreview: true
         })
     </script>
 </asp:Content>
