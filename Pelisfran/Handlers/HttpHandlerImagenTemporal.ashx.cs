@@ -9,7 +9,7 @@ namespace Pelisfran.Handlers
     /// <summary>
     /// Descripción breve de HttpHandler
     /// </summary>
-    public class HttpHandler : IHttpHandler
+    public class HttpHandlerImagenTemporal : IHttpHandler
     {
 
         public void ProcessRequest(HttpContext context)

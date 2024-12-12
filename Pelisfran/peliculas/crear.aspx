@@ -69,7 +69,7 @@
 
         FilePond.create(document.querySelector(".filepond-portada"), {
             server: {
-                process: '/Handlers/HttpHandler.ashx'
+                process: '/Handlers/HttpHandlerImagenTemporal.ashx'
             },
             acceptedFileTypes: ['image/webp', 'image/jpg', 'image/jpeg'],
             fileValidateTypeLabelExpectedTypes: 'Admite .webp .jpg .jpeg',

@@ -84,6 +84,7 @@ namespace Pelisfran.peliculas
             string carpetaDestino = $"~/Uploads/Portadas/Peliculas/{pelicula.Id}";
             var rutaAbsolutaCarpetaDestino = Server.MapPath($"~/Uploads/Portadas/Peliculas/{pelicula.Id}");
 
+            /*
             PortadaPelicula portada = new PortadaPelicula
             {
                 Id = pelicula.Id,
@@ -93,7 +94,7 @@ namespace Pelisfran.peliculas
                 Ruta = carpetaDestino
             };
             _portadaPeliculaServicio.AgregarPortadaAPelicula(portada);
-            _fileServicio.GuardarPortadaDeUnaPelicula(fuPortada, pelicula.Id);
+            _fileServicio.GuardarPortadaDeUnaPelicula(fuPortada, pelicula.Id);*/
         }
 
         private List<Genero> ObtenerGenerosSeleccionados()
