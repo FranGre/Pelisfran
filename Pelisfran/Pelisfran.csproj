@@ -216,6 +216,7 @@
       <DependentUpon>ver.aspx</DependentUpon>
     </Compile>
     <Compile Include="Servicios\AutenticacionServicio.cs" />
+    <Compile Include="Servicios\FileTemporalSerivcio.cs" />
     <Compile Include="Servicios\FileServicio.cs" />
     <Compile Include="Servicios\GeneroSerieServicio.cs" />
     <Compile Include="Servicios\GeneroPeliculaServicio.cs" />

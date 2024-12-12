@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Pelisfran.Servicios;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -11,19 +12,19 @@ namespace Pelisfran.Handlers
     /// </summary>
     public class HttpHandlerImagenTemporal : IHttpHandler
     {
+        private FileTemporalServicio _fileTemporalServicio = new FileTemporalServicio();
 
         public void ProcessRequest(HttpContext context)
         {
             if (context.Request.Files.Count > 0)
             {
                 var uploadedFile = context.Request.Files[0];
-                var fileName = Path.GetFileName(uploadedFile.FileName);
-                var filePath = context.Server.MapPath("~/Uploads/" + fileName);
+                Guid guid = Guid.NewGuid();
 
-                uploadedFile.SaveAs(filePath);
+                _fileTemporalServicio.GuardarPortadaDeUnaPelicula(uploadedFile, guid);
 
                 context.Response.ContentType = "application/json";
-                context.Response.Write("{\"status\": \"success\", \"file\": \"" + fileName + "\"}");
+                context.Response.Write($"{{ \"filePath\": \"{guid}\" }}");
             }
             else
             {

@@ -71,6 +71,7 @@
             server: {
                 process: '/Handlers/HttpHandlerImagenTemporal.ashx'
             },
+                
             acceptedFileTypes: ['image/webp', 'image/jpg', 'image/jpeg'],
             fileValidateTypeLabelExpectedTypes: 'Admite .webp .jpg .jpeg',
             labelFileTypeNotAllowed: 'Archivo no válido',
