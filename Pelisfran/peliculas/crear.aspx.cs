@@ -42,13 +42,20 @@ namespace Pelisfran.peliculas
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
             if (!Page.IsValid) { return; }
-            
+
             var generosSeleccionados = ObtenerGenerosSeleccionados();
 
             reqGeneros.InnerText = string.Empty;
             if (generosSeleccionados.Count == 0)
             {
                 reqGeneros.InnerText = "Debes escoger minimo un genero";
+                return;
+            }
+
+            reqPortada.InnerText = string.Empty;
+            if (!ExistePortada())
+            {
+                reqPortada.InnerText = "Suba una portada";
                 return;
             }
 
@@ -90,7 +97,7 @@ namespace Pelisfran.peliculas
             PortadaPelicula portada = new PortadaPelicula
             {
                 Id = pelicula.Id,
-                Nombre = Guid.NewGuid().ToString(),
+                Nombre = tempFileName,
                 NombreOriginal = originalFileName,
                 Extension = imagenPortada.Extension,
                 Ruta = carpetaDestino
@@ -99,11 +106,10 @@ namespace Pelisfran.peliculas
             {
                 Directory.CreateDirectory(rutaAbsolutaCarpetaDestino);
             }
-            imagenPortada.MoveTo($"{rutaAbsolutaCarpetaDestino}/{tempFileName}");       
+            imagenPortada.MoveTo($"{rutaAbsolutaCarpetaDestino}/{tempFileName}");
 
             _portadaPeliculaServicio.AgregarPortadaAPelicula(portada);
             //_fileServicio.GuardarPortadaDeUnaPelicula(fuPortada, pelicula.Id);
-            
         }
 
         private List<Genero> ObtenerGenerosSeleccionados()
@@ -124,6 +130,11 @@ namespace Pelisfran.peliculas
                 }
             }
             return generosSeleccionados;
+        }
+
+        private bool ExistePortada()
+        {
+            return !string.IsNullOrEmpty(Request.Form["originalFileName"]) && !string.IsNullOrEmpty(Request.Form["tempFileName"]);
         }
     }
 }

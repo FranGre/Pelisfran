@@ -34,7 +34,7 @@ namespace Pelisfran.peliculas
 
             titulo.Text = pelicula.Titulo;
             fechaLanzamiento.Text = pelicula.FechaLanzamiento.ToShortDateString();
-            portada.ImageUrl = ResolveUrl($"{portadaPelicula.Ruta}/{portadaPelicula.NombreOriginal}");
+            portada.ImageUrl = ResolveUrl($"{portadaPelicula.Ruta}/{portadaPelicula.Nombre}");
             ver.CommandArgument = pelicula.Id.ToString();
         }
 

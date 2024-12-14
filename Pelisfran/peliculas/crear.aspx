@@ -51,6 +51,7 @@
     <div>
         <asp:Label ID="lbPortada" runat="server" Text="Portada" />
         <input type="file" name="fuPortada" runat="server" class="filepond-portada" />
+        <span id="reqPortada" runat="server" />
     </div>
 
     <asp:Button ID="btnAceptar" runat="server" Text="Crear" OnClick="btnAceptar_Click" />
