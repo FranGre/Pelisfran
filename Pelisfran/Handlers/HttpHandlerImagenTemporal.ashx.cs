@@ -23,8 +23,11 @@ namespace Pelisfran.Handlers
 
                 _fileTemporalServicio.GuardarPortadaDeUnaPelicula(uploadedFile, guid);
 
+                string originalFileName = Path.GetFileName(uploadedFile.FileName);
+                string tempFileName = $"{guid}{Path.GetExtension(originalFileName)}";
+
                 context.Response.ContentType = "application/json";
-                context.Response.Write($"{{ \"filePath\": \"{guid}\" }}");
+                context.Response.Write($"{{ \"originalFileName\": \"{originalFileName}\", \"tempFileName\": \"{tempFileName}\" }}");
             }
             else
             {

@@ -39,7 +39,7 @@ namespace Pelisfran.Servicios
                 Directory.CreateDirectory($"{ruta}");
             }
 
-            file.SaveAs($"{ruta}/{guid}");
+            file.SaveAs($"{ruta}/{guid}{Path.GetExtension(file.FileName)}");
         }
     }
 }

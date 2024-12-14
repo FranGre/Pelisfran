@@ -4,6 +4,9 @@
     <link href='<%=ResolveUrl("~/Content/FilePond/filepond.css")%>' rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
+    <input type="hidden" id="originalFileName" name="originalFileName" />
+    <input type="hidden" id="tempFileName" name="tempFileName" />
+
     <div>
         <asp:Label ID="lbTitulo" runat="server">Titulo</asp:Label>
         <asp:TextBox ID="txtTitulo" runat="server" />
@@ -57,21 +60,34 @@
     <script src="<%=ResolveUrl("~/Scripts/FilePond/plugins/filepond-plugin-file-validate-size.js")%>" type="text/javascript"></script>
     <script src="<%=ResolveUrl("~/Scripts/FilePond/plugins/filepond-plugin-image-preview.js")%>" type="text/javascript"></script>
 
-    <script>
-        FilePond.registerPlugin(FilePondPluginFileValidateType)
-        FilePond.registerPlugin(FilePondPluginFileValidateSize)
-        FilePond.registerPlugin(FilePondPluginImagePreview)
-        FilePond.create(document.querySelector(".filepond-video"), {
-            acceptedFileTypes: ['video/*'],
-            fileValidateTypeLabelExpectedTypes: 'Admite .mp4 .mkv .webm',
-            labelFileTypeNotAllowed: 'Archivo no válido'
-        })
 
+    <script>
+        FilePond.registerPlugin(FilePondPluginFileValidateType);
+        FilePond.registerPlugin(FilePondPluginFileValidateSize);
+        FilePond.registerPlugin(FilePondPluginImagePreview);
         FilePond.create(document.querySelector(".filepond-portada"), {
             server: {
-                process: '/Handlers/HttpHandlerImagenTemporal.ashx'
+                process:
+                {
+                    url: '/Handlers/HttpHandlerImagenTemporal.ashx',
+                    ondata: (formData) => {
+                        // Aquí no es necesario procesar respuesta en `ondata`
+                        return formData;
+                    },
+                    onload: (response) => {
+                        // Aquí se procesa la respuesta del servidor
+                        const jsonResponse = JSON.parse(response);
+                        console.log("onLoad", jsonResponse);
+                        const originalFileName = jsonResponse.originalFileName;
+                        const tempFileName = jsonResponse.tempFileName;
+
+                        // Asignamos los valores a los campos ocultos
+                        document.getElementById("originalFileName").value = originalFileName;
+                        document.getElementById("tempFileName").value = tempFileName;
+                    },
+                }
             },
-                
+
             acceptedFileTypes: ['image/webp', 'image/jpg', 'image/jpeg'],
             fileValidateTypeLabelExpectedTypes: 'Admite .webp .jpg .jpeg',
             labelFileTypeNotAllowed: 'Archivo no válido',
@@ -82,6 +98,7 @@
             labelMaxFileSize: 'Máximo de 1 MB',
 
             allowImagePreview: true
-        })
+        });
+
     </script>
 </asp:Content>

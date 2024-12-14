@@ -11,6 +11,6 @@ namespace Pelisfran.Repositorios
         {
             _db.PortadasPeliculas.Add(portadaPelicula);
             _db.SaveChanges();
-        }
+        }   
     }
 }
