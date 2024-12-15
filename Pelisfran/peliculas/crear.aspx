@@ -1,7 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PaginasMaestras/Site1.Master" AutoEventWireup="true" CodeBehind="crear.aspx.cs" Inherits="Pelisfran.peliculas.crear" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <meta name="csrf-token" content="@Html.AntiForgeryToken()" />
     <link href='<%=ResolveUrl("~/Content/FilePond/filepond.css")%>' rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
     <input type="hidden" id="originalFileName" name="originalFileName" />
@@ -15,7 +17,9 @@
     </div>
 
     <div>
-        <input type="file" class="filepond-video" />
+        <div id="video" class="dropzone">
+            <!-- Los archivos se soltarán aquí -->
+        </div>
     </div>
 
     <div>
@@ -60,9 +64,9 @@
     <script src="<%=ResolveUrl("~/Scripts/FilePond/plugins/filepond-plugin-file-validate-type.js")%>" type="text/javascript"></script>
     <script src="<%=ResolveUrl("~/Scripts/FilePond/plugins/filepond-plugin-file-validate-size.js")%>" type="text/javascript"></script>
     <script src="<%=ResolveUrl("~/Scripts/FilePond/plugins/filepond-plugin-image-preview.js")%>" type="text/javascript"></script>
+    <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
 
-
-    <script>
+    <script type="text/javascript">
         FilePond.registerPlugin(FilePondPluginFileValidateType);
         FilePond.registerPlugin(FilePondPluginFileValidateSize);
         FilePond.registerPlugin(FilePondPluginImagePreview);
@@ -93,6 +97,26 @@
             labelMaxFileSize: 'Máximo de 1 MB',
 
             allowImagePreview: true
+        });
+
+
+        let csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+        let myDropzone = new Dropzone("#video",{
+            url: '/Handlers/HttpHandlerVideoTemporal.ashx',
+            chunking: true,
+            chunkSize: 20 * 1024 * 1024,
+            maxFileSize: 5 * 1024 * 1024 * 1024,
+            headers: {
+                'X-CSRF-TOKEN': csrfToken
+            },
+            paramName: "file", // El nombre del parámetro que se envía al servidor
+            params: function (file) {
+                return {
+                    name: file.name, // Nombre del archivo
+                    dzchunkindex: file.chunkIndex, // Índice del chunk
+                    dztotalchunks: file.totalChunks // Total de los chunks
+                };
+            },
         });
 
     </script>

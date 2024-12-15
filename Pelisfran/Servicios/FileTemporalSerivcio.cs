@@ -20,7 +20,7 @@ namespace Pelisfran.Servicios
 
         public void GuardarVideoDeUnaPelicula(HttpPostedFile file, Guid guid)
         {
-            var rutaCarpetaDestino = $"{HttpContext.Current.Server.MapPath(rutaCarpetaDondeSeAlojaVideoDeUnaPelicula)}";
+            var rutaCarpetaDestino = $"{rutaCarpetaDondeSeAlojaVideoDeUnaPelicula}";
             GuardarArchivo(rutaCarpetaDestino, file, guid);
         }
 

@@ -120,6 +120,9 @@
     <Compile Include="Handlers\HttpHandlerImagenTemporal.ashx.cs">
       <DependentUpon>HttpHandlerImagenTemporal.ashx</DependentUpon>
     </Compile>
+    <Compile Include="Handlers\HttpHandlerVideoTemporal.ashx.cs">
+      <DependentUpon>HttpHandlerVideoTemporal.ashx</DependentUpon>
+    </Compile>
     <Compile Include="login.aspx.cs">
       <DependentUpon>login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -232,6 +235,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Handlers\HttpHandlerImagenTemporal.ashx" />
+    <Content Include="Handlers\HttpHandlerVideoTemporal.ashx" />
     <None Include="packages.config" />
     <Content Include="PaginasMaestras\Site1.Master" />
     <None Include="Web.Debug.config">
