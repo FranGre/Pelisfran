@@ -92,6 +92,7 @@ namespace Pelisfran.peliculas
                 Extension = imagenPortada.Extension,
                 Ruta = carpetaDestino
             };
+            // TODO - refactorizar 
             if (!Directory.Exists(rutaAbsolutaCarpetaDestino))
             {
                 Directory.CreateDirectory(rutaAbsolutaCarpetaDestino);

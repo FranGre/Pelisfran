@@ -72,19 +72,13 @@
                 {
                     url: '/Handlers/HttpHandlerImagenTemporal.ashx',
                     ondata: (formData) => {
-                        // Aquí no es necesario procesar respuesta en `ondata`
                         return formData;
                     },
                     onload: (response) => {
-                        // Aquí se procesa la respuesta del servidor
                         const jsonResponse = JSON.parse(response);
-                        console.log("onLoad", jsonResponse);
-                        const originalFileName = jsonResponse.originalFileName;
-                        const tempFileName = jsonResponse.tempFileName;
 
-                        // Asignamos los valores a los campos ocultos
-                        document.getElementById("originalFileName").value = originalFileName;
-                        document.getElementById("tempFileName").value = tempFileName;
+                        document.getElementById("originalFileName").value = jsonResponse.originalFileName;
+                        document.getElementById("tempFileName").value = jsonResponse.tempFileName;
                     },
                 }
             },
