@@ -1,6 +1,7 @@
 ﻿using Pelisfran.Contexto;
 using Pelisfran.Modelos;
 using System;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Web.UI.WebControls;
 
@@ -44,6 +45,27 @@ namespace Pelisfran.peliculas
             var peliculaId = btn.CommandArgument;
 
             Response.Redirect($"~/peliculas/ver.aspx?id={peliculaId}", false);
+        }
+
+        protected void btnBuscar_Click(object sender, EventArgs e)
+        {
+            pPeliculasNoEncontradas.InnerText = string.Empty;
+
+            var peliculas = _db.Peliculas.Include("PortadaPelicula");
+
+            if (!string.IsNullOrEmpty(tbBusqueda.Text))
+            {
+                peliculas = (DbQuery<Pelicula>)peliculas.Where(item => item.Titulo.Contains(tbBusqueda.Text));
+            }
+
+            if (peliculas.Count() == 0)
+            {
+                pPeliculasNoEncontradas.InnerText = $"No se encontraron peliculas con el titulo {tbBusqueda.Text}";
+            }
+
+            repPeliculas.DataSource = peliculas.ToList();
+            repPeliculas.DataBind();
+            upPeliculas.Update();
         }
     }
 }
