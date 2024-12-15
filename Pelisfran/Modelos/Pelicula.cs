@@ -26,5 +26,6 @@ namespace Pelisfran.Modelos
         public PortadaPelicula PortadaPelicula { get; set; }
         public ICollection<GeneroPelicula> GenerosPeliculas { get; set; }
         public ICollection<PeliculaFavorita> PeliculaFavoritas { get; set; }
+        public ICollection<ComentarioPelicula> ComentarioPeliculas { get; set; }
     }
 }
