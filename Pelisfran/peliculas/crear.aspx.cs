@@ -14,7 +14,7 @@ namespace Pelisfran.peliculas
     {
         private GeneroServicio _generoServicio = new GeneroServicio();
         private PeliculaServicio _peliculaServicio = new PeliculaServicio();
-        private GeneroPeliculaServicio generoPeliculaServicio = new GeneroPeliculaServicio();
+        private GeneroPeliculaServicio _generoPeliculaServicio = new GeneroPeliculaServicio();
         private PortadaPeliculaServicio _portadaPeliculaServicio = new PortadaPeliculaServicio();
         private PelisFranDBContexto _db = new PelisFranDBContexto();
 
@@ -74,17 +74,7 @@ namespace Pelisfran.peliculas
 
             _peliculaServicio.CrearPelicula(pelicula);
 
-            foreach (Genero genero in generosSeleccionados)
-            {
-                GeneroPelicula generoPelicula = new GeneroPelicula
-                {
-                    Id = Guid.NewGuid(),
-                    PeliculaId = pelicula.Id,
-                    GeneroId = genero.Id,
-                    CreadoEn = DateTime.Now
-                };
-                generoPeliculaServicio.AgregarGeneroAPelicula(generoPelicula);
-            }
+            _generoPeliculaServicio.AgregarGenerosAPelicula(generosSeleccionados, pelicula);
 
             string carpetaDestino = $"~/Uploads/Portadas/Peliculas/{pelicula.Id}";
             var rutaAbsolutaCarpetaDestino = Server.MapPath($"~/Uploads/Portadas/Peliculas/{pelicula.Id}");
