@@ -46,6 +46,8 @@ namespace Pelisfran.peliculas
                     textoBtnFavorito = "Eliminar de Favoritos";
                 }
 
+                btnLike.Text = $"{_db.PeliculasLikes.Where(pl => pl.PeliculaId == peliculaId).Count().ToString()} likes";
+
                 ActualizarPanelUpBotonFavorito(textoBtnFavorito);
 
                 if (_db.ComentariosPeliculas.Where(c => c.PeliculaId == peliculaId).Any())
@@ -127,6 +129,25 @@ namespace Pelisfran.peliculas
             nombre.InnerText = comentarioPelicula.Usuario.NombreUsuario;
             fecha.InnerText = comentarioPelicula.FechaCreacion.ToShortDateString();
             comentario.InnerText = comentarioPelicula.Comentario;
+        }
+
+        protected void btnLike_Click(object sender, EventArgs e)
+        {
+            Guid usuarioId = Guid.Parse(HttpContext.Current.User.Identity.Name);
+            Guid peliculaId = Guid.Parse(Request.QueryString["id"]);
+            PeliculaLike peliculaLike = _db.PeliculasLikes.Where(pl => pl.UsuarioId == usuarioId && pl.PeliculaId == peliculaId).FirstOrDefault();
+            if (peliculaLike != null)
+            {
+                _db.PeliculasLikes.Remove(peliculaLike);
+            }
+            else
+            {
+                peliculaLike = new PeliculaLike { Id = Guid.NewGuid(), CreadoEn = DateTime.Now, PeliculaId = peliculaId, UsuarioId = usuarioId };
+                _db.PeliculasLikes.Add(peliculaLike);
+            }
+            _db.SaveChanges();
+            btnLike.Text = $"{_db.PeliculasLikes.Where(pl => pl.PeliculaId == peliculaId).Count().ToString()} likes";
+            upLikes.Update();
         }
     }
 }

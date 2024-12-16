@@ -6,6 +6,11 @@
     <asp:ScriptManager ID="sm" runat="server"></asp:ScriptManager>
     <h2 id="titulo" runat="server"></h2>
     <p id="descripcion" runat="server"></p>
+    <asp:UpdatePanel ID="upLikes" runat="server" UpdateMode="Conditional">
+        <ContentTemplate>
+            <asp:Button ID="btnLike" runat="server" OnClick="btnLike_Click" />
+        </ContentTemplate>
+    </asp:UpdatePanel>
     <asp:HiddenField ID="hfId" runat="server" />
 
     <asp:UpdatePanel ID="upBotonFavorito" runat="server" UpdateMode="Conditional">

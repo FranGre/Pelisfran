@@ -42,6 +42,24 @@ namespace Pelisfran.peliculas
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl descripcion;
 
         /// <summary>
+        /// Control upLikes.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel upLikes;
+
+        /// <summary>
+        /// Control btnLike.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnLike;
+
+        /// <summary>
         /// Control hfId.
         /// </summary>
         /// <remarks>

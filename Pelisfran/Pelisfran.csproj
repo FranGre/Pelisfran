@@ -131,6 +131,7 @@
       <DependentUpon>login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modelos\ComentarioPelicula.cs" />
+    <Compile Include="Modelos\PeliculaLike.cs" />
     <Compile Include="Modelos\PortadaSerie.cs" />
     <Compile Include="Modelos\Serie.cs" />
     <Compile Include="Modelos\SerieFavorita.cs" />

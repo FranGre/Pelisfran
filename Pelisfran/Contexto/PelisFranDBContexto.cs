@@ -20,6 +20,7 @@ namespace Pelisfran.Contexto
         public DbSet<Temporada> Temporadas { get; set; }
         public DbSet<SerieFavorita> SeriesFavoritas { get; set; }
         public DbSet<ComentarioPelicula> ComentariosPeliculas { get; set; }
+        public DbSet<PeliculaLike> PeliculasLikes { get; set; }
 
         public PelisFranDBContexto() : base(CrearConexion(), true) { }
 

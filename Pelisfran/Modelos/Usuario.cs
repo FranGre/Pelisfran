@@ -32,6 +32,7 @@ namespace Pelisfran.Modelos
         public ICollection<Serie> Series { get; set; }
         public ICollection<Temporada> Temporadas { get; set; }
         public ICollection<ComentarioPelicula> ComentariosPeliculas { get; set; }
+        public ICollection<PeliculaLike> PeliculasLikes { get; set; }
 
     }
 }
