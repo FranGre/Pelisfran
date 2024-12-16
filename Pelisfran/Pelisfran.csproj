@@ -76,6 +76,7 @@
   <ItemGroup>
     <Content Include="autenticado.aspx" />
     <Content Include="Content\FilePond\filepond.css" />
+    <Content Include="Controles\Navegacion\Menu.ascx" />
     <Content Include="Scripts\FilePond\plugins\filepond-plugin-file-validate-size.js" />
     <Content Include="Scripts\FilePond\plugins\filepond-plugin-file-validate-type.js" />
     <Content Include="default.aspx" />
@@ -102,6 +103,13 @@
       <DependentUpon>autenticado.aspx</DependentUpon>
     </Compile>
     <Compile Include="Contexto\PelisFranDBContexto.cs" />
+    <Compile Include="Controles\Navegacion\Menu.ascx.cs">
+      <DependentUpon>Menu.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controles\Navegacion\Menu.ascx.designer.cs">
+      <DependentUpon>Menu.ascx</DependentUpon>
+    </Compile>
     <Compile Include="default.aspx.cs">
       <DependentUpon>default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

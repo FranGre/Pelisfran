@@ -7,47 +7,38 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace Pelisfran.PaginasMaestras
+namespace Pelisfran.Controles.Navegacion
 {
 
 
-    public partial class Site1
+    public partial class Menu
     {
 
         /// <summary>
-        /// Control head.
+        /// Control lbPelisFran.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
+        protected global::System.Web.UI.WebControls.LinkButton lbPelisFran;
 
         /// <summary>
-        /// Control form1.
+        /// Control lkPeliculas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.LinkButton lkPeliculas;
 
         /// <summary>
-        /// Control menu.
+        /// Control lkSeries.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Pelisfran.Controles.Navegacion.Menu menu;
-
-        /// <summary>
-        /// Control body.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder body;
+        protected global::System.Web.UI.WebControls.LinkButton lkSeries;
     }
 }
