@@ -1,0 +1,2 @@
+- implementar likes sobre peliculas
+- en el default de peliculas molaria paginado y filtrado por generos
