@@ -25,8 +25,6 @@ namespace Pelisfran.peliculas
                 rangeFechaLanzamiento.MinimumValue = DateTime.Now.AddYears(-100).ToShortDateString();
                 rangeFechaLanzamiento.MaximumValue = DateTime.Now.ToShortDateString();
                 rangeFechaLanzamiento.ErrorMessage = $"Debe estar entre {rangeFechaLanzamiento.MinimumValue} y {rangeFechaLanzamiento.MaximumValue}";
-                repGeneros.DataSource = _generoServicio.ObtenerListaDeGeneros();
-                repGeneros.DataBind();
             }
         }
 
@@ -43,7 +41,7 @@ namespace Pelisfran.peliculas
         {
             if (!Page.IsValid) { return; }
 
-            var generosSeleccionados = ObtenerGenerosSeleccionados();
+            var generosSeleccionados = generos.ObtenerGenerosSeleccionados();
 
             reqGeneros.InnerText = string.Empty;
             if (generosSeleccionados.Count == 0)
@@ -101,26 +99,6 @@ namespace Pelisfran.peliculas
 
             _portadaPeliculaServicio.AgregarPortadaAPelicula(portada);
             //_fileServicio.GuardarPortadaDeUnaPelicula(fuPortada, pelicula.Id);
-        }
-
-        private List<Genero> ObtenerGenerosSeleccionados()
-        {
-            var generosSeleccionados = new List<Genero>();
-            foreach (var item in repGeneros.Items)
-            {
-                RepeaterItem repeaterItem = (RepeaterItem)item;
-                CheckBox cbGenero = (CheckBox)repeaterItem.FindControl("cbGenero");
-                if (cbGenero.Checked)
-                {
-                    Genero genero = new Genero
-                    {
-                        Id = Guid.Parse(cbGenero.Attributes["data-value"]),
-                        Nombre = cbGenero.Text
-                    };
-                    generosSeleccionados.Add(genero);
-                }
-            }
-            return generosSeleccionados;
         }
 
         private bool ExistePortada()

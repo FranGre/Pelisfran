@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PaginasMaestras/Site1.Master" AutoEventWireup="true" CodeBehind="crear.aspx.cs" Inherits="Pelisfran.peliculas.crear" %>
 
+<%@ Register Src="~/Controles/CheckBoxLists/CheckBoxListGeneros.ascx" TagPrefix="controles" TagName="checkboxListGeneros" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <meta name="csrf-token" content="@Html.AntiForgeryToken()" />
     <link href='<%=ResolveUrl("~/Content/FilePond/filepond.css")%>' rel="stylesheet" />
@@ -44,11 +46,7 @@
     </div>
 
     <div>
-        <asp:Repeater ID="repGeneros" runat="server" OnItemDataBound="repGeneros_ItemDataBound">
-            <ItemTemplate>
-                <asp:CheckBox ID="cbGenero" runat="server" />
-            </ItemTemplate>
-        </asp:Repeater>
+        <controles:checkboxListGeneros ID="generos" runat="server" />
         <span id="reqGeneros" runat="server" />
     </div>
 
@@ -101,7 +99,7 @@
 
 
         let csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-        let myDropzone = new Dropzone("#video",{
+        let myDropzone = new Dropzone("#video", {
             url: '/Handlers/HttpHandlerVideoTemporal.ashx',
             chunking: true,
             chunkSize: 20 * 1024 * 1024,
