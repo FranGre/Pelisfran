@@ -17,9 +17,13 @@ namespace Pelisfran.peliculas
             var peliculas = _db.Peliculas.AsQueryable().Include("PortadaPelicula");
             if (Page.IsPostBack)
             {
-                peliculas = peliculas.Include("GenerosPeliculas");
                 var idsGenerosSeleccionados = generos.ObtenerIDsGenerosSeleccionados();
-                peliculas = peliculas.Where(p => p.GenerosPeliculas.Any(g => idsGenerosSeleccionados.Contains(g.GeneroId)));
+
+                if (idsGenerosSeleccionados.Any())
+                {
+                    peliculas = peliculas.Include("GenerosPeliculas");
+                    peliculas = peliculas.Where(p => p.GenerosPeliculas.Any(g => idsGenerosSeleccionados.Contains(g.GeneroId)));
+                }
             }
 
             repPeliculas.DataSource = peliculas.ToList();
