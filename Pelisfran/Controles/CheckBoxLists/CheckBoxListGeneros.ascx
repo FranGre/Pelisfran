@@ -4,7 +4,7 @@
 <div>
     <asp:Repeater ID="repGeneros" runat="server" OnItemDataBound="repGeneros_ItemDataBound">
         <ItemTemplate>
-            <asp:CheckBox ID="cbGenero" runat="server" />
+            <asp:CheckBox ID="cbGenero" runat="server" AutoPostBack="true" />
         </ItemTemplate>
     </asp:Repeater>
 </div>

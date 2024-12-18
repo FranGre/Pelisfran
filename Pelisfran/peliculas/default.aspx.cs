@@ -1,6 +1,7 @@
 ﻿using Pelisfran.Contexto;
 using Pelisfran.Modelos;
 using System;
+using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Web.UI.WebControls;
@@ -13,12 +14,16 @@ namespace Pelisfran.peliculas
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Page.IsPostBack)
+            var peliculas = _db.Peliculas.AsQueryable().Include("PortadaPelicula");
+            if (Page.IsPostBack)
             {
-                var peliculas = _db.Peliculas.Include("PortadaPelicula").ToList();
-                repPeliculas.DataSource = peliculas;
-                repPeliculas.DataBind();
+                peliculas = peliculas.Include("GenerosPeliculas");
+                var idsGenerosSeleccionados = generos.ObtenerIDsGenerosSeleccionados();
+                peliculas = peliculas.Where(p => p.GenerosPeliculas.Any(g => idsGenerosSeleccionados.Contains(g.GeneroId)));
             }
+
+            repPeliculas.DataSource = peliculas.ToList();
+            repPeliculas.DataBind();
         }
 
         protected void repPeliculas_ItemDataBound(object sender, RepeaterItemEventArgs e)

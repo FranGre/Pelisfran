@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="default.aspx.cs" Inherits="Pelisfran.peliculas._default" %>
 
+<%@ Register Src="~/Controles/CheckBoxLists/CheckBoxListGeneros.ascx" TagPrefix="controles" TagName="checkboxListGeneros" %>
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -11,6 +13,7 @@
     <form id="form1" runat="server">
         <div>
             <h2>Peliculas</h2>
+            <controles:checkboxListGeneros ID="generos" runat="server" />
             <div>
                 <asp:TextBox ID="tbBusqueda" runat="server" placeholder="Buscar Pelicula..."></asp:TextBox>
                 <asp:Button ID="btnBuscar" runat="server" Text="Lupa" OnClick="btnBuscar_Click" />

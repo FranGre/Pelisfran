@@ -48,5 +48,21 @@ namespace Pelisfran.Controles.CheckBoxLists
             }
             return generosSeleccionados;
         }
+
+        public List<Guid> ObtenerIDsGenerosSeleccionados()
+        {
+            var idsGenerosSeleccionados = new List<Guid>();
+            foreach (var item in repGeneros.Items)
+            {
+                RepeaterItem repeaterItem = (RepeaterItem)item;
+                CheckBox cbGenero = (CheckBox)repeaterItem.FindControl("cbGenero");
+                if (cbGenero.Checked)
+                {
+                    Guid idGenero = Guid.Parse(cbGenero.Attributes["data-value"]);
+                    idsGenerosSeleccionados.Add(idGenero);
+                }
+            }
+            return idsGenerosSeleccionados;
+        }
     }
 }
