@@ -24,11 +24,23 @@ namespace Pelisfran
 
             if (!usuarioAutenticado)
             {
+                if (!alerta.Attributes["class"].Contains(" notification is-danger"))
+                {
+                    alerta.Attributes["class"] += " notification is-danger";
+                }
                 alerta.InnerText = "Email o contraseña incorrectos";
                 return;
             }
 
+            alerta.Attributes["class"] = string.Empty;
+            alerta.InnerText = string.Empty;
+
             Response.Redirect("autenticado.aspx");
+        }
+
+        protected void lbRegistrarse_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("registrarse.aspx");
         }
     }
 }
