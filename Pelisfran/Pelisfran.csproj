@@ -75,6 +75,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="autenticado.aspx" />
+    <Content Include="Content\Bulma\bulma.min.css" />
     <Content Include="Content\FilePond\filepond.css" />
     <Content Include="Controles\CheckBoxLists\CheckBoxListGeneros.ascx" />
     <Content Include="Controles\Navegacion\Menu.ascx" />
