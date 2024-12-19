@@ -18,10 +18,29 @@ namespace Pelisfran.peliculas
             {
                 var idsGenerosSeleccionados = generos.ObtenerIDsGenerosSeleccionados();
 
-                if (idsGenerosSeleccionados.Any())
+                pPeliculasNoEncontradas.InnerText = string.Empty;
+
+                bool hayTextoDeBusqueda = !string.IsNullOrEmpty(tbBusqueda.Text);
+                bool hayGenerosSeleccionados = idsGenerosSeleccionados.Any();
+
+                if (hayTextoDeBusqueda && !hayGenerosSeleccionados)
+                {
+                    peliculas = peliculas.Where(item => item.Titulo.Contains(tbBusqueda.Text));
+                }
+                else if (!hayTextoDeBusqueda && hayGenerosSeleccionados)
                 {
                     peliculas = peliculas.Include("GenerosPeliculas");
                     peliculas = peliculas.Where(p => p.GenerosPeliculas.Any(g => idsGenerosSeleccionados.Contains(g.GeneroId)));
+                }
+                else if (hayTextoDeBusqueda && hayGenerosSeleccionados)
+                {
+                    peliculas = peliculas.Include("GenerosPeliculas");
+                    peliculas = peliculas.Where(item => item.Titulo.Contains(tbBusqueda.Text)).Where(p => p.GenerosPeliculas.Any(g => idsGenerosSeleccionados.Contains(g.GeneroId)));
+                }
+
+                if (peliculas.Count() == 0)
+                {
+                    pPeliculasNoEncontradas.InnerText = $"No se encontraron peliculas con el titulo {tbBusqueda.Text}";
                 }
             }
 
@@ -62,19 +81,19 @@ namespace Pelisfran.peliculas
             var peliculas = _db.Peliculas.AsQueryable().Include("PortadaPelicula");
             var idsGenerosSeleccionados = generos.ObtenerIDsGenerosSeleccionados();
 
-            bool hayTextoDeBusqueda = string.IsNullOrEmpty(tbBusqueda.Text);
+            bool hayTextoDeBusqueda = !string.IsNullOrEmpty(tbBusqueda.Text);
             bool hayGenerosSeleccionados = idsGenerosSeleccionados.Any();
 
-            if (!hayTextoDeBusqueda && !hayGenerosSeleccionados)
+            if (hayTextoDeBusqueda && !hayGenerosSeleccionados)
             {
                 peliculas = peliculas.Where(item => item.Titulo.Contains(tbBusqueda.Text));
             }
-            else if (hayTextoDeBusqueda && hayGenerosSeleccionados)
+            else if (!hayTextoDeBusqueda && hayGenerosSeleccionados)
             {
                 peliculas = peliculas.Include("GenerosPeliculas");
                 peliculas = peliculas.Where(p => p.GenerosPeliculas.Any(g => idsGenerosSeleccionados.Contains(g.GeneroId)));
             }
-            else if (!hayTextoDeBusqueda && hayGenerosSeleccionados)
+            else if (hayTextoDeBusqueda && hayGenerosSeleccionados)
             {
                 peliculas = peliculas.Include("GenerosPeliculas");
                 peliculas = peliculas.Where(item => item.Titulo.Contains(tbBusqueda.Text)).Where(p => p.GenerosPeliculas.Any(g => idsGenerosSeleccionados.Contains(g.GeneroId)));
