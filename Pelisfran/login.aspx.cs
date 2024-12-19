@@ -10,7 +10,10 @@ namespace Pelisfran
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!Page.IsPostBack)
+            {
+                txtEmail.Focus();
+            }
         }
 
         protected void btnAceptar_Click(object sender, EventArgs e)
