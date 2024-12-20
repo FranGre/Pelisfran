@@ -13,7 +13,7 @@
         <div class="field">
             <asp:Label ID="lbEmail" runat="server" Text="Email" CssClass="label is-flex is-justify-content-center" />
             <div class="control">
-                <asp:TextBox ID="txtEmail" runat="server" CssClass="input is-focused"></asp:TextBox>
+                <asp:TextBox ID="txtEmail" runat="server" CssClass="input"></asp:TextBox>
             </div>
             <asp:RequiredFieldValidator ID="reqEmail" runat="server" ControlToValidate="txtEmail" ErrorMessage="Campo obligatorio" Display="Dynamic" CssClass="help is-danger" />
             <asp:RegularExpressionValidator ID="regexEmail" runat="server" ControlToValidate="txtEmail" ErrorMessage="Email invalido" Display="Dynamic" ValidationExpression="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" CssClass="help is-danger" />

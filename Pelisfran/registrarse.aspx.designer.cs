@@ -15,6 +15,15 @@ namespace Pelisfran
     {
 
         /// <summary>
+        /// Control alerta.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl alerta;
+
+        /// <summary>
         /// Control lbNombreUsuario.
         /// </summary>
         /// <remarks>
@@ -166,6 +175,15 @@ namespace Pelisfran
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RangeValidator rangeFechaNacimiento;
+
+        /// <summary>
+        /// Control lbLogin.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lbLogin;
 
         /// <summary>
         /// Control btnAceptar.

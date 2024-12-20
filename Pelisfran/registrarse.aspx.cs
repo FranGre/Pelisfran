@@ -15,16 +15,17 @@ namespace Pelisfran
         protected void Page_Load(object sender, EventArgs e)
         {
             rangeFechaNacimiento.MaximumValue = DateTime.Now.ToString("dd/MM/yyyy");
+            txtNombreUsuario.Focus();
         }
 
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
             if (!Page.IsValid) { return; }
 
-            
-                SeederRoles seederRoles = new SeederRoles();
-                seederRoles.Insertar();
-            
+
+            SeederRoles seederRoles = new SeederRoles();
+            seederRoles.Insertar();
+
 
             Usuario usuario = new Usuario
             {
@@ -55,6 +56,11 @@ namespace Pelisfran
 
             custEmail.ErrorMessage = string.Empty;
             args.IsValid = true;
+        }
+
+        protected void lbLogin_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("login.aspx");
         }
     }
 }
