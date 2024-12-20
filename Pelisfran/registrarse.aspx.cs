@@ -38,6 +38,7 @@ namespace Pelisfran
                 FechaNacimiento = Convert.ToDateTime(txtFechaNacimiento.Text),
                 CreadoEn = DateTime.Now
             };
+            // nombreUsuario existe errror
 
             usuarioServicio.RegistrarUsuario(usuario);
             autenticacionServicio.AutenticarUsuario(usuario.Email, usuario.Password);
