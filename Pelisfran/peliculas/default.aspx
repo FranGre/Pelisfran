@@ -11,7 +11,6 @@
         <asp:TextBox ID="tbBusqueda" runat="server" placeholder="Buscar Pelicula..."></asp:TextBox>
         <asp:Button ID="btnBuscar" runat="server" Text="Lupa" OnClick="btnBuscar_Click" />
     </div>
-    <asp:ScriptManager ID="sm" runat="server"></asp:ScriptManager>
     <asp:UpdatePanel ID="upPeliculas" runat="server" UpdateMode="Conditional">
         <triggers>
             <asp:AsyncPostBackTrigger ControlID="btnBuscar" />
