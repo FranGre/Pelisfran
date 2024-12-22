@@ -39,7 +39,6 @@ namespace Pelisfran.peliculas
                 descripcion.InnerText = pelicula.SinopsisBreve;
                 hfId.Value = pelicula.Id.ToString();
 
-                // revisar cuando no estas auth, ya que deberia ser que aparezca anadir a favoritos, y cuando clickes que te redirija a login o register
                 Guid usuarioId = string.IsNullOrEmpty(HttpContext.Current.User.Identity.Name) ? Guid.Empty : Guid.Parse(HttpContext.Current.User.Identity.Name);
 
                 string textoBtnFavorito = "Anadir a Favoritos";
@@ -64,6 +63,12 @@ namespace Pelisfran.peliculas
 
         protected void btnFavorito_Click(object sender, EventArgs e)
         {
+            if (!_autenticacionServicio.EstaUsuarioAutenticado())
+            {
+                RedirigirAlLogin();
+                return;
+            }
+
             Guid peliculaId = Guid.Parse(hfId.Value);
             Guid usuarioId = Guid.Parse(HttpContext.Current.User.Identity.Name);
 
@@ -93,6 +98,12 @@ namespace Pelisfran.peliculas
 
         protected void btnGuardarComentario_Click(object sender, EventArgs e)
         {
+            if (!_autenticacionServicio.EstaUsuarioAutenticado())
+            {
+                RedirigirAlLogin();
+                return;
+            }
+
             if (string.IsNullOrEmpty(tbComentario.Text)) { return; }
 
             ComentarioPelicula comentario = new ComentarioPelicula
