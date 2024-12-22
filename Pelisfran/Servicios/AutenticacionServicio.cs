@@ -1,4 +1,5 @@
 ﻿using Pelisfran.Modelos;
+using System.Web;
 using System.Web.Security;
 
 namespace Pelisfran.Servicios
@@ -27,6 +28,11 @@ namespace Pelisfran.Servicios
             Usuario usuario = _usuarioServicio.ObtenerUsuario(email);
             FormsAuthentication.SetAuthCookie(usuario.Id.ToString(), false);
             return true;
+        }
+
+        public bool EstaUsuarioAutenticado()
+        {
+            return HttpContext.Current.User.Identity.IsAuthenticated;
         }
     }
 }

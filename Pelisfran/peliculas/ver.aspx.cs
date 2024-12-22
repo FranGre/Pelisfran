@@ -14,6 +14,7 @@ namespace Pelisfran.peliculas
         private PeliculaServicio _peliculaServicio = new PeliculaServicio();
         private PeliculaFavoritaServicio _peliculaFavoritaServicio = new PeliculaFavoritaServicio();
         private PelisFranDBContexto _db = new PelisFranDBContexto();
+        private AutenticacionServicio _autenticacionServicio = new AutenticacionServicio();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -38,7 +39,8 @@ namespace Pelisfran.peliculas
                 descripcion.InnerText = pelicula.SinopsisBreve;
                 hfId.Value = pelicula.Id.ToString();
 
-                Guid usuarioId = Guid.Parse(HttpContext.Current.User.Identity.Name);
+                // revisar cuando no estas auth, ya que deberia ser que aparezca anadir a favoritos, y cuando clickes que te redirija a login o register
+                Guid usuarioId = string.IsNullOrEmpty(HttpContext.Current.User.Identity.Name) ? Guid.Empty : Guid.Parse(HttpContext.Current.User.Identity.Name);
 
                 string textoBtnFavorito = "Anadir a Favoritos";
                 if (_peliculaFavoritaServicio.PeliculaEstaMarcadaComoFavorita(usuarioId, peliculaId))
@@ -133,6 +135,12 @@ namespace Pelisfran.peliculas
 
         protected void btnLike_Click(object sender, EventArgs e)
         {
+            if (!_autenticacionServicio.EstaUsuarioAutenticado())
+            {
+                RedirigirAlLogin();
+                return;
+            }
+
             Guid usuarioId = Guid.Parse(HttpContext.Current.User.Identity.Name);
             Guid peliculaId = Guid.Parse(Request.QueryString["id"]);
             PeliculaLike peliculaLike = _db.PeliculasLikes.Where(pl => pl.UsuarioId == usuarioId && pl.PeliculaId == peliculaId).FirstOrDefault();
@@ -148,6 +156,11 @@ namespace Pelisfran.peliculas
             _db.SaveChanges();
             btnLike.Text = $"{_db.PeliculasLikes.Where(pl => pl.PeliculaId == peliculaId).Count().ToString()} likes";
             upLikes.Update();
+        }
+
+        private void RedirigirAlLogin()
+        {
+            Response.Redirect("login.aspx", false);
         }
     }
 }

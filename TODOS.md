@@ -1,6 +1,6 @@
+- Cuando no estes auth y clickes en Favortios y tal, te lleve a login pero cuando inicies sesion te rediriga a donde estabas, por comodidad para el user
 - refactorizar likes sobre peliculas, situado en peliculas/ver.aspx
 - peliculas/default.aspx paginado
-- peliculas/default.aspx implementar filtrado filtrado por generos
 - hacer el nav
 - estilar
 

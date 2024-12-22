@@ -35,7 +35,7 @@ namespace Pelisfran
             alerta.Attributes["class"] = string.Empty;
             alerta.InnerText = string.Empty;
 
-            Response.Redirect("autenticado.aspx");
+            Response.Redirect("peliculas/default.aspx");
         }
 
         protected void lbRegistrarse_Click(object sender, EventArgs e)
