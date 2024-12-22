@@ -1,7 +1,5 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="Pelisfran.PaginasMaestras.Site1" %>
 
-<%@ Register Src="~/Controles/Navegacion/Menu.ascx" TagPrefix="Controles" TagName="Menu" %>
-
 <!DOCTYPE html>
 
 <html>
