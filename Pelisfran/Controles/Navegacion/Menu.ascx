@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Menu.ascx.cs" Inherits="Pelisfran.Controles.Navegacion.Menu" %>
 
-<nav class="navbar" role="navigation" aria-label="main navigation">
+<nav class="navbar mb-3" role="navigation" aria-label="main navigation">
     <div class="navbar-menu">
         <div class="navbar-start">
             <asp:LinkButton ID="lbPelisFran" runat="server" Text="PelisFran" CausesValidation="false" CssClass="navbar-item" OnClick="lbPelisFran_Click"></asp:LinkButton>

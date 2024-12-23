@@ -5,7 +5,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
-    <h2 class="title is-2 mb-6">Peliculas</h2>
+    <h2 class="title is-2 mb-6 is-flex is-justify-content-center">Peliculas</h2>
 
     <controles:checkboxListGeneros ID="generos" runat="server" />
 
@@ -25,18 +25,21 @@
         <ContentTemplate>
             <div class="mt-6">
                 <p id="pPeliculasNoEncontradas" runat="server"></p>
-
-                <asp:Repeater ID="repPeliculas" runat="server" OnItemDataBound="repPeliculas_ItemDataBound">
-                    <ItemTemplate>
-                        <asp:LinkButton ID="btnVer" runat="server" Text="Ver" OnClick="btnVer_Click">
-                            <div>
-                                <asp:Image ID="portada" runat="server" />
-                                <asp:Literal ID="titulo" runat="server"></asp:Literal>
-                                <asp:Literal ID="fechaLanzamiento" runat="server"></asp:Literal>
+                <div class="columns is-multiline">
+                    <asp:Repeater ID="repPeliculas" runat="server" OnItemDataBound="repPeliculas_ItemDataBound">
+                        <ItemTemplate>
+                            <div class="column is-6-mobile is-4-tablet is-2-desktop">
+                                <asp:LinkButton ID="btnVer" runat="server" Text="Ver" OnClick="btnVer_Click">
+                                    <div>
+                                        <asp:Image ID="portada" runat="server" />
+                                        <asp:Literal ID="titulo" runat="server"></asp:Literal>
+                                        <asp:Literal ID="fechaLanzamiento" runat="server"></asp:Literal>
+                                    </div>
+                                </asp:LinkButton>
                             </div>
-                        </asp:LinkButton>
-                    </ItemTemplate>
-                </asp:Repeater>
+                        </ItemTemplate>
+                    </asp:Repeater>
+                </div>
             </div>
         </ContentTemplate>
     </asp:UpdatePanel>
