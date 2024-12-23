@@ -30,9 +30,16 @@
                         <ItemTemplate>
                             <div class="column is-6-mobile is-4-tablet is-2-desktop">
                                 <asp:LinkButton ID="btnVer" runat="server" Text="Ver" OnClick="btnVer_Click">
-                                    <div>
-                                        <asp:Image ID="portada" runat="server" CssClass="image is-3by5 mb-2" />
-                                        <asp:Label ID="titulo" runat="server" CssClass="is-flex is-justify-content-center"></asp:Label>
+                                    <div class="card">
+                                        <div class="card-image">
+                                            <asp:Image ID="portada" runat="server" CssClass="image is-3by5" />
+                                        </div>
+
+                                        <div class="card-content">
+                                            <div class="content">
+                                                <asp:Label ID="titulo" runat="server" CssClass="is-flex is-justify-content-center"></asp:Label>
+                                            </div>
+                                        </div>
                                     </div>
                                 </asp:LinkButton>
                             </div>
