@@ -31,9 +31,8 @@
                             <div class="column is-6-mobile is-4-tablet is-2-desktop">
                                 <asp:LinkButton ID="btnVer" runat="server" Text="Ver" OnClick="btnVer_Click">
                                     <div>
-                                        <asp:Image ID="portada" runat="server" />
-                                        <asp:Literal ID="titulo" runat="server"></asp:Literal>
-                                        <asp:Literal ID="fechaLanzamiento" runat="server"></asp:Literal>
+                                        <asp:Image ID="portada" runat="server" CssClass="image is-3by5 mb-2" />
+                                        <asp:Label ID="titulo" runat="server" CssClass="is-flex is-justify-content-center"></asp:Label>
                                     </div>
                                 </asp:LinkButton>
                             </div>
