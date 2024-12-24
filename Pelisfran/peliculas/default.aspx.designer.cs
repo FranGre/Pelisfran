@@ -24,22 +24,13 @@ namespace Pelisfran.peliculas
         protected global::Pelisfran.Controles.CheckBoxLists.CheckBoxListGeneros generos;
 
         /// <summary>
-        /// Control tbBusqueda.
+        /// Control tsBusqueda.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbBusqueda;
-
-        /// <summary>
-        /// Control btnBuscar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnBuscar;
+        protected global::Pelisfran.Controles.Busqueda.TextSearch tsBusqueda;
 
         /// <summary>
         /// Control upPeliculas.

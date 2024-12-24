@@ -77,6 +77,7 @@
     <Content Include="autenticado.aspx" />
     <Content Include="Content\Bulma\bulma.min.css" />
     <Content Include="Content\FilePond\filepond.css" />
+    <Content Include="Controles\Busqueda\TextSearch.ascx" />
     <Content Include="Controles\CheckBoxLists\CheckBoxListGeneros.ascx" />
     <Content Include="Controles\Navegacion\Menu.ascx" />
     <Content Include="Scripts\FilePond\plugins\filepond-plugin-file-validate-size.js" />
@@ -105,6 +106,13 @@
       <DependentUpon>autenticado.aspx</DependentUpon>
     </Compile>
     <Compile Include="Contexto\PelisFranDBContexto.cs" />
+    <Compile Include="Controles\Busqueda\TextSearch.ascx.cs">
+      <DependentUpon>TextSearch.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controles\Busqueda\TextSearch.ascx.designer.cs">
+      <DependentUpon>TextSearch.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Controles\CheckBoxLists\CheckBoxListGeneros.ascx.cs">
       <DependentUpon>CheckBoxListGeneros.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PaginasMaestras/Base.Master" AutoEventWireup="true" CodeBehind="default.aspx.cs" Inherits="Pelisfran.peliculas._default" %>
 
 <%@ Register Src="~/Controles/CheckBoxLists/CheckBoxListGeneros.ascx" TagPrefix="controles" TagName="checkboxListGeneros" %>
+<%@ Register Src="~/Controles/Busqueda/TextSearch.ascx" TagPrefix="controles" TagName="textSearch" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -9,18 +10,11 @@
 
     <controles:checkboxListGeneros ID="generos" runat="server" />
 
-    <div class="field is-grouped">
-        <div class="control is-expanded">
-            <asp:TextBox ID="tbBusqueda" runat="server" placeholder="Buscar Pelicula..." CssClass="input"></asp:TextBox>
-        </div>
-        <div class="control">
-            <asp:Button ID="btnBuscar" runat="server" Text="Buscar" OnClick="btnBuscar_Click" CssClass="button is-info" />
-        </div>
-    </div>
+    <controles:textSearch ID="tsBusqueda" runat="server" Placeholder="Buscar pelicula..." OnBuscar="tsBusqueda_Buscar" />
 
     <asp:UpdatePanel ID="upPeliculas" runat="server" UpdateMode="Conditional">
         <Triggers>
-            <asp:AsyncPostBackTrigger ControlID="btnBuscar" />
+            <asp:AsyncPostBackTrigger ControlID="tsBusqueda" />
         </Triggers>
         <ContentTemplate>
             <div class="mt-6">

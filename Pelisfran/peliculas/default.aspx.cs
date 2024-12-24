@@ -20,12 +20,12 @@ namespace Pelisfran.peliculas
 
                 pPeliculasNoEncontradas.InnerText = string.Empty;
 
-                bool hayTextoDeBusqueda = !string.IsNullOrEmpty(tbBusqueda.Text);
+                bool hayTextoDeBusqueda = !string.IsNullOrEmpty(tsBusqueda.Text);
                 bool hayGenerosSeleccionados = idsGenerosSeleccionados.Any();
 
                 if (hayTextoDeBusqueda && !hayGenerosSeleccionados)
                 {
-                    peliculas = peliculas.Where(item => item.Titulo.Contains(tbBusqueda.Text));
+                    peliculas = peliculas.Where(item => item.Titulo.Contains(tsBusqueda.Text));
                 }
                 else if (!hayTextoDeBusqueda && hayGenerosSeleccionados)
                 {
@@ -35,12 +35,12 @@ namespace Pelisfran.peliculas
                 else if (hayTextoDeBusqueda && hayGenerosSeleccionados)
                 {
                     peliculas = peliculas.Include("GenerosPeliculas");
-                    peliculas = peliculas.Where(item => item.Titulo.Contains(tbBusqueda.Text)).Where(p => p.GenerosPeliculas.Any(g => idsGenerosSeleccionados.Contains(g.GeneroId)));
+                    peliculas = peliculas.Where(item => item.Titulo.Contains(tsBusqueda.Text)).Where(p => p.GenerosPeliculas.Any(g => idsGenerosSeleccionados.Contains(g.GeneroId)));
                 }
 
                 if (peliculas.Count() == 0)
                 {
-                    pPeliculasNoEncontradas.InnerText = $"No se encontraron peliculas con el titulo {tbBusqueda.Text}";
+                    pPeliculasNoEncontradas.InnerText = $"No se encontraron peliculas con el titulo {tsBusqueda.Text}";
                 }
             }
 
@@ -72,19 +72,19 @@ namespace Pelisfran.peliculas
             Response.Redirect($"~/peliculas/ver.aspx?id={peliculaId}", false);
         }
 
-        protected void btnBuscar_Click(object sender, EventArgs e)
+        protected void tsBusqueda_Buscar(object sender, string e)
         {
             pPeliculasNoEncontradas.InnerText = string.Empty;
 
             var peliculas = _db.Peliculas.AsQueryable().Include("PortadaPelicula");
             var idsGenerosSeleccionados = generos.ObtenerIDsGenerosSeleccionados();
 
-            bool hayTextoDeBusqueda = !string.IsNullOrEmpty(tbBusqueda.Text);
+            bool hayTextoDeBusqueda = !string.IsNullOrEmpty(tsBusqueda.Text);
             bool hayGenerosSeleccionados = idsGenerosSeleccionados.Any();
 
             if (hayTextoDeBusqueda && !hayGenerosSeleccionados)
             {
-                peliculas = peliculas.Where(item => item.Titulo.Contains(tbBusqueda.Text));
+                peliculas = peliculas.Where(item => item.Titulo.Contains(tsBusqueda.Text));
             }
             else if (!hayTextoDeBusqueda && hayGenerosSeleccionados)
             {
@@ -94,12 +94,12 @@ namespace Pelisfran.peliculas
             else if (hayTextoDeBusqueda && hayGenerosSeleccionados)
             {
                 peliculas = peliculas.Include("GenerosPeliculas");
-                peliculas = peliculas.Where(item => item.Titulo.Contains(tbBusqueda.Text)).Where(p => p.GenerosPeliculas.Any(g => idsGenerosSeleccionados.Contains(g.GeneroId)));
+                peliculas = peliculas.Where(item => item.Titulo.Contains(tsBusqueda.Text)).Where(p => p.GenerosPeliculas.Any(g => idsGenerosSeleccionados.Contains(g.GeneroId)));
             }
 
             if (peliculas.Count() == 0)
             {
-                pPeliculasNoEncontradas.InnerText = $"No se encontraron peliculas con el titulo {tbBusqueda.Text}";
+                pPeliculasNoEncontradas.InnerText = $"No se encontraron peliculas con el titulo {tsBusqueda.Text}";
             }
 
             repPeliculas.DataSource = peliculas.ToList();
