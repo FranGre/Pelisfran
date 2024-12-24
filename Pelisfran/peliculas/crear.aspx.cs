@@ -1,9 +1,11 @@
 ﻿using Pelisfran.Contexto;
+using Pelisfran.Enums;
 using Pelisfran.Modelos;
 using Pelisfran.Servicios;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -20,6 +22,16 @@ namespace Pelisfran.peliculas
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            Guid idUser = Guid.Parse(HttpContext.Current.User.Identity.Name);
+            Usuario usuario = _db.Usuarios.Where(u => u.Id == idUser).FirstOrDefault();
+            bool esAdmin = (TipoRolesEnum)usuario.RolId == TipoRolesEnum.Administrador;
+
+            if (!esAdmin)
+            {
+                Response.Redirect("~/peliculas/default.aspx", true);
+                return;
+            }
+
             if (!Page.IsPostBack)
             {
                 rangeFechaLanzamiento.MinimumValue = DateTime.Now.AddYears(-100).ToShortDateString();
