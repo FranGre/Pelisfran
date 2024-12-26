@@ -15,6 +15,11 @@ namespace Pelisfran.Controles.Busqueda
             if (!Page.IsPostBack)
             {
                 tbBusqueda.Attributes["placeholder"] = Placeholder;
+                return;
+            }
+            else
+            {
+                Text = tbBusqueda.Text.Trim();
             }
         }
 

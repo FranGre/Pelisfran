@@ -2,6 +2,7 @@
 
 <%@ Register Src="~/Controles/CheckBoxLists/CheckBoxListGeneros.ascx" TagPrefix="controles" TagName="checkboxListGeneros" %>
 <%@ Register Src="~/Controles/Busqueda/TextSearch.ascx" TagPrefix="controles" TagName="textSearch" %>
+<%@ Register Src="~/Controles/Peliculas/Peliculas.ascx" TagPrefix="controles" TagName="peliculas" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -17,30 +18,7 @@
             <asp:AsyncPostBackTrigger ControlID="tsBusqueda" />
         </Triggers>
         <ContentTemplate>
-            <div class="mt-6">
-                <p id="pPeliculasNoEncontradas" runat="server"></p>
-                <div class="columns is-multiline">
-                    <asp:Repeater ID="repPeliculas" runat="server" OnItemDataBound="repPeliculas_ItemDataBound">
-                        <ItemTemplate>
-                            <div class="column is-6-mobile is-4-tablet is-2-desktop">
-                                <asp:LinkButton ID="btnVer" runat="server" Text="Ver" OnClick="btnVer_Click">
-                                    <div class="card">
-                                        <div class="card-image">
-                                            <asp:Image ID="portada" runat="server" CssClass="image is-3by5" />
-                                        </div>
-
-                                        <div class="card-content">
-                                            <div class="content">
-                                                <asp:Label ID="titulo" runat="server" CssClass="is-flex is-justify-content-center"></asp:Label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </asp:LinkButton>
-                            </div>
-                        </ItemTemplate>
-                    </asp:Repeater>
-                </div>
-            </div>
+            <controles:peliculas ID="ucPeliculas" runat="server" />
         </ContentTemplate>
     </asp:UpdatePanel>
 </asp:Content>
