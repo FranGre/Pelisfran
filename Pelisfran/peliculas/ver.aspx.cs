@@ -39,6 +39,12 @@ namespace Pelisfran.peliculas
                 descripcion.InnerText = pelicula.SinopsisBreve;
                 hfId.Value = pelicula.Id.ToString();
 
+                var item = _db.Peliculas.Include("ComentarioPeliculas").Include("PeliculasLikes").Where(p => p.Id == peliculaId).FirstOrDefault();
+
+                visitas.InnerText = "123";
+                likes.InnerText = item.PeliculasLikes.Count().ToString() ?? "0";
+                estadisticaComentarios.InnerText = item.ComentarioPeliculas.Count().ToString() ?? "0";
+
                 Guid usuarioId = string.IsNullOrEmpty(HttpContext.Current.User.Identity.Name) ? Guid.Empty : Guid.Parse(HttpContext.Current.User.Identity.Name);
 
                 string textoBtnFavorito = "Anadir a Favoritos";
@@ -88,6 +94,7 @@ namespace Pelisfran.peliculas
             };
             _peliculaFavoritaServicio.MarcarPeliculaComoFavorita(peliculaFavorita);
             ActualizarPanelUpBotonFavorito("Eliminar de Favoritos");
+            upEstadisticas.Update();
         }
 
         private void ActualizarPanelUpBotonFavorito(string mensaje)
@@ -127,6 +134,9 @@ namespace Pelisfran.peliculas
             repComentarios.DataSource = comentarios;
             repComentarios.DataBind();
             upComentarios.Update();
+
+            estadisticaComentarios.InnerText = comentarios.Count().ToString();
+            upEstadisticas.Update();
         }
 
         protected void repComentarios_ItemDataBound(object sender, RepeaterItemEventArgs e)
@@ -167,6 +177,8 @@ namespace Pelisfran.peliculas
             _db.SaveChanges();
             btnLike.Text = $"{_db.PeliculasLikes.Where(pl => pl.PeliculaId == peliculaId).Count().ToString()} likes";
             upLikes.Update();
+            likes.InnerText = $"{_db.PeliculasLikes.Where(pl => pl.PeliculaId == peliculaId).Count().ToString()}";
+            upEstadisticas.Update();
         }
 
         private void RedirigirAlLogin()
