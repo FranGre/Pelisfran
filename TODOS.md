@@ -2,7 +2,9 @@
 - refactorizar likes sobre peliculas, situado en peliculas/ver.aspx
 - peliculas/default.aspx paginado
 - peliculas/default.aspx al mostrar las pelis estilar
-- crear control peliculas
+- estilar peliuclas/ver.aspx
+- crear controles de usuario: estadisticas, comentarios
+- crear calculadora de fechas para los comentarios: hoy, ayer, hace 3 dias ..... hace 1 mes, hace 2 meses.... hace un anyo.....
 - al subir la portada de una peli, debe tener un ancho maximo y una altura maxima, para que cuadre con todo
 - pagina de mis peliculas favoritas
 - pagina de mis peliculas vistas
