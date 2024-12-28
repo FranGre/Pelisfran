@@ -1,4 +1,5 @@
 ﻿using Pelisfran.Contexto;
+using Pelisfran.Helpers;
 using Pelisfran.Modelos;
 using Pelisfran.Servicios;
 using System;
@@ -150,7 +151,7 @@ namespace Pelisfran.peliculas
             ComentarioPelicula comentarioPelicula = (ComentarioPelicula)repeaterItem.DataItem;
 
             nombre.InnerText = comentarioPelicula.Usuario.NombreUsuario;
-            fecha.InnerText = comentarioPelicula.FechaCreacion.ToShortDateString();
+            fecha.InnerText = HelperFecha.ObtenerTiempoTranscurrido(comentarioPelicula.FechaCreacion);
             comentario.InnerText = comentarioPelicula.Comentario;
         }
 

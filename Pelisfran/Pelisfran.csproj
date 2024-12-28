@@ -156,6 +156,7 @@
     <Compile Include="Handlers\HttpHandlerVideoTemporal.ashx.cs">
       <DependentUpon>HttpHandlerVideoTemporal.ashx</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\HelperFecha.cs" />
     <Compile Include="login.aspx.cs">
       <DependentUpon>login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
