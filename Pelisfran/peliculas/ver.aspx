@@ -50,11 +50,13 @@
         </ContentTemplate>
     </asp:UpdatePanel>
 
+    <h3>aqui va la peli</h3>
+
     <asp:UpdatePanel ID="upFormComentario" runat="server" UpdateMode="Conditional">
         <ContentTemplate>
             <div class="field">
                 <div class="control">
-                    <asp:TextBox ID="tbComentario" runat="server" TextMode="MultiLine" CssClass="textarea" Rows="5" />
+                    <asp:TextBox ID="tbComentario" runat="server" TextMode="MultiLine" CssClass="textarea" Rows="5" placeholder="Escribir comentario..." />
                     <asp:Button ID="btnGuardarComentario" runat="server" Text="Comentar" OnClick="btnGuardarComentario_Click" CssClass="button is-success mt-4" />
                 </div>
             </div>
@@ -62,17 +64,22 @@
     </asp:UpdatePanel>
     <asp:UpdatePanel ID="upComentarios" runat="server" UpdateMode="Conditional">
         <ContentTemplate>
-            <asp:Repeater ID="repComentarios" runat="server" OnItemDataBound="repComentarios_ItemDataBound">
-                <ItemTemplate>
-                    <div>
-                        <div>
-                            <small id="nombre" runat="server"></small>
-                            <small id="fecha" runat="server"></small>
+            <div class="mt-5">
+                <asp:Repeater ID="repComentarios" runat="server" OnItemDataBound="repComentarios_ItemDataBound">
+                    <ItemTemplate>
+                        <div class="mb-4">
+                            <div class="flex is-display-flex">
+                                <div class="is-display-flex">
+                                    <asp:Image ID="fotoPerfil" runat="server" CssClass="image is-rounded is-16x16" ImageUrl="https://bulma.io/assets/images/placeholders/128x128.png" />
+                                    <small id="nombre" runat="server" class="ml-1"></small>
+                                </div>
+                                <small id="fecha" runat="server" class="ml-6"></small>
+                            </div>
+                            <p id="comentario" runat="server" class="ml-1"></p>
                         </div>
-                        <p id="comentario" runat="server"></p>
-                    </div>
-                </ItemTemplate>
-            </asp:Repeater>
+                    </ItemTemplate>
+                </asp:Repeater>
+            </div>
         </ContentTemplate>
     </asp:UpdatePanel>
 
