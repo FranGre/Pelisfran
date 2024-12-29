@@ -87,6 +87,15 @@ namespace Pelisfran.peliculas
         protected global::System.Web.UI.WebControls.Button btnLike;
 
         /// <summary>
+        /// Control likeIcono.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl likeIcono;
+
+        /// <summary>
         /// Control hfId.
         /// </summary>
         /// <remarks>
@@ -112,6 +121,15 @@ namespace Pelisfran.peliculas
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnFavorito;
+
+        /// <summary>
+        /// Control favoritoIcono.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl favoritoIcono;
 
         /// <summary>
         /// Control upFormComentario.

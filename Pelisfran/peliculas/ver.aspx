@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PaginasMaestras/Base.Master" AutoEventWireup="true" CodeBehind="ver.aspx.cs" Inherits="Pelisfran.peliculas.ver" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
     <h2 id="titulo" runat="server" class="title is-2 mb-6 is-flex is-justify-content-center">Peliculas</h2>
@@ -37,6 +38,7 @@
     <asp:UpdatePanel ID="upLikes" runat="server" UpdateMode="Conditional">
         <ContentTemplate>
             <asp:Button ID="btnLike" runat="server" OnClick="btnLike_Click" />
+            <i id="likeIcono" runat="server"></i>
         </ContentTemplate>
     </asp:UpdatePanel>
     <asp:HiddenField ID="hfId" runat="server" />
@@ -44,6 +46,7 @@
     <asp:UpdatePanel ID="upBotonFavorito" runat="server" UpdateMode="Conditional">
         <ContentTemplate>
             <asp:Button ID="btnFavorito" runat="server" OnClick="btnFavorito_Click" />
+            <i id="favoritoIcono" runat="server"></i>
         </ContentTemplate>
     </asp:UpdatePanel>
 
