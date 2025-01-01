@@ -3,6 +3,7 @@ using Pelisfran.Helpers;
 using Pelisfran.Modelos;
 using Pelisfran.Servicios;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -11,7 +12,7 @@ using System.Web.UI.WebControls;
 
 namespace Pelisfran.peliculas
 {
-    public partial class ver : System.Web.UI.Page
+    public partial class ver : Page
     {
         private PeliculaServicio _peliculaServicio = new PeliculaServicio();
         private PeliculaFavoritaServicio _peliculaFavoritaServicio = new PeliculaFavoritaServicio();
@@ -59,21 +60,19 @@ namespace Pelisfran.peliculas
                 favoritoIcono.Attributes["class"] = iconoFav;
                 ActualizarPanelUpBotonFavorito(textoBtnFavorito);
 
-                string iconoLike = "fa-regular fa-thumbs-up";
-                if(_db.PeliculasLikes.Where(p => p.PeliculaId == pelicula.Id && p.UsuarioId == usuarioId).FirstOrDefault() != null)
+                botonLike.DesactivarLike();
+                if (_db.PeliculasLikes.Where(p => p.PeliculaId == pelicula.Id && p.UsuarioId == usuarioId).FirstOrDefault() != null)
                 {
-                    iconoLike = "fa-solid fa-thumbs-up";
+                    botonLike.ActivarLike();
                 }
-                likeIcono.Attributes["class"] = iconoLike;
                 upLikes.Update();
 
 
                 if (_db.ComentariosPeliculas.Where(c => c.PeliculaId == peliculaId).Any())
                 {
                     // REF
-                    var comentarios = _db.ComentariosPeliculas.Where(c => c.PeliculaId == peliculaId).OrderByDescending(c => c.FechaCreacion).Take(5).ToList();
-                    repComentarios.DataSource = comentarios;
-                    repComentarios.DataBind();
+                    var comentarios = ObtenerComentarios();
+                    BindearComentarios(comentarios);
                 }
             }
         }
@@ -147,17 +146,42 @@ namespace Pelisfran.peliculas
             // REF
             Guid peliculaId = Guid.Parse(Request.QueryString["id"]);
             var comentarios = _db.ComentariosPeliculas.Include("Usuario").Where(c => c.PeliculaId == peliculaId).OrderByDescending(c => c.FechaCreacion).Take(5).ToList();
-            repComentarios.DataSource = comentarios;
-            repComentarios.DataBind();
+            lvComentarios.DataSource = comentarios;
+            lvComentarios.DataBind();
             upComentarios.Update();
 
             estadisticaComentarios.InnerText = comentarios.Count().ToString();
             upEstadisticas.Update();
         }
 
-        protected void repComentarios_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        private void RedirigirAlLogin()
         {
-            RepeaterItem repeaterItem = e.Item;
+            Response.Redirect("login.aspx", false);
+        }
+
+        private List<ComentarioPelicula> ObtenerComentarios()
+        {
+            return _db.ComentariosPeliculas.OrderByDescending(c => c.FechaCreacion).ToList();
+        }
+
+        private void BindearComentarios(List<ComentarioPelicula> comentarios)
+        {
+            lvComentarios.DataSource = comentarios;
+            lvComentarios.DataBind();
+        }
+
+        protected void lvComentarios_PagePropertiesChanging(object sender, PagePropertiesChangingEventArgs e)
+        {
+            DataPager dpComentarios = (DataPager)lvComentarios.FindControl("dpComentarios");
+            dpComentarios.SetPageProperties(e.StartRowIndex, e.MaximumRows, false);
+
+            var comentarios = ObtenerComentarios();
+            BindearComentarios(comentarios);
+        }
+
+        protected void lvComentarios_ItemDataBound(object sender, ListViewItemEventArgs e)
+        {
+            ListViewItem repeaterItem = e.Item;
 
             HtmlGenericControl nombre = (HtmlGenericControl)repeaterItem.FindControl("nombre");
             HtmlGenericControl fecha = (HtmlGenericControl)repeaterItem.FindControl("fecha");
@@ -170,7 +194,7 @@ namespace Pelisfran.peliculas
             comentario.InnerText = comentarioPelicula.Comentario;
         }
 
-        protected void btnLike_Click(object sender, EventArgs e)
+        protected void botonLike_Click(object sender, EventArgs e)
         {
             if (!_autenticacionServicio.EstaUsuarioAutenticado())
             {
@@ -181,32 +205,23 @@ namespace Pelisfran.peliculas
             Guid usuarioId = Guid.Parse(HttpContext.Current.User.Identity.Name);
             Guid peliculaId = Guid.Parse(Request.QueryString["id"]);
             PeliculaLike peliculaLike = _db.PeliculasLikes.Where(pl => pl.UsuarioId == usuarioId && pl.PeliculaId == peliculaId).FirstOrDefault();
-            string iconoLike =string.Empty;
+
             if (peliculaLike != null)
             {
-                iconoLike = "fa-regular fa-thumbs-up";
-
                 _db.PeliculasLikes.Remove(peliculaLike);
+                botonLike.DesactivarLike();
             }
             else
             {
-                iconoLike = "fa-solid fa-thumbs-up";
-
                 peliculaLike = new PeliculaLike { Id = Guid.NewGuid(), CreadoEn = DateTime.Now, PeliculaId = peliculaId, UsuarioId = usuarioId };
                 _db.PeliculasLikes.Add(peliculaLike);
+                botonLike.ActivarLike();
             }
             _db.SaveChanges();
-            btnLike.Text = $"{_db.PeliculasLikes.Where(pl => pl.PeliculaId == peliculaId).Count().ToString()} likes";
-
-            likeIcono.Attributes["class"] = iconoLike;
             upLikes.Update();
+
             likes.InnerText = $"{_db.PeliculasLikes.Where(pl => pl.PeliculaId == peliculaId).Count().ToString()}";
             upEstadisticas.Update();
-        }
-
-        private void RedirigirAlLogin()
-        {
-            Response.Redirect("login.aspx", false);
         }
     }
 }

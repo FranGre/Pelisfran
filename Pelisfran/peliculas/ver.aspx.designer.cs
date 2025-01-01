@@ -78,22 +78,13 @@ namespace Pelisfran.peliculas
         protected global::System.Web.UI.UpdatePanel upLikes;
 
         /// <summary>
-        /// Control btnLike.
+        /// Control botonLike.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnLike;
-
-        /// <summary>
-        /// Control likeIcono.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl likeIcono;
+        protected global::Pelisfran.Controles.Botones.BotonLike botonLike;
 
         /// <summary>
         /// Control hfId.
@@ -168,12 +159,12 @@ namespace Pelisfran.peliculas
         protected global::System.Web.UI.UpdatePanel upComentarios;
 
         /// <summary>
-        /// Control repComentarios.
+        /// Control lvComentarios.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater repComentarios;
+        protected global::System.Web.UI.WebControls.ListView lvComentarios;
     }
 }

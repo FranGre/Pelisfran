@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PaginasMaestras/Base.Master" AutoEventWireup="true" CodeBehind="ver.aspx.cs" Inherits="Pelisfran.peliculas.ver" %>
 
+<%@ Register Src="~/Controles/Botones/BotonLike.ascx" TagPrefix="controles" TagName="botonlike" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </asp:Content>
@@ -37,8 +39,7 @@
 
     <asp:UpdatePanel ID="upLikes" runat="server" UpdateMode="Conditional">
         <ContentTemplate>
-            <asp:Button ID="btnLike" runat="server" OnClick="btnLike_Click" />
-            <i id="likeIcono" runat="server"></i>
+            <controles:botonlike ID="botonLike" runat="server" OnClick="botonLike_Click" />
         </ContentTemplate>
     </asp:UpdatePanel>
     <asp:HiddenField ID="hfId" runat="server" />
@@ -65,7 +66,10 @@
     <asp:UpdatePanel ID="upComentarios" runat="server" UpdateMode="Conditional">
         <ContentTemplate>
             <div class="mt-5">
-                <asp:Repeater ID="repComentarios" runat="server" OnItemDataBound="repComentarios_ItemDataBound">
+                <asp:ListView ID="lvComentarios" runat="server" OnPagePropertiesChanging="lvComentarios_PagePropertiesChanging" OnItemDataBound="lvComentarios_ItemDataBound">
+
+                    <EmptyDataTemplate>No hay comentarios</EmptyDataTemplate>
+
                     <ItemTemplate>
                         <div class="mb-4">
                             <div class="flex is-display-flex">
@@ -78,7 +82,17 @@
                             <p id="comentario" runat="server" class="ml-1"></p>
                         </div>
                     </ItemTemplate>
-                </asp:Repeater>
+
+                    <LayoutTemplate>
+                        <asp:PlaceHolder ID="itemPlaceHolder" runat="server"></asp:PlaceHolder>
+                        <asp:DataPager ID="dpComentarios" runat="server" PagedControlID="lvComentarios" PageSize="2">
+                            <Fields>
+                                <asp:NumericPagerField ButtonType="Button" />
+                            </Fields>
+                        </asp:DataPager>
+                    </LayoutTemplate>
+
+                </asp:ListView>
             </div>
         </ContentTemplate>
     </asp:UpdatePanel>
