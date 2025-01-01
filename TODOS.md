@@ -7,5 +7,4 @@
 - pagina de mis peliculas vistas
     - ambas paginas deben poder permite filtrar por nombre, generos etc...
 - crear pagina mis peliculas favoritas
-- generos/crear.aspx
 - peliculas/crear.aspx

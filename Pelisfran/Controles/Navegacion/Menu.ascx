@@ -1,5 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Menu.ascx.cs" Inherits="Pelisfran.Controles.Navegacion.Menu" %>
 
+<%@ Register Src="~/Controles/Botones/BotonCerrarSesion.ascx" TagPrefix="controles" TagName="botoncerrarsesion" %>
+
 <nav class="navbar mb-3" role="navigation" aria-label="main navigation">
     <div class="navbar-menu">
         <div class="navbar-start">
@@ -14,7 +16,7 @@
                     <ContentTemplate>
                         <asp:Button ID="btnRegistrarse" runat="server" Text="Registrarse" CssClass="button is-light" OnClick="btnRegistrarse_Click" />
                         <asp:Button ID="btnIniciarSesion" runat="server" Text="Login" CssClass="button is-primary" OnClick="btnIniciarSesion_Click" />
-                        <asp:Button ID="btnCerrarSesion" runat="server" Text="Cerrar Sesion" CssClass="button is-danger" OnClick="btnCerrarSesion_Click" />
+                        <controles:botoncerrarsesion ID="botonCerrarSesion" runat="server" OnClick="botonCerrarSesion_Click" />
                     </ContentTemplate>
                 </asp:UpdatePanel>
             </div>

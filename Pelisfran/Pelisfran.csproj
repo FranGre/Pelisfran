@@ -77,6 +77,7 @@
     <Content Include="autenticado.aspx" />
     <Content Include="Content\Bulma\bulma.min.css" />
     <Content Include="Content\FilePond\filepond.css" />
+    <Content Include="Controles\Botones\BotonCerrarSesion.ascx" />
     <Content Include="Controles\Botones\BotonFavorito.ascx" />
     <Content Include="Controles\Botones\BotonLike.ascx" />
     <Content Include="Controles\Busqueda\TextSearch.ascx" />
@@ -109,6 +110,13 @@
       <DependentUpon>autenticado.aspx</DependentUpon>
     </Compile>
     <Compile Include="Contexto\PelisFranDBContexto.cs" />
+    <Compile Include="Controles\Botones\BotonCerrarSesion.ascx.cs">
+      <DependentUpon>BotonCerrarSesion.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controles\Botones\BotonCerrarSesion.ascx.designer.cs">
+      <DependentUpon>BotonCerrarSesion.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Controles\Botones\BotonFavorito.ascx.cs">
       <DependentUpon>BotonFavorito.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

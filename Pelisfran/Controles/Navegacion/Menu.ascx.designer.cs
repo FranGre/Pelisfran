@@ -69,12 +69,12 @@ namespace Pelisfran.Controles.Navegacion
         protected global::System.Web.UI.WebControls.Button btnIniciarSesion;
 
         /// <summary>
-        /// Control btnCerrarSesion.
+        /// Control botonCerrarSesion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCerrarSesion;
+        protected global::Pelisfran.Controles.Botones.BotonCerrarSesion botonCerrarSesion;
     }
 }

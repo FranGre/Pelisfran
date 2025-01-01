@@ -13,11 +13,11 @@ namespace Pelisfran.Controles.Navegacion
         {
             btnRegistrarse.Visible = false;
             btnIniciarSesion.Visible = false;
-            btnCerrarSesion.Visible = false;
+            botonCerrarSesion.Visible = false;
 
             if (_autenticacionServicio.EstaUsuarioAutenticado())
             {
-                btnCerrarSesion.Visible = true;
+                botonCerrarSesion.Visible = true;
             }
             else
             {
@@ -53,7 +53,7 @@ namespace Pelisfran.Controles.Navegacion
             Response.Redirect("~/login.aspx");
         }
 
-        protected void btnCerrarSesion_Click(object sender, EventArgs e)
+        protected void botonCerrarSesion_Click(object sender, EventArgs e)
         {
             Session.Abandon();
             Request.Cookies.Clear();
