@@ -187,6 +187,7 @@
     <Compile Include="Modelos\SerieFavorita.cs" />
     <Compile Include="Modelos\GeneroSerie.cs" />
     <Compile Include="Modelos\Temporada.cs" />
+    <Compile Include="Modelos\VisitaPelicula.cs" />
     <Compile Include="PaginasMaestras\Base.Master.cs">
       <DependentUpon>Base.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -306,7 +307,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Uploads\Portadas\Peliculas\" />
+    <Folder Include="Uploads\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

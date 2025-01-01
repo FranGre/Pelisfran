@@ -1,7 +1,9 @@
-﻿using Pelisfran.Modelos;
+﻿using Pelisfran.Contexto;
+using Pelisfran.Modelos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -9,6 +11,7 @@ namespace Pelisfran.Controles.Peliculas
 {
     public partial class Peliculas : UserControl
     {
+        private PelisFranDBContexto _db = new PelisFranDBContexto();
         public List<Pelicula> peliculas { get; set; }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -53,6 +56,21 @@ namespace Pelisfran.Controles.Peliculas
         {
             var btn = (LinkButton)sender;
             var peliculaId = btn.CommandArgument;
+
+            VisitaPelicula visita = new VisitaPelicula
+            {
+                Id = Guid.NewGuid(),
+                FechaCreacion = DateTime.Now,
+                PeliculaId = Guid.Parse(peliculaId),
+            };
+
+            if (HttpContext.Current.User.Identity.IsAuthenticated)
+            {
+                visita.UsuarioId = Guid.Parse(HttpContext.Current.User.Identity.Name);
+            }
+
+            _db.VisitasPeliculas.Add(visita);
+            _db.SaveChanges();
 
             Response.Redirect($"~/peliculas/ver.aspx?id={peliculaId}", false);
         }

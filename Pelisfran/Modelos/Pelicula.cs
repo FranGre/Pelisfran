@@ -28,5 +28,6 @@ namespace Pelisfran.Modelos
         public ICollection<PeliculaFavorita> PeliculaFavoritas { get; set; }
         public ICollection<ComentarioPelicula> ComentarioPeliculas { get; set; }
         public ICollection<PeliculaLike> PeliculasLikes { get; set; }
+        public ICollection<VisitaPelicula> VisitasPeliculas { get; set; }
     }
 }

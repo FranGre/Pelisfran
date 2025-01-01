@@ -29,7 +29,6 @@ namespace Pelisfran.Controles.Navegacion
 
         protected void lbPelisFran_Click(object sender, EventArgs e)
         {
-            var goTo = Server.MapPath("~/default.aspx");
             Response.Redirect("~/default.aspx");
         }
 
@@ -45,12 +44,12 @@ namespace Pelisfran.Controles.Navegacion
 
         protected void btnRegistrarse_Click(object sender, EventArgs e)
         {
-            Response.Redirect("registrarse.aspx");
+            Response.Redirect("~/registrarse.aspx");
         }
 
         protected void btnIniciarSesion_Click(object sender, EventArgs e)
         {
-            Response.Redirect("login.aspx");
+            Response.Redirect("~/login.aspx");
         }
 
         protected void btnCerrarSesion_Click(object sender, EventArgs e)

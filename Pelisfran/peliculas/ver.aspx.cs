@@ -42,9 +42,9 @@ namespace Pelisfran.peliculas
                 descripcion.InnerText = pelicula.SinopsisBreve;
                 hfId.Value = pelicula.Id.ToString();
 
-                var item = _db.Peliculas.Include("ComentarioPeliculas").Include("PeliculasLikes").Where(p => p.Id == peliculaId).FirstOrDefault();
+                var item = _db.Peliculas.Include("ComentarioPeliculas").Include("PeliculasLikes").Include("VisitasPeliculas").Where(p => p.Id == peliculaId).FirstOrDefault();
 
-                visitas.InnerText = "123";
+                visitas.InnerText = item.VisitasPeliculas.Count().ToString() ?? "0";
                 likes.InnerText = item.PeliculasLikes.Count().ToString() ?? "0";
                 estadisticaComentarios.InnerText = item.ComentarioPeliculas.Count().ToString() ?? "0";
 

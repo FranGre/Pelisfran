@@ -21,6 +21,7 @@ namespace Pelisfran.Contexto
         public DbSet<SerieFavorita> SeriesFavoritas { get; set; }
         public DbSet<ComentarioPelicula> ComentariosPeliculas { get; set; }
         public DbSet<PeliculaLike> PeliculasLikes { get; set; }
+        public DbSet<VisitaPelicula> VisitasPeliculas { get; set; }
 
         public PelisFranDBContexto() : base(CrearConexion(), true) { }
 
