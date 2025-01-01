@@ -1,5 +1,6 @@
 ﻿using Pelisfran.Servicios;
 using System;
+using System.Web.Security;
 using System.Web.UI;
 
 namespace Pelisfran.Controles.Navegacion
@@ -54,7 +55,10 @@ namespace Pelisfran.Controles.Navegacion
 
         protected void btnCerrarSesion_Click(object sender, EventArgs e)
         {
-
+            Session.Abandon();
+            Request.Cookies.Clear();
+            FormsAuthentication.SignOut();
+            Response.Redirect("~/peliculas/default.aspx");
         }
     }
 }
