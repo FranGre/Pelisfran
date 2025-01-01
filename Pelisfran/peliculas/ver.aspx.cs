@@ -50,15 +50,12 @@ namespace Pelisfran.peliculas
 
                 Guid usuarioId = string.IsNullOrEmpty(HttpContext.Current.User.Identity.Name) ? Guid.Empty : Guid.Parse(HttpContext.Current.User.Identity.Name);
 
-                string textoBtnFavorito = "Anadir a Favoritos";
-                string iconoFav = "fa-regular fa-heart";
+                botonFavorito.DesactivarFavorito();
                 if (_peliculaFavoritaServicio.PeliculaEstaMarcadaComoFavorita(usuarioId, peliculaId))
                 {
-                    iconoFav = "fa-solid fa-heart";
-                    textoBtnFavorito = "Eliminar de Favoritos";
+                    botonFavorito.ActivarFavorito();
                 }
-                favoritoIcono.Attributes["class"] = iconoFav;
-                ActualizarPanelUpBotonFavorito(textoBtnFavorito);
+                upBotonFavorito.Update();
 
                 botonLike.DesactivarLike();
                 if (_db.PeliculasLikes.Where(p => p.PeliculaId == pelicula.Id && p.UsuarioId == usuarioId).FirstOrDefault() != null)
@@ -77,7 +74,7 @@ namespace Pelisfran.peliculas
             }
         }
 
-        protected void btnFavorito_Click(object sender, EventArgs e)
+        protected void botonFavorito_Click(object sender, EventArgs e)
         {
             if (!_autenticacionServicio.EstaUsuarioAutenticado())
             {
@@ -87,13 +84,11 @@ namespace Pelisfran.peliculas
 
             Guid peliculaId = Guid.Parse(hfId.Value);
             Guid usuarioId = Guid.Parse(HttpContext.Current.User.Identity.Name);
-            string iconoFav = string.Empty;
             if (_peliculaFavoritaServicio.PeliculaEstaMarcadaComoFavorita(usuarioId, peliculaId))
             {
                 _peliculaFavoritaServicio.DesmarcarPeliculaComoFavorita(usuarioId, peliculaId);
-                iconoFav = "fa-regular fa-heart";
-                favoritoIcono.Attributes["class"] = iconoFav;
-                ActualizarPanelUpBotonFavorito("Anadir a Favoritos");
+                botonFavorito.DesactivarFavorito();
+                upBotonFavorito.Update();
                 return;
             }
 
@@ -105,17 +100,10 @@ namespace Pelisfran.peliculas
                 PeliculaId = peliculaId
             };
             _peliculaFavoritaServicio.MarcarPeliculaComoFavorita(peliculaFavorita);
-            iconoFav = "fa-solid fa-heart";
-            favoritoIcono.Attributes["class"] = iconoFav;
+            botonFavorito.ActivarFavorito();
 
-            ActualizarPanelUpBotonFavorito("Eliminar de Favoritos");
-            upEstadisticas.Update();
-        }
-
-        private void ActualizarPanelUpBotonFavorito(string mensaje)
-        {
-            btnFavorito.Text = mensaje;
             upBotonFavorito.Update();
+            upEstadisticas.Update();
         }
 
         protected void btnGuardarComentario_Click(object sender, EventArgs e)

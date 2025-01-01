@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PaginasMaestras/Base.Master" AutoEventWireup="true" CodeBehind="ver.aspx.cs" Inherits="Pelisfran.peliculas.ver" %>
 
 <%@ Register Src="~/Controles/Botones/BotonLike.ascx" TagPrefix="controles" TagName="botonlike" %>
+<%@ Register Src="~/Controles/Botones/BotonFavorito.ascx" TagPrefix="controles" TagName="botonfavorito" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -46,8 +47,7 @@
 
     <asp:UpdatePanel ID="upBotonFavorito" runat="server" UpdateMode="Conditional">
         <ContentTemplate>
-            <asp:Button ID="btnFavorito" runat="server" OnClick="btnFavorito_Click" />
-            <i id="favoritoIcono" runat="server"></i>
+            <controles:botonfavorito ID="botonFavorito" runat="server" OnClick="botonFavorito_Click"/>
         </ContentTemplate>
     </asp:UpdatePanel>
 
