@@ -21,6 +21,7 @@ namespace Pelisfran.generos
             var usuarioAutenticado = HttpContext.Current.User.Identity;
 
             _generoServicio.CrearGenero(new Genero { Id = Guid.NewGuid(), UsuarioId = Guid.Parse(usuarioAutenticado.Name), Nombre = txtNombre.Text, CreadoEn = DateTime.Now });
+            txtNombre.Text = string.Empty;
         }
     }
 }
