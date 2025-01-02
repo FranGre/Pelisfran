@@ -8,3 +8,4 @@
     - ambas paginas deben poder permite filtrar por nombre, generos etc...
 - crear pagina mis peliculas favoritas
 - peliculas/crear.aspx
+- ampliar descripcion de peli a unos 600 carac

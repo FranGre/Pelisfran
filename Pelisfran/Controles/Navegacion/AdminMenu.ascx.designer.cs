@@ -7,65 +7,83 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace Pelisfran.PaginasMaestras
+namespace Pelisfran.Controles.Navegacion
 {
 
 
-    public partial class Base
+    public partial class AdminMenu
     {
 
         /// <summary>
-        /// Control head.
+        /// Control lbPelisFran.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
+        protected global::System.Web.UI.WebControls.LinkButton lbPelisFran;
 
         /// <summary>
-        /// Control form1.
+        /// Control lkPeliculas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.LinkButton lkPeliculas;
 
         /// <summary>
-        /// Control sm.
+        /// Control lkSeries.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager sm;
+        protected global::System.Web.UI.WebControls.LinkButton lkSeries;
 
         /// <summary>
-        /// Control menu.
+        /// Control lkAdmin.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Pelisfran.Controles.Navegacion.Menu menu;
+        protected global::System.Web.UI.WebControls.LinkButton lkAdmin;
 
         /// <summary>
-        /// Control adminmenu.
+        /// Control upBotonesMenu.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Pelisfran.Controles.Navegacion.AdminMenu adminmenu;
+        protected global::System.Web.UI.UpdatePanel upBotonesMenu;
 
         /// <summary>
-        /// Control body.
+        /// Control btnRegistrarse.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder body;
+        protected global::System.Web.UI.WebControls.Button btnRegistrarse;
+
+        /// <summary>
+        /// Control btnIniciarSesion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnIniciarSesion;
+
+        /// <summary>
+        /// Control botonCerrarSesion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Pelisfran.Controles.Botones.BotonCerrarSesion botonCerrarSesion;
     }
 }

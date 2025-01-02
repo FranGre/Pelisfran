@@ -1,6 +1,7 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Base.master.cs" Inherits="Pelisfran.PaginasMaestras.Base" %>
 
 <%@ Register Src="~/Controles/Navegacion/Menu.ascx" TagPrefix="controles" TagName="menu" %>
+<%@ Register Src="~/Controles/Navegacion/AdminMenu.ascx" TagPrefix="controles" TagName="adminmenu" %>
 
 <!DOCTYPE html>
 
@@ -19,6 +20,8 @@
 
         <div class="py-5 px-6">
             <controles:menu ID="menu" runat="server" />
+            <controles:adminmenu ID="adminmenu" runat="server" />
+
             <asp:ContentPlaceHolder ID="body" runat="server">
             </asp:ContentPlaceHolder>
         </div>
