@@ -75,6 +75,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="admin\default.aspx" />
+    <Content Include="admin\generos\crear.aspx" />
+    <Content Include="admin\generos\default.aspx" />
     <Content Include="autenticado.aspx" />
     <Content Include="Content\Bulma\bulma.min.css" />
     <Content Include="Content\FilePond\filepond.css" />
@@ -83,13 +85,13 @@
     <Content Include="Controles\Botones\BotonLike.ascx" />
     <Content Include="Controles\Busqueda\TextSearch.ascx" />
     <Content Include="Controles\CheckBoxLists\CheckBoxListGeneros.ascx" />
+    <Content Include="Controles\Modales\ModalConfirmar.ascx" />
     <Content Include="Controles\Navegacion\AdminMenu.ascx" />
     <Content Include="Controles\Navegacion\Menu.ascx" />
     <Content Include="Controles\Peliculas\Peliculas.ascx" />
     <Content Include="Scripts\FilePond\plugins\filepond-plugin-file-validate-size.js" />
     <Content Include="Scripts\FilePond\plugins\filepond-plugin-file-validate-type.js" />
     <Content Include="default.aspx" />
-    <Content Include="generos\crear.aspx" />
     <Content Include="login.aspx" />
     <Content Include="peliculas\crear.aspx" />
     <Content Include="peliculas\default.aspx" />
@@ -109,6 +111,20 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="admin\default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\generos\crear.aspx.cs">
+      <DependentUpon>crear.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\generos\crear.aspx.designer.cs">
+      <DependentUpon>crear.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\generos\default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\generos\default.aspx.designer.cs">
       <DependentUpon>default.aspx</DependentUpon>
     </Compile>
     <Compile Include="autenticado.aspx.cs">
@@ -154,6 +170,13 @@
     <Compile Include="Controles\CheckBoxLists\CheckBoxListGeneros.ascx.designer.cs">
       <DependentUpon>CheckBoxListGeneros.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Controles\Modales\ModalConfirmar.ascx.cs">
+      <DependentUpon>ModalConfirmar.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controles\Modales\ModalConfirmar.ascx.designer.cs">
+      <DependentUpon>ModalConfirmar.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Controles\Navegacion\AdminMenu.ascx.cs">
       <DependentUpon>AdminMenu.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -183,13 +206,6 @@
       <DependentUpon>default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Enums\TipoRolesEnum.cs" />
-    <Compile Include="generos\crear.aspx.cs">
-      <DependentUpon>crear.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="generos\crear.aspx.designer.cs">
-      <DependentUpon>crear.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Handlers\HttpHandlerImagenTemporal.ashx.cs">
       <DependentUpon>HttpHandlerImagenTemporal.ashx</DependentUpon>
     </Compile>
@@ -331,6 +347,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="generos\" />
     <Folder Include="Uploads\" />
   </ItemGroup>
   <PropertyGroup>

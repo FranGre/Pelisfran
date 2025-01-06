@@ -18,7 +18,7 @@ namespace Pelisfran.admin
 
         protected void lbGeneros_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("~/admin/generos/default.aspx");
         }
 
         protected void lbPeliculas_Click(object sender, EventArgs e)
