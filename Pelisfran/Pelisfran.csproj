@@ -78,6 +78,7 @@
     <Content Include="admin\generos\crear.aspx" />
     <Content Include="admin\generos\default.aspx" />
     <Content Include="admin\generos\editar.aspx" />
+    <Content Include="admin\peliculas\default.aspx" />
     <Content Include="autenticado.aspx" />
     <Content Include="Content\Bulma\bulma.min.css" />
     <Content Include="Content\FilePond\filepond.css" />
@@ -134,6 +135,13 @@
     </Compile>
     <Compile Include="admin\generos\editar.aspx.designer.cs">
       <DependentUpon>editar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\peliculas\default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\peliculas\default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
     </Compile>
     <Compile Include="autenticado.aspx.cs">
       <DependentUpon>autenticado.aspx</DependentUpon>

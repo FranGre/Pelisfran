@@ -7,7 +7,6 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
     <h2 id="titulo" runat="server" class="title is-2 mb-6 is-flex is-justify-content-center">Generos</h2>
 
-
     <asp:Button ID="btnCrearGenero" runat="server" Text="Crear Genero" OnClick="btnCrearGenero_Click" CssClass="button is-success" />
 
     <asp:UpdatePanel ID="upGeneros" runat="server" UpdateMode="Conditional">

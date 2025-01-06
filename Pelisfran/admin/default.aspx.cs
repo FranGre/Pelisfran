@@ -23,7 +23,7 @@ namespace Pelisfran.admin
 
         protected void lbPeliculas_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("~/admin/peliculas/default.aspx");
         }
 
         protected void lbUsuarios_Click(object sender, EventArgs e)
