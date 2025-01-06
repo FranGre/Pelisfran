@@ -48,5 +48,13 @@ namespace Pelisfran.admin.generos
             gvGeneros.DataBind();
             upGeneros.Update();
         }
+
+        protected void btnEditar_Click(object sender, EventArgs e)
+        {
+            var btnEditar = (Button)sender;
+            var id = btnEditar.CommandArgument;
+
+            Response.Redirect($"~/admin/generos/editar.aspx?id={id}");
+        }
     }
 }

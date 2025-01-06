@@ -26,7 +26,7 @@
                     <asp:TemplateField>
                         <ItemTemplate>
                             <div class="buttons">
-                                <asp:Button ID="btnEditar" runat="server" Text="Editar" CausesValidation="false" />
+                                <asp:Button ID="btnEditar" runat="server" Text="Editar" CommandArgument='<%# Eval("Id") %>' OnClick="btnEditar_Click" />
                                 <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" CommandArgument='<%# Eval("Id") %>' OnClick="btnEliminar_Click" />
                             </div>
                         </ItemTemplate>
