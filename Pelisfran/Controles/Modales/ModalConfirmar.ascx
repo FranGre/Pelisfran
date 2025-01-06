@@ -10,7 +10,7 @@
             <p>Este es un ejemplo de modal.</p>
         </section>
         <footer class="modal-card-foot">
-            <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" OnClick="btnEliminar_Click" />
+            <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" OnClick="btnEliminar_Click" CssClass="button is-danger" />
             <button class="button" onclick="cerrarModal()">Cerrar</button>
         </footer>
     </div>

@@ -5,9 +5,10 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
-    <h2>Generos</h2>
+    <h2 id="titulo" runat="server" class="title is-2 mb-6 is-flex is-justify-content-center">Generos</h2>
 
-    <asp:Button ID="btnCrearGenero" runat="server" Text="Crear Genero" OnClick="btnCrearGenero_Click" />
+
+    <asp:Button ID="btnCrearGenero" runat="server" Text="Crear Genero" OnClick="btnCrearGenero_Click" CssClass="button is-success" />
 
     <asp:UpdatePanel ID="upGeneros" runat="server" UpdateMode="Conditional">
         <ContentTemplate>
@@ -27,7 +28,7 @@
                         <ItemTemplate>
                             <div class="buttons">
                                 <asp:Button ID="btnEditar" runat="server" Text="Editar" CommandArgument='<%# Eval("Id") %>' OnClick="btnEditar_Click" />
-                                <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" CommandArgument='<%# Eval("Id") %>' OnClick="btnEliminar_Click" />
+                                <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" CommandArgument='<%# Eval("Id") %>' OnClick="btnEliminar_Click" CssClass="button is-danger" />
                             </div>
                         </ItemTemplate>
                     </asp:TemplateField>
