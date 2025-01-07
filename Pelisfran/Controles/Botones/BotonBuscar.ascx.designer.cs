@@ -7,29 +7,20 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace Pelisfran.Controles.Busqueda
+namespace Pelisfran.Controles.Botones
 {
 
 
-    public partial class TextSearch
+    public partial class BotonBuscar
     {
 
         /// <summary>
-        /// Control tbBusqueda.
+        /// Control botonBuscar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbBusqueda;
-
-        /// <summary>
-        /// Control btnBuscar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Pelisfran.Controles.Botones.BotonBuscar btnBuscar;
+        protected global::System.Web.UI.HtmlControls.HtmlButton botonBuscar;
     }
 }

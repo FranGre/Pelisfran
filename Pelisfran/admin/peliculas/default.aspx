@@ -7,7 +7,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
     <h2 id="titulo" runat="server" class="title is-2 mb-6 is-flex is-justify-content-center">Peliculas</h2>
 
-    <div>
+    <div class="mb-5">
         <asp:Button ID="btnCrearPelicula" runat="server" Text="Crear Pelicula" OnClick="btnCrearPelicula_Click" CssClass="button is-success" />
         <controles:textsearch ID="textsearch" runat="server" OnBuscar="textsearch_Buscar" Placeholder="Buscar..." />
     </div>
