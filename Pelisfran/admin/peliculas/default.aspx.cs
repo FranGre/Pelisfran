@@ -1,6 +1,6 @@
 ﻿using Pelisfran.Contexto;
-using Pelisfran.Modelos;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.UI;
 
@@ -33,6 +33,48 @@ namespace Pelisfran.admin.peliculas
         protected void btnCrearPelicula_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/admin/peliculas/crear.aspx");
+        }
+
+        protected void textsearch_Buscar(object sender, string busqueda)
+        {
+            var query = _db.Peliculas
+            .Include("Usuario").Include("PeliculasLikes").Include("ComentarioPeliculas").Include("VisitasPeliculas")
+            .AsQueryable();
+
+            if (!string.IsNullOrEmpty(busqueda))
+            {
+                query = query.Where(p => p.Titulo.Contains(busqueda));
+            }
+
+            var peliculas = query
+                .Select(p => new
+                {
+                    p.Id,
+                    p.Titulo,
+                    p.FechaLanzamiento,
+                    p.Duracion,
+                    CreadoPor = p.Usuario.NombreUsuario,
+                    Likes = p.PeliculasLikes.Count().ToString(),
+                    Comentarios = p.ComentarioPeliculas.Count.ToString(),
+                    Visitas = p.VisitasPeliculas.Count.ToString(),
+                })
+                .ToList();
+
+            var peliculasFechaFormateda = peliculas.Select(p => new
+            {
+                p.Id,
+                p.Titulo,
+                FechaLanzamiento = p.FechaLanzamiento.ToShortDateString(),
+                p.Duracion,
+                p.CreadoPor,
+                p.Likes,
+                p.Comentarios,
+                p.Visitas
+            });
+
+            gvPeliculas.DataSource = peliculasFechaFormateda;
+            gvPeliculas.DataBind();
+            upPeliculas.Update();
         }
     }
 }
