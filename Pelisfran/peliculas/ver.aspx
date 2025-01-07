@@ -9,7 +9,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
     <h2 id="titulo" runat="server" class="title is-2 mb-6 is-flex is-justify-content-center">Peliculas</h2>
 
-    <div class="block">
+    <div class="block has-text-centered">
         <p id="descripcion" runat="server"></p>
     </div>
 
@@ -47,54 +47,60 @@
 
     <asp:UpdatePanel ID="upBotonFavorito" runat="server" UpdateMode="Conditional">
         <ContentTemplate>
-            <controles:botonfavorito ID="botonFavorito" runat="server" OnClick="botonFavorito_Click"/>
+            <controles:botonfavorito ID="botonFavorito" runat="server" OnClick="botonFavorito_Click" />
         </ContentTemplate>
     </asp:UpdatePanel>
 
     <h3>aqui va la peli</h3>
 
-    <asp:UpdatePanel ID="upFormComentario" runat="server" UpdateMode="Conditional">
-        <ContentTemplate>
-            <div class="field">
-                <div class="control">
-                    <asp:TextBox ID="tbComentario" runat="server" TextMode="MultiLine" CssClass="textarea" Rows="5" placeholder="Escribir comentario..." />
-                    <asp:Button ID="btnGuardarComentario" runat="server" Text="Comentar" OnClick="btnGuardarComentario_Click" CssClass="button is-success mt-4" />
-                </div>
-            </div>
-        </ContentTemplate>
-    </asp:UpdatePanel>
-    <asp:UpdatePanel ID="upComentarios" runat="server" UpdateMode="Conditional">
-        <ContentTemplate>
-            <div class="mt-5">
-                <asp:ListView ID="lvComentarios" runat="server" OnPagePropertiesChanging="lvComentarios_PagePropertiesChanging" OnItemDataBound="lvComentarios_ItemDataBound">
+    <div class="columns mt-4">
+        <div class="column is-flex is-justify-content-center">
+            <asp:UpdatePanel ID="upComentarios" runat="server" UpdateMode="Conditional">
+                <ContentTemplate>
+                    <div class="mt-5">
+                        <asp:ListView ID="lvComentarios" runat="server" OnPagePropertiesChanging="lvComentarios_PagePropertiesChanging" OnItemDataBound="lvComentarios_ItemDataBound">
 
-                    <EmptyDataTemplate>No hay comentarios</EmptyDataTemplate>
+                            <EmptyDataTemplate>No hay comentarios</EmptyDataTemplate>
 
-                    <ItemTemplate>
-                        <div class="mb-4">
-                            <div class="flex is-display-flex">
-                                <div class="is-display-flex">
-                                    <asp:Image ID="fotoPerfil" runat="server" CssClass="image is-rounded is-16x16" ImageUrl="https://bulma.io/assets/images/placeholders/128x128.png" />
-                                    <small id="nombre" runat="server" class="ml-1"></small>
+                            <ItemTemplate>
+                                <div class="mb-4">
+                                    <div class="flex is-display-flex">
+                                        <div class="is-display-flex">
+                                            <asp:Image ID="fotoPerfil" runat="server" CssClass="image is-rounded is-16x16" ImageUrl="https://bulma.io/assets/images/placeholders/128x128.png" />
+                                            <small id="nombre" runat="server" class="ml-1"></small>
+                                        </div>
+                                        <small id="fecha" runat="server" class="ml-6"></small>
+                                    </div>
+                                    <p id="comentario" runat="server" class="ml-1"></p>
                                 </div>
-                                <small id="fecha" runat="server" class="ml-6"></small>
-                            </div>
-                            <p id="comentario" runat="server" class="ml-1"></p>
+                            </ItemTemplate>
+
+                            <LayoutTemplate>
+                                <asp:PlaceHolder ID="itemPlaceHolder" runat="server"></asp:PlaceHolder>
+                                <asp:DataPager ID="dpComentarios" runat="server" PagedControlID="lvComentarios" PageSize="2">
+                                    <Fields>
+                                        <asp:NumericPagerField ButtonType="Button" />
+                                    </Fields>
+                                </asp:DataPager>
+                            </LayoutTemplate>
+
+                        </asp:ListView>
+                    </div>
+                </ContentTemplate>
+            </asp:UpdatePanel>
+        </div>
+
+        <div class="column">
+            <asp:UpdatePanel ID="upFormComentario" runat="server" UpdateMode="Conditional">
+                <ContentTemplate>
+                    <div class="field">
+                        <div class="control">
+                            <asp:TextBox ID="tbComentario" runat="server" TextMode="MultiLine" CssClass="textarea" Rows="5" placeholder="Escribir comentario..." />
+                            <asp:Button ID="btnGuardarComentario" runat="server" Text="Comentar" OnClick="btnGuardarComentario_Click" CssClass="button is-success mt-4" />
                         </div>
-                    </ItemTemplate>
-
-                    <LayoutTemplate>
-                        <asp:PlaceHolder ID="itemPlaceHolder" runat="server"></asp:PlaceHolder>
-                        <asp:DataPager ID="dpComentarios" runat="server" PagedControlID="lvComentarios" PageSize="2">
-                            <Fields>
-                                <asp:NumericPagerField ButtonType="Button" />
-                            </Fields>
-                        </asp:DataPager>
-                    </LayoutTemplate>
-
-                </asp:ListView>
-            </div>
-        </ContentTemplate>
-    </asp:UpdatePanel>
-
+                    </div>
+                </ContentTemplate>
+            </asp:UpdatePanel>
+        </div>
+    </div>
 </asp:Content>

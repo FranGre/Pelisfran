@@ -28,7 +28,7 @@
         <asp:Label ID="lbSinopsisBreve" runat="server" Text="Sinopsis" />
         <asp:TextBox ID="txtSinopsisBreve" runat="server" TextMode="MultiLine" />
         <asp:RequiredFieldValidator ID="reqSinopsisBreve" runat="server" ControlToValidate="txtSinopsisBreve" ErrorMessage="Campo obligatorio" Display="Dynamic" />
-        <asp:RegularExpressionValidator ID="regexSinopsisBreve" runat="server" ControlToValidate="txtSinopsisBreve" ErrorMessage="Maximo 50 caracteres" Display="Dynamic" ValidationExpression="^[a-zA-Z0-9\s]{1,350}$" />
+        <asp:RegularExpressionValidator ID="regexSinopsisBreve" runat="server" ControlToValidate="txtSinopsisBreve" ErrorMessage="Maximo 500 caracteres" Display="Dynamic" ValidationExpression="^[a-zA-Z0-9\s]{1,500}$" />
     </div>
 
     <div>

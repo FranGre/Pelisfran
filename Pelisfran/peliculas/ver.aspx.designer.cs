@@ -114,6 +114,24 @@ namespace Pelisfran.peliculas
         protected global::Pelisfran.Controles.Botones.BotonFavorito botonFavorito;
 
         /// <summary>
+        /// Control upComentarios.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel upComentarios;
+
+        /// <summary>
+        /// Control lvComentarios.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListView lvComentarios;
+
+        /// <summary>
         /// Control upFormComentario.
         /// </summary>
         /// <remarks>
@@ -139,23 +157,5 @@ namespace Pelisfran.peliculas
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnGuardarComentario;
-
-        /// <summary>
-        /// Control upComentarios.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel upComentarios;
-
-        /// <summary>
-        /// Control lvComentarios.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView lvComentarios;
     }
 }
