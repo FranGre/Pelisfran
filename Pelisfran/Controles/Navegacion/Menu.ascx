@@ -16,6 +16,7 @@
                     <ContentTemplate>
                         <asp:Button ID="btnRegistrarse" runat="server" Text="Registrarse" CssClass="button is-light" OnClick="btnRegistrarse_Click" />
                         <asp:Button ID="btnIniciarSesion" runat="server" Text="Login" CssClass="button is-primary" OnClick="btnIniciarSesion_Click" />
+                        <asp:LinkButton ID="lbMiPerfil" runat="server" Text="Mi perfil" OnClick="lbMiPerfil_Click" />
                         <controles:botoncerrarsesion ID="botonCerrarSesion" runat="server" OnClick="botonCerrarSesion_Click" />
                     </ContentTemplate>
                 </asp:UpdatePanel>

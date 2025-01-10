@@ -14,15 +14,18 @@ namespace Pelisfran.Controles.Navegacion
             btnRegistrarse.Visible = false;
             btnIniciarSesion.Visible = false;
             botonCerrarSesion.Visible = false;
+            lbMiPerfil.Visible = false;
 
             if (_autenticacionServicio.EstaUsuarioAutenticado())
             {
                 botonCerrarSesion.Visible = true;
+                lbMiPerfil.Visible = true;
             }
             else
             {
                 btnRegistrarse.Visible = true;
                 btnIniciarSesion.Visible = true;
+
             }
 
             upBotonesMenu.Update();
@@ -59,6 +62,11 @@ namespace Pelisfran.Controles.Navegacion
             Request.Cookies.Clear();
             FormsAuthentication.SignOut();
             Response.Redirect("~/peliculas/default.aspx");
+        }
+
+        protected void lbMiPerfil_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/mi-perfil.aspx");
         }
     }
 }

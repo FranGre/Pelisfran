@@ -21,6 +21,8 @@ namespace Pelisfran
                 return;
             }
 
+            alerta.Visible = false;
+
             if (!Page.IsPostBack)
             {
                 rangeFechaNacimiento.MaximumValue = DateTime.Now.ToString("dd/MM/yyyy");
@@ -62,6 +64,7 @@ namespace Pelisfran
             {
                 return;
             }
+
             Guid usuarioId = Guid.Parse(HttpContext.Current.User.Identity.Name);
             Usuario usuario = _db.Usuarios.Find(usuarioId);
 
@@ -71,9 +74,10 @@ namespace Pelisfran
             usuario.FechaNacimiento == Convert.ToDateTime(txtFechaNacimiento.Text) &&
             usuario.Apellidos == txtApellidos.Text)
             {
+                alerta.InnerHtml = "<div class=\"is-flex is-justify-content-center buttons\">\r\n            <span class=\"material-symbols-outlined\">check</span>\r\n            <p>\r\n                Perfil actualizado\r\n            </p>\r\n            <button class=\"delete ml-3\"></button>\r\n        </div>";
+                alerta.Visible = true;
                 return;
             }
-
 
             usuario.NombreUsuario = txtNombreUsuario.Text;
             usuario.Email = txtEmail.Text;
@@ -83,6 +87,9 @@ namespace Pelisfran
             usuario.ActualizadoEn = DateTime.Now;
 
             _db.SaveChanges();
+
+            alerta.InnerHtml = "<div class=\"is-flex is-justify-content-center buttons\">\r\n            <span class=\"material-symbols-outlined\">check</span>\r\n            <p>\r\n                Perfil actualizado\r\n            </p>\r\n            <button class=\"delete ml-3\"></button>\r\n        </div>";
+            alerta.Visible = true;
         }
     }
 }
