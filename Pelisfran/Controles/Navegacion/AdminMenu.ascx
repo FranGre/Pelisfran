@@ -13,13 +13,8 @@
 
         <div class="navbar-end">
             <div class="buttons">
-                <asp:UpdatePanel ID="upBotonesMenu" runat="server" UpdateMode="Conditional">
-                    <ContentTemplate>
-                        <asp:Button ID="btnRegistrarse" runat="server" Text="Registrarse" CssClass="button is-light" OnClick="btnRegistrarse_Click" />
-                        <asp:Button ID="btnIniciarSesion" runat="server" Text="Login" CssClass="button is-primary" OnClick="btnIniciarSesion_Click" />
-                        <controles:botoncerrarsesion ID="botonCerrarSesion" runat="server" OnClick="botonCerrarSesion_Click" />
-                    </ContentTemplate>
-                </asp:UpdatePanel>
+                <asp:LinkButton ID="lbMiPerfil" runat="server" Text="Mi perfil" OnClick="lbMiPerfil_Click" />
+                <controles:botoncerrarsesion ID="botonCerrarSesion" runat="server" OnClick="botonCerrarSesion_Click" />
             </div>
         </div>
     </div>

@@ -92,6 +92,7 @@
     <Content Include="Controles\Navegacion\AdminMenu.ascx" />
     <Content Include="Controles\Navegacion\Menu.ascx" />
     <Content Include="Controles\Peliculas\Peliculas.ascx" />
+    <Content Include="mi-perfil.aspx" />
     <Content Include="Scripts\FilePond\plugins\filepond-plugin-file-validate-size.js" />
     <Content Include="Scripts\FilePond\plugins\filepond-plugin-file-validate-type.js" />
     <Content Include="default.aspx" />
@@ -243,6 +244,13 @@
     </Compile>
     <Compile Include="login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="mi-perfil.aspx.cs">
+      <DependentUpon>mi-perfil.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="mi-perfil.aspx.designer.cs">
+      <DependentUpon>mi-perfil.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modelos\ComentarioPelicula.cs" />
     <Compile Include="Modelos\PeliculaLike.cs" />

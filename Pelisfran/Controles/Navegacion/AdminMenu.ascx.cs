@@ -11,21 +11,6 @@ namespace Pelisfran.Controles.Navegacion
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            btnRegistrarse.Visible = false;
-            btnIniciarSesion.Visible = false;
-            botonCerrarSesion.Visible = false;
-
-            if (_autenticacionServicio.EstaUsuarioAutenticado())
-            {
-                botonCerrarSesion.Visible = true;
-            }
-            else
-            {
-                btnRegistrarse.Visible = true;
-                btnIniciarSesion.Visible = true;
-            }
-
-            upBotonesMenu.Update();
         }
 
         protected void lbPelisFran_Click(object sender, EventArgs e)
@@ -43,16 +28,6 @@ namespace Pelisfran.Controles.Navegacion
             Response.Redirect("~/series/default.aspx");
         }
 
-        protected void btnRegistrarse_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("~/registrarse.aspx");
-        }
-
-        protected void btnIniciarSesion_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("~/login.aspx");
-        }
-
         protected void botonCerrarSesion_Click(object sender, EventArgs e)
         {
             Session.Abandon();
@@ -64,6 +39,11 @@ namespace Pelisfran.Controles.Navegacion
         protected void lkAdmin_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/admin/default.aspx");
+        }
+
+        protected void lbMiPerfil_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/mi-perfil.aspx");
         }
     }
 }
