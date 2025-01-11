@@ -1,7 +1,9 @@
-﻿using Pelisfran.Modelos;
+﻿using Pelisfran.Contexto;
+using Pelisfran.Modelos;
 using Pelisfran.SeedersBaseDatos;
 using Pelisfran.Servicios;
 using System;
+using System.IO;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -11,6 +13,7 @@ namespace Pelisfran
     {
         private UsuarioServicio usuarioServicio = new UsuarioServicio();
         private AutenticacionServicio autenticacionServicio = new AutenticacionServicio();
+        private PelisFranDBContexto _db = new PelisFranDBContexto();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -38,9 +41,22 @@ namespace Pelisfran
                 FechaNacimiento = Convert.ToDateTime(txtFechaNacimiento.Text),
                 CreadoEn = DateTime.Now
             };
+            usuarioServicio.RegistrarUsuario(usuario);
+
+            FileInfo fotoPerfilDefault = new FileInfo(Server.MapPath("~/Uploads/FotosPerfil/default.jpg"));
+
+            FotoPerfil fotoPerfilUser = new FotoPerfil
+            {
+                Id = usuario.Id,
+                Extension = fotoPerfilDefault.Extension,
+                Nombre = Guid.NewGuid().ToString(),
+                NombreOriginal = fotoPerfilDefault.Name,
+                Ruta = "/Uploads/FotosPerfil/default.jpg"
+            };
             // nombreUsuario existe errror
 
-            usuarioServicio.RegistrarUsuario(usuario);
+            _db.FotosPerfiles.Add(fotoPerfilUser);
+            _db.SaveChanges();
             autenticacionServicio.AutenticarUsuario(usuario.Email, usuario.Password);
 
             Response.Redirect("autenticado.aspx");

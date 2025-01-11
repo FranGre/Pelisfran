@@ -51,6 +51,24 @@ namespace Pelisfran.Controles.Navegacion
         protected global::System.Web.UI.WebControls.LinkButton lkAdmin;
 
         /// <summary>
+        /// Control upFotoPerfil.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel upFotoPerfil;
+
+        /// <summary>
+        /// Control imgFotoPerfil.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image imgFotoPerfil;
+
+        /// <summary>
         /// Control lbMiPerfil.
         /// </summary>
         /// <remarks>

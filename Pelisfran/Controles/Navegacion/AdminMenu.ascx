@@ -13,6 +13,15 @@
 
         <div class="navbar-end">
             <div class="buttons">
+                <asp:UpdatePanel ID="upFotoPerfil" runat="server" UpdateMode="Conditional">
+                    <ContentTemplate>
+                        <a href="<%= ResolveUrl("~/mi-perfil.aspx") %>">
+                            <figure class="image is-64x64">
+                                <asp:Image ID="imgFotoPerfil" runat="server" CssClass="is-rounded" />
+                            </figure>
+                        </a>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
                 <asp:LinkButton ID="lbMiPerfil" runat="server" Text="Mi perfil" OnClick="lbMiPerfil_Click" />
                 <controles:botoncerrarsesion ID="botonCerrarSesion" runat="server" OnClick="botonCerrarSesion_Click" />
             </div>
