@@ -253,6 +253,7 @@
       <DependentUpon>mi-perfil.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modelos\ComentarioPelicula.cs" />
+    <Compile Include="Modelos\FotoPerfil.cs" />
     <Compile Include="Modelos\PeliculaLike.cs" />
     <Compile Include="Modelos\PortadaSerie.cs" />
     <Compile Include="Modelos\Serie.cs" />
@@ -380,7 +381,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="generos\" />
-    <Folder Include="Uploads\" />
+    <Folder Include="Uploads\FotosPerfil\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -22,6 +22,7 @@ namespace Pelisfran.Contexto
         public DbSet<ComentarioPelicula> ComentariosPeliculas { get; set; }
         public DbSet<PeliculaLike> PeliculasLikes { get; set; }
         public DbSet<VisitaPelicula> VisitasPeliculas { get; set; }
+        public DbSet<FotoPerfil> FotosPerfiles { get; set; }
 
         public PelisFranDBContexto() : base(CrearConexion(), true) { }
 
