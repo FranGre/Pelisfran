@@ -87,8 +87,9 @@
             url: "/Handlers/Dropzone/FotoPerfil.ashx?id=<%= HttpContext.Current.User.Identity.Name %>",
             maxFilesize: 3,
             dictDefaultMessage: "Suba su foto de perfil",
-            dictFileTooBig: "Imagen muy grande ({{filesize}}MiB). Se permite hasta: {{maxFilesize}}MiB.",
-            dictInvalidFileType: "Fichero no permitido.",
+            dictFileTooBig: "Supera los {{maxFilesize}}MB",
+            acceptedFiles: '.png, .jpg, .jpeg',
+            dictInvalidFileType: "Fichero no permitido",
             success(file) {
                 if (file.previewElement) {
                     return file.previewElement.classList.add("dz-success");
