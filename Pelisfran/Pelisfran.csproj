@@ -231,6 +231,9 @@
       <DependentUpon>default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Enums\TipoRolesEnum.cs" />
+    <Compile Include="Handlers\Dropzone\FotoPerfil.ashx.cs">
+      <DependentUpon>FotoPerfil.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Handlers\HttpHandlerImagenTemporal.ashx.cs">
       <DependentUpon>HttpHandlerImagenTemporal.ashx</DependentUpon>
     </Compile>
@@ -369,6 +372,7 @@
   <ItemGroup>
     <Content Include="Handlers\HttpHandlerImagenTemporal.ashx" />
     <Content Include="Handlers\HttpHandlerVideoTemporal.ashx" />
+    <Content Include="Handlers\Dropzone\FotoPerfil.ashx" />
     <None Include="packages.config" />
     <Content Include="PaginasMaestras\Site1.Master" />
     <Content Include="PaginasMaestras\Base.Master" />
@@ -381,7 +385,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="generos\" />
-    <Folder Include="Uploads\FotosPerfil\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

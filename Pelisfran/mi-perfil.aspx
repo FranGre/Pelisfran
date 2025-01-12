@@ -2,6 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=check" />
+    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
     <h2 id="titulo" runat="server" class="title is-2 mb-6 is-flex is-justify-content-center">Mi Perfil</h2>
@@ -36,6 +37,12 @@
                 <asp:RegularExpressionValidator ID="regexEmail" runat="server" ControlToValidate="txtEmail" ErrorMessage="Email invalido" Display="Dynamic" ValidationExpression="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" CssClass="help is-danger" />
                 <asp:CustomValidator ID="custEmail" runat="server" ControlToValidate="txtEmail" Display="Dynamic" OnServerValidate="custEmail_ServerValidate" CssClass="help is-danger" />
             </div>
+
+            <div class="field">
+                <asp:Label ID="lbFotoPerfil" runat="server" Text="FotoPerfil" CssClass="label is-flex is-justify-content-center" />
+                <div id="fotoPerfil" class="dropzone"></div>
+            </div>
+
         </div>
 
         <div class="column">
@@ -69,4 +76,24 @@
     </div>
 
     <asp:Button ID="btnGuardar" runat="server" Text="Guardar" CssClass="button is-primary" OnClick="btnGuardar_Click" />
+
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.js" integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+
+    <script type="text/javascript">
+        Dropzone.autoDiscover = false;
+
+        $("#fotoPerfil").dropzone({
+            url: "/Handlers/Dropzone/FotoPerfil.ashx?id=<%= HttpContext.Current.User.Identity.Name %>",
+            maxFilesize: 3,
+            dictDefaultMessage: "Suba su foto de perfil",
+            dictFileTooBig: "Imagen muy grande ({{filesize}}MiB). Se permite hasta: {{maxFilesize}}MiB.",
+            dictInvalidFileType: "Fichero no permitido.",
+            success(file) {
+                if (file.previewElement) {
+                    return file.previewElement.classList.add("dz-success");
+                }
+            }
+        });
+    </script>
 </asp:Content>
