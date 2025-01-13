@@ -51,10 +51,5 @@ namespace Pelisfran.Controles.Navegacion
         {
             Response.Redirect("~/admin/default.aspx");
         }
-
-        protected void lbMiPerfil_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("~/mi-perfil.aspx");
-        }
     }
 }

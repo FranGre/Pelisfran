@@ -22,7 +22,6 @@
                         </a>
                     </ContentTemplate>
                 </asp:UpdatePanel>
-                <asp:LinkButton ID="lbMiPerfil" runat="server" Text="Mi perfil" OnClick="lbMiPerfil_Click" />
                 <controles:botoncerrarsesion ID="botonCerrarSesion" runat="server" OnClick="botonCerrarSesion_Click" />
             </div>
         </div>
