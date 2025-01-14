@@ -28,7 +28,7 @@ namespace Pelisfran.admin
 
         protected void lbUsuarios_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("~/admin/usuarios/default.aspx");
         }
     }
 }
