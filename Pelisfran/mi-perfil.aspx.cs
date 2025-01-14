@@ -12,10 +12,11 @@ namespace Pelisfran
     {
         private UsuarioServicio usuarioServicio = new UsuarioServicio();
         private PelisFranDBContexto _db = new PelisFranDBContexto();
+        private AutenticacionServicio _autenticacionServicio = new AutenticacionServicio();
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!HttpContext.Current.User.Identity.IsAuthenticated)
+            if (_autenticacionServicio.EstaUsuarioAutenticado())
             {
                 Response.Redirect("~/login.aspx");
                 return;
