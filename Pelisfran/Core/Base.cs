@@ -8,13 +8,9 @@ namespace Pelisfran.Core
     {
         protected Guid usuarioId
         {
-            get { return Guid.Parse(HttpContext.Current.Session["usuarioId"].ToString()); }
+            get { return HttpContext.Current.Session["usuarioId"] != null
+                    ? Guid.Parse(HttpContext.Current.Session["usuarioId"].ToString()) : Guid.Empty; }
             set { HttpContext.Current.Session["usuarioId"] = value; }
-        }
-
-        protected bool EstaUsuarioAutenticado()
-        {
-            return HttpContext.Current.User.Identity.IsAuthenticated;
         }
     }
 }

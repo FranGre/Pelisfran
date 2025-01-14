@@ -1,4 +1,5 @@
 ﻿using Pelisfran.Contexto;
+using Pelisfran.Core;
 using Pelisfran.Enums;
 using System;
 using System.Linq;
@@ -7,15 +8,13 @@ using System.Web.UI;
 
 namespace Pelisfran.admin
 {
-    public partial class _default : Page
+    public partial class _default : Base
     {
         private PelisFranDBContexto _db = new PelisFranDBContexto();
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            Guid usuarioId = Guid.Parse(HttpContext.Current.User.Identity.Name);
-
-            var usuario = _db.Usuarios.Find(usuarioId);
+            var usuario = _db.Usuarios.Find(this.usuarioId);
 
             if ((TipoRolesEnum)usuario.RolId != TipoRolesEnum.Administrador)
             {

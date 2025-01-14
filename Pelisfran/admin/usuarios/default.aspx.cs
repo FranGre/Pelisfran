@@ -1,17 +1,15 @@
 ﻿using Pelisfran.Contexto;
-using Pelisfran.Controles.Peliculas;
+using Pelisfran.Core;
 using Pelisfran.Modelos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace Pelisfran.admin.usuarios
 {
-    public partial class _default : Page
+    public partial class _default : Base
     {
         private PelisFranDBContexto _db = new PelisFranDBContexto();
         private List<Rol> roles = new List<Rol>() { };
@@ -142,9 +140,8 @@ namespace Pelisfran.admin.usuarios
             DropDownList listItem = (DropDownList)sender;
 
             var idRolSeleccionado = Convert.ToInt32(listItem.SelectedValue);
-
-            var usuarioId = Guid.Parse(HttpContext.Current.User.Identity.Name);
-
+            // debe cambiar el rol del usuario seleccionado, en este caso este cambiando el rol del user con
+            // el que estoy logeado
             var usuario = _db.Usuarios.Find(usuarioId);
             usuario.RolId = idRolSeleccionado;
 

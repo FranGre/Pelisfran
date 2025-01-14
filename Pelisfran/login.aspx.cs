@@ -1,12 +1,15 @@
-﻿using Pelisfran.Servicios;
+﻿using Pelisfran.Core;
+using Pelisfran.Modelos;
+using Pelisfran.Servicios;
 using System;
 using System.Web.UI;
 
 namespace Pelisfran
 {
-    public partial class login1 : Page
+    public partial class login1 : Base
     {
         private AutenticacionServicio autenticacionServicio = new AutenticacionServicio();
+        private UsuarioServicio _usuarioServicio = new UsuarioServicio();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -34,6 +37,9 @@ namespace Pelisfran
 
             alerta.Attributes["class"] = string.Empty;
             alerta.InnerText = string.Empty;
+
+            Usuario usuario = _usuarioServicio.ObtenerUsuario(txtEmail.Text);
+            this.usuarioId = usuario.Id;
 
             Response.Redirect("peliculas/default.aspx");
         }

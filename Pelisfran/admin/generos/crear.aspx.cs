@@ -1,4 +1,5 @@
-﻿using Pelisfran.Modelos;
+﻿using Pelisfran.Core;
+using Pelisfran.Modelos;
 using Pelisfran.Servicios;
 using System;
 using System.Web;
@@ -6,7 +7,7 @@ using System.Web.UI;
 
 namespace Pelisfran.admin.generos
 {
-    public partial class crear : Page
+    public partial class crear : Base
     {
         private GeneroServicio _generoServicio = new GeneroServicio();
 
@@ -18,9 +19,8 @@ namespace Pelisfran.admin.generos
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
             if (!Page.IsValid) { return; }
-            var usuarioAutenticado = HttpContext.Current.User.Identity;
 
-            _generoServicio.CrearGenero(new Genero { Id = Guid.NewGuid(), UsuarioId = Guid.Parse(usuarioAutenticado.Name), Nombre = txtNombre.Text, CreadoEn = DateTime.Now });
+            _generoServicio.CrearGenero(new Genero { Id = Guid.NewGuid(), UsuarioId = this.usuarioId, Nombre = txtNombre.Text, CreadoEn = DateTime.Now });
             Response.Redirect("~/admin/generos/default.aspx");
         }
     }

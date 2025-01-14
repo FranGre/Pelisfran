@@ -1,9 +1,9 @@
 ﻿using Pelisfran.Contexto;
+using Pelisfran.Core;
 using Pelisfran.Enums;
 using Pelisfran.Modelos;
 using Pelisfran.Servicios;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -12,7 +12,7 @@ using System.Web.UI.WebControls;
 
 namespace Pelisfran.peliculas
 {
-    public partial class crear : Page
+    public partial class crear : Base
     {
         private GeneroServicio _generoServicio = new GeneroServicio();
         private PeliculaServicio _peliculaServicio = new PeliculaServicio();
@@ -22,8 +22,7 @@ namespace Pelisfran.peliculas
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            Guid idUser = Guid.Parse(HttpContext.Current.User.Identity.Name);
-            Usuario usuario = _db.Usuarios.Where(u => u.Id == idUser).FirstOrDefault();
+            Usuario usuario = _db.Usuarios.Where(u => u.Id == this.usuarioId).FirstOrDefault();
             bool esAdmin = (TipoRolesEnum)usuario.RolId == TipoRolesEnum.Administrador;
 
             if (!esAdmin)
@@ -69,8 +68,6 @@ namespace Pelisfran.peliculas
                 return;
             }
 
-            Guid usuarioId = Guid.Parse(HttpContext.Current.User.Identity.Name);
-
             Pelicula pelicula = new Pelicula
             {
                 Id = Guid.NewGuid(),
@@ -79,7 +76,7 @@ namespace Pelisfran.peliculas
                 FechaLanzamiento = Convert.ToDateTime(txtFechaLanzamiento.Text),
                 Duracion = Convert.ToInt16(txtDuracion.Text),
                 CreadoEn = DateTime.Now,
-                UsuarioId = usuarioId,
+                UsuarioId = this.usuarioId,
             };
 
             _peliculaServicio.CrearPelicula(pelicula);

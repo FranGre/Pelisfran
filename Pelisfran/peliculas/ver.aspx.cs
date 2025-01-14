@@ -1,4 +1,5 @@
 ﻿using Pelisfran.Contexto;
+using Pelisfran.Core;
 using Pelisfran.Helpers;
 using Pelisfran.Modelos;
 using Pelisfran.Servicios;
@@ -12,7 +13,7 @@ using System.Web.UI.WebControls;
 
 namespace Pelisfran.peliculas
 {
-    public partial class ver : Page
+    public partial class ver : Base
     {
         private PeliculaServicio _peliculaServicio = new PeliculaServicio();
         private PeliculaFavoritaServicio _peliculaFavoritaServicio = new PeliculaFavoritaServicio();
@@ -48,10 +49,8 @@ namespace Pelisfran.peliculas
                 likes.InnerText = item.PeliculasLikes.Count().ToString() ?? "0";
                 estadisticaComentarios.InnerText = item.ComentarioPeliculas.Count().ToString() ?? "0";
 
-                Guid usuarioId = string.IsNullOrEmpty(HttpContext.Current.User.Identity.Name) ? Guid.Empty : Guid.Parse(HttpContext.Current.User.Identity.Name);
-
                 botonFavorito.DesactivarFavorito();
-                if (_peliculaFavoritaServicio.PeliculaEstaMarcadaComoFavorita(usuarioId, peliculaId))
+                if (_peliculaFavoritaServicio.PeliculaEstaMarcadaComoFavorita(this.usuarioId, peliculaId))
                 {
                     botonFavorito.ActivarFavorito();
                 }
@@ -83,10 +82,9 @@ namespace Pelisfran.peliculas
             }
 
             Guid peliculaId = Guid.Parse(hfId.Value);
-            Guid usuarioId = Guid.Parse(HttpContext.Current.User.Identity.Name);
-            if (_peliculaFavoritaServicio.PeliculaEstaMarcadaComoFavorita(usuarioId, peliculaId))
+            if (_peliculaFavoritaServicio.PeliculaEstaMarcadaComoFavorita(this.usuarioId, peliculaId))
             {
-                _peliculaFavoritaServicio.DesmarcarPeliculaComoFavorita(usuarioId, peliculaId);
+                _peliculaFavoritaServicio.DesmarcarPeliculaComoFavorita(this.usuarioId, peliculaId);
                 botonFavorito.DesactivarFavorito();
                 upBotonFavorito.Update();
                 return;
@@ -96,7 +94,7 @@ namespace Pelisfran.peliculas
             {
                 Id = Guid.NewGuid(),
                 CreadoEn = DateTime.Now,
-                UsuarioId = usuarioId,
+                UsuarioId = this.usuarioId,
                 PeliculaId = peliculaId
             };
             _peliculaFavoritaServicio.MarcarPeliculaComoFavorita(peliculaFavorita);
@@ -121,7 +119,7 @@ namespace Pelisfran.peliculas
                 Id = Guid.NewGuid(),
                 Comentario = tbComentario.Text,
                 FechaCreacion = DateTime.Now,
-                UsuarioId = Guid.Parse(HttpContext.Current.User.Identity.Name),
+                UsuarioId = this.usuarioId,
                 PeliculaId = Guid.Parse(Request.QueryString["id"])
             };
 
@@ -190,9 +188,8 @@ namespace Pelisfran.peliculas
                 return;
             }
 
-            Guid usuarioId = Guid.Parse(HttpContext.Current.User.Identity.Name);
             Guid peliculaId = Guid.Parse(Request.QueryString["id"]);
-            PeliculaLike peliculaLike = _db.PeliculasLikes.Where(pl => pl.UsuarioId == usuarioId && pl.PeliculaId == peliculaId).FirstOrDefault();
+            PeliculaLike peliculaLike = _db.PeliculasLikes.Where(pl => pl.UsuarioId == this.usuarioId && pl.PeliculaId == peliculaId).FirstOrDefault();
 
             if (peliculaLike != null)
             {
@@ -201,7 +198,7 @@ namespace Pelisfran.peliculas
             }
             else
             {
-                peliculaLike = new PeliculaLike { Id = Guid.NewGuid(), CreadoEn = DateTime.Now, PeliculaId = peliculaId, UsuarioId = usuarioId };
+                peliculaLike = new PeliculaLike { Id = Guid.NewGuid(), CreadoEn = DateTime.Now, PeliculaId = peliculaId, UsuarioId = this.usuarioId };
                 _db.PeliculasLikes.Add(peliculaLike);
                 botonLike.ActivarLike();
             }

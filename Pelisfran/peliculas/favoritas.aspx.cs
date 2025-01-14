@@ -2,14 +2,14 @@
 using Pelisfran.Servicios;
 using System;
 using System.Collections.Generic;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
+using Pelisfran.Core;
 
 namespace Pelisfran.peliculas
 {
-    public partial class favoritas : Page
+    public partial class favoritas : Base
     {
         private PeliculaFavoritaServicio _peliculaFavoritaServicio = new PeliculaFavoritaServicio();
         private PeliculaServicio _peliculaServicio = new PeliculaServicio();
@@ -18,8 +18,7 @@ namespace Pelisfran.peliculas
         {
             if (!Page.IsPostBack)
             {
-                Guid usuarioId = Guid.Parse(HttpContext.Current.User.Identity.Name);
-                List<PeliculaFavorita> misPeliculasFavoritas = _peliculaFavoritaServicio.ObtenerPeliculasMarcadasComoFavoritasDelUsuario(usuarioId);
+                List<PeliculaFavorita> misPeliculasFavoritas = _peliculaFavoritaServicio.ObtenerPeliculasMarcadasComoFavoritasDelUsuario(this.usuarioId);
                 repPeliculas.DataSource = misPeliculasFavoritas;
                 repPeliculas.DataBind();
             }
@@ -44,9 +43,8 @@ namespace Pelisfran.peliculas
         protected void btnFavorito_Click(object sender, EventArgs e)
         {
             Guid peliculaId = Guid.Parse(((Button)sender).CommandArgument);
-            Guid usuarioId = Guid.Parse(HttpContext.Current.User.Identity.Name);
-            _peliculaFavoritaServicio.DesmarcarPeliculaComoFavorita(usuarioId, peliculaId);
-            List<PeliculaFavorita> misPeliculasFavoritas = _peliculaFavoritaServicio.ObtenerPeliculasMarcadasComoFavoritasDelUsuario(usuarioId);
+            _peliculaFavoritaServicio.DesmarcarPeliculaComoFavorita(this.usuarioId, peliculaId);
+            List<PeliculaFavorita> misPeliculasFavoritas = _peliculaFavoritaServicio.ObtenerPeliculasMarcadasComoFavoritasDelUsuario(this.usuarioId);
             repPeliculas.DataSource = misPeliculasFavoritas;
             repPeliculas.DataBind();
         }
