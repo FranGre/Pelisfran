@@ -231,6 +231,9 @@
     <Compile Include="Controles\Peliculas\Peliculas.ascx.designer.cs">
       <DependentUpon>Peliculas.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Core\Base.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="default.aspx.cs">
       <DependentUpon>default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
