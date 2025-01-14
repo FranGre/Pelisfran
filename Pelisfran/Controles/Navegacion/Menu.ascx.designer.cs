@@ -69,13 +69,22 @@ namespace Pelisfran.Controles.Navegacion
         protected global::System.Web.UI.WebControls.Button btnIniciarSesion;
 
         /// <summary>
-        /// Control lbMiPerfil.
+        /// Control miPerfil.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbMiPerfil;
+        protected global::System.Web.UI.WebControls.Panel miPerfil;
+
+        /// <summary>
+        /// Control imgFotoPerfil.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image imgFotoPerfil;
 
         /// <summary>
         /// Control botonCerrarSesion.

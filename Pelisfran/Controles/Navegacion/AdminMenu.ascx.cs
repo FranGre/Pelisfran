@@ -16,6 +16,11 @@ namespace Pelisfran.Controles.Navegacion
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!HttpContext.Current.User.Identity.IsAuthenticated)
+            {
+                return;
+            }
+
             Guid usuarioId = Guid.Parse(HttpContext.Current.User.Identity.Name);
             Usuario usuario = _db.Usuarios.Include("FotoPerfil").Where(u => u.Id == usuarioId).FirstOrDefault();
 

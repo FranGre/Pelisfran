@@ -99,11 +99,6 @@ namespace Pelisfran.admin.usuarios
             upUsuarios.Update();
         }
 
-        protected void btnEditar_Click(object sender, EventArgs e)
-        {
-
-        }
-
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
             Button btnEliminar = (Button)sender;

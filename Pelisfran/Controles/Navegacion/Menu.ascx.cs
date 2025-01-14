@@ -1,5 +1,9 @@
-﻿using Pelisfran.Servicios;
+﻿using Pelisfran.Contexto;
+using Pelisfran.Modelos;
+using Pelisfran.Servicios;
 using System;
+using System.Linq;
+using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 
@@ -8,18 +12,25 @@ namespace Pelisfran.Controles.Navegacion
     public partial class Menu : UserControl
     {
         private AutenticacionServicio _autenticacionServicio = new AutenticacionServicio();
+        private PelisFranDBContexto _db = new PelisFranDBContexto();
 
         protected void Page_Load(object sender, EventArgs e)
         {
             btnRegistrarse.Visible = false;
             btnIniciarSesion.Visible = false;
             botonCerrarSesion.Visible = false;
-            lbMiPerfil.Visible = false;
+            miPerfil.Visible = false;
 
             if (_autenticacionServicio.EstaUsuarioAutenticado())
             {
                 botonCerrarSesion.Visible = true;
-                lbMiPerfil.Visible = true;
+                miPerfil.Visible = true;
+                Guid usuarioId = Guid.Parse(HttpContext.Current.User.Identity.Name);
+                Usuario usuario = _db.Usuarios.Include("FotoPerfil").Where(u => u.Id == usuarioId).FirstOrDefault();
+
+                string rutaFotoPerfil = usuario.FotoPerfil.Ruta;
+                imgFotoPerfil.ImageUrl = $"~/{rutaFotoPerfil}";
+
             }
             else
             {
@@ -62,11 +73,6 @@ namespace Pelisfran.Controles.Navegacion
             Request.Cookies.Clear();
             FormsAuthentication.SignOut();
             Response.Redirect("~/peliculas/default.aspx");
-        }
-
-        protected void lbMiPerfil_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("~/mi-perfil.aspx");
         }
     }
 }
