@@ -22,6 +22,7 @@ namespace Pelisfran.Handlers.Dropzone
 
             HttpPostedFile image = context.Request.Files[0];
             string extension = Path.GetExtension(image.FileName);
+            extension = extension.TrimStart('.').ToLower();
 
             if (!EsExtensionValida(extension))
             {
