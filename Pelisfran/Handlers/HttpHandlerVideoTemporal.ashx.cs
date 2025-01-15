@@ -15,22 +15,37 @@ namespace Pelisfran.Handlers
         public void ProcessRequest(HttpContext context)
         {
 
-            // Leer los parámetros del cuerpo de la solicitud
-            var chunkNumber = context.Request["dzchunkindex"];
-            var totalChunks = context.Request["dztotalchunkcount"];
-            var fileName = context.Request["dzuuid"] + "_" + context.Request["name"];
-            var filePath = Path.Combine(context.Server.MapPath("~/Uploads"));
-            string tempFilePath = context.Server.MapPath("~/TempUploads/" + fileName);
+            var chunkNumber = int.Parse(context.Request["dzchunkindex"]);
+            var totalChunks = int.Parse(context.Request["dztotalchunkcount"]);
+            var uuid = context.Request["dzuuid"];
+            var originalFileName = context.Request["name"];
+            var fileExtension = Path.GetExtension(originalFileName);
 
-            // Asegúrate de que el directorio de temporales exista
-            if (!Directory.Exists(Path.GetDirectoryName(tempFilePath)))
-            {
-                Directory.CreateDirectory(Path.GetDirectoryName(tempFilePath));
-            }
+            // Nombre único para cada chunk
+            string tempChunkPath = context.Server.MapPath($"~/TempUploads/{uuid}_chunk_{chunkNumber}");
+            string finalFilePath = context.Server.MapPath($"~/Uploads/{uuid}{fileExtension}");
 
-            using (var fs = new FileStream(tempFilePath, FileMode.Append, FileAccess.Write))
+            // Guardar el chunk en un archivo temporal
+            using (var fs = new FileStream(tempChunkPath, FileMode.Create, FileAccess.Write))
             {
                 context.Request.InputStream.CopyTo(fs);
+            }
+
+            // Si es el último chunk, combinar todos
+            if (chunkNumber == totalChunks - 1)
+            {
+                using (var finalStream = new FileStream(finalFilePath, FileMode.Create, FileAccess.Write))
+                {
+                    for (int i = 0; i < totalChunks; i++)
+                    {
+                        string chunkPath = context.Server.MapPath($"~/TempUploads/{uuid}_chunk_{i}");
+                        using (var chunkStream = new FileStream(chunkPath, FileMode.Open, FileAccess.Read))
+                        {
+                            chunkStream.CopyTo(finalStream);
+                        }
+                        File.Delete(chunkPath); // Eliminar chunk después de combinarlo
+                    }
+                }
             }
 
             context.Response.StatusCode = 200;
