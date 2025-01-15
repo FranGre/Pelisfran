@@ -14,13 +14,12 @@ namespace Pelisfran.Handlers
 
         public void ProcessRequest(HttpContext context)
         {
-            var request = context.Request;
-            var response = context.Response;
 
             // Leer los parámetros del cuerpo de la solicitud
-            string fileName = request.Form["name"];
-            string chunkIndex = request.Form["dzchunkindex"];
-            string totalChunks = request.Form["dztotalchunks"];
+            var chunkNumber = context.Request["dzchunkindex"];
+            var totalChunks = context.Request["dztotalchunkcount"];
+            var fileName = context.Request["dzuuid"] + "_" + context.Request["name"];
+            var filePath = Path.Combine(context.Server.MapPath("~/Uploads"));
             string tempFilePath = context.Server.MapPath("~/TempUploads/" + fileName);
 
             // Asegúrate de que el directorio de temporales exista
@@ -29,42 +28,14 @@ namespace Pelisfran.Handlers
                 Directory.CreateDirectory(Path.GetDirectoryName(tempFilePath));
             }
 
-            if (request.Files.Count > 0)
+            using (var fs = new FileStream(tempFilePath, FileMode.Append, FileAccess.Write))
             {
-                var file = request.Files[0];
-                var chunk = file.InputStream;
-
-                // Si es el primer chunk, lo creamos
-                if (chunkIndex == "0")
-                {
-                    using (FileStream fs = new FileStream(tempFilePath, FileMode.Create))
-                    {
-                        chunk.CopyTo(fs);
-                    }
-                }
-                else
-                {
-                    // Si ya hay chunks, se añaden al archivo temporal
-                    using (FileStream fs = new FileStream(tempFilePath, FileMode.Append))
-                    {
-                        chunk.CopyTo(fs);
-                    }
-                }
+                context.Request.InputStream.CopyTo(fs);
             }
 
-            // Enviar una respuesta para que DropZone sepa que el chunk fue recibido
-            response.StatusCode = 200;
-            response.ContentType = "text/plain";
-            response.Write("Chunk uploaded successfully");
-
-            // Si es el último chunk, puedes unirlo o hacer lo que necesites (como moverlo al lugar definitivo)
-            if (chunkIndex == (Convert.ToInt32(totalChunks) - 1).ToString())
-            {
-                // Aquí puedes mover el archivo final, verificar que todos los chunks llegaron, etc.
-                // Ejemplo: File.Move(tempFilePath, finalPath);
-            }
-
-            response.End();
+            context.Response.StatusCode = 200;
+            context.Response.ContentType = "text/plain";
+            context.Response.Write("Chunk uploaded successfully");
         }
 
         public bool IsReusable
