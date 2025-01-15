@@ -17,7 +17,7 @@
     <asp:UpdatePanel ID="upUsuarios" runat="server" UpdateMode="Conditional">
         <ContentTemplate>
             <asp:GridView ID="gvUsuarios" runat="server" AutoGenerateColumns="false"
-                CssClass="table is-hoverable is-striped is-bordered is-fullwidth" EnableViewState="true"
+                CssClass="table is-hoverable is-striped is-bordered is-fullwidth" EnableViewState="true" DataKeyNames="Id"
                 OnRowDataBound="gvUsuarios_RowDataBound">
                 <EmptyDataTemplate>
                     <p>No hay usuarios</p>

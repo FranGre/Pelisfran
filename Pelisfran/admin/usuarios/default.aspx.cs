@@ -14,7 +14,6 @@ namespace Pelisfran.admin.usuarios
     public partial class _default : Base
     {
         private PelisFranDBContexto _db = new PelisFranDBContexto();
-        private List<Rol> roles = new List<Rol>() { };
         private RolServicio _rolServicio = new RolServicio();
 
         protected void Page_Load(object sender, EventArgs e)
@@ -30,7 +29,7 @@ namespace Pelisfran.admin.usuarios
                     return;
                 }
 
-                this.roles = _db.Roles.ToList();
+                _rolServicio.roles = _db.Roles.ToList();
                 var usuarios = _db.Usuarios.Include("PeliculasLikes").Include("ComentariosPeliculas").ToList()
                     .Select(u => new
                     {
@@ -131,11 +130,11 @@ namespace Pelisfran.admin.usuarios
 
             DropDownList ddlRoles = (DropDownList)e.Row.FindControl("ddlRoles");
 
-            ddlRoles.DataSource = roles;
+            ddlRoles.DataSource = _rolServicio.roles;
             ddlRoles.DataTextField = "Nombre";
             ddlRoles.DataValueField = "Id";
 
-            foreach (var role in roles)
+            foreach (var role in _rolServicio.roles)
             {
                 if (role.Id == dataItem.RolId)
                 {
@@ -149,12 +148,14 @@ namespace Pelisfran.admin.usuarios
 
         protected void ddlRoles_SelectedIndexChanged(object sender, EventArgs e)
         {
-            DropDownList listItem = (DropDownList)sender;
+            DropDownList ddRoles = (DropDownList)sender;
 
-            var idRolSeleccionado = Convert.ToInt32(listItem.SelectedValue);
-            // debe cambiar el rol del usuario seleccionado, en este caso este cambiando el rol del user con
-            // el que estoy logeado
-            var usuario = _db.Usuarios.Find(usuarioId);
+            GridViewRow row = (GridViewRow)ddRoles.NamingContainer;
+
+            var idUsuarioSeleccionado = Guid.Parse(gvUsuarios.DataKeys[row.RowIndex].Value.ToString());
+
+            var idRolSeleccionado = Convert.ToInt32(ddRoles.SelectedValue);
+            var usuario = _db.Usuarios.Find(idUsuarioSeleccionado);
             usuario.RolId = idRolSeleccionado;
 
             _db.SaveChanges();
