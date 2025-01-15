@@ -1,4 +1,5 @@
 ﻿using Pelisfran.Contexto;
+using Pelisfran.Core;
 using Pelisfran.Modelos;
 using Pelisfran.SeedersBaseDatos;
 using Pelisfran.Servicios;
@@ -9,7 +10,7 @@ using System.Web.UI.WebControls;
 
 namespace Pelisfran
 {
-    public partial class login : Page
+    public partial class login : Base
     {
         private UsuarioServicio usuarioServicio = new UsuarioServicio();
         private AutenticacionServicio autenticacionServicio = new AutenticacionServicio();
@@ -25,10 +26,8 @@ namespace Pelisfran
         {
             if (!Page.IsValid) { return; }
 
-
             SeederRoles seederRoles = new SeederRoles();
             seederRoles.Insertar();
-
 
             Usuario usuario = new Usuario
             {
@@ -41,6 +40,7 @@ namespace Pelisfran
                 FechaNacimiento = Convert.ToDateTime(txtFechaNacimiento.Text),
                 CreadoEn = DateTime.Now
             };
+
             usuarioServicio.RegistrarUsuario(usuario);
 
             FileInfo fotoPerfilDefault = new FileInfo(Server.MapPath("~/Uploads/FotosPerfil/default.jpg"));
@@ -58,8 +58,9 @@ namespace Pelisfran
             _db.FotosPerfiles.Add(fotoPerfilUser);
             _db.SaveChanges();
             autenticacionServicio.AutenticarUsuario(usuario.Email, usuario.Password);
+            this.usuarioId = usuario.Id;
 
-            Response.Redirect("autenticado.aspx");
+            Response.Redirect("~/autenticado.aspx");
         }
 
         protected void custEmail_ServerValidate(object source, ServerValidateEventArgs args)
@@ -77,7 +78,7 @@ namespace Pelisfran
 
         protected void lbLogin_Click(object sender, EventArgs e)
         {
-            Response.Redirect("login.aspx");
+            Response.Redirect("~/login.aspx");
         }
     }
 }
