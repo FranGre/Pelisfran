@@ -1,17 +1,32 @@
 ﻿using Pelisfran.Contexto;
+using Pelisfran.Core;
+using Pelisfran.Enums;
+using Pelisfran.Servicios;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web.UI;
 
 namespace Pelisfran.admin.peliculas
 {
-    public partial class _default : Page
+    public partial class _default : Base
     {
         private PelisFranDBContexto _db = new PelisFranDBContexto();
+        private RolServicio _rolServicio = new RolServicio();
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!Page.IsPostBack)
+            {
+                var usuario = _db.Usuarios.Find(this.usuarioId);
+                TipoRolesEnum rolActual = (TipoRolesEnum)usuario.RolId;
+
+                if (!_rolServicio.EsRol(rolActual, TipoRolesEnum.Administrador))
+                {
+                    Response.Redirect("~/acceso-denegado.aspx");
+                    return;
+                }
+            }
+
             var peliculas = _db.Peliculas
                 .Include("Usuario").Include("PeliculasLikes").Include("ComentarioPeliculas").Include("VisitasPeliculas")
                 .AsEnumerable().Select(p => new

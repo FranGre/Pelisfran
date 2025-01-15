@@ -1,6 +1,8 @@
 ﻿using Pelisfran.Contexto;
 using Pelisfran.Core;
+using Pelisfran.Enums;
 using Pelisfran.Modelos;
+using Pelisfran.Servicios;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,11 +15,21 @@ namespace Pelisfran.admin.usuarios
     {
         private PelisFranDBContexto _db = new PelisFranDBContexto();
         private List<Rol> roles = new List<Rol>() { };
+        private RolServicio _rolServicio = new RolServicio();
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
             {
+                var usuario = _db.Usuarios.Find(this.usuarioId);
+                TipoRolesEnum rolActual = (TipoRolesEnum)usuario.RolId;
+
+                if (!_rolServicio.EsRol(rolActual, TipoRolesEnum.Administrador))
+                {
+                    Response.Redirect("~/acceso-denegado.aspx");
+                    return;
+                }
+
                 this.roles = _db.Roles.ToList();
                 var usuarios = _db.Usuarios.Include("PeliculasLikes").Include("ComentariosPeliculas").ToList()
                     .Select(u => new

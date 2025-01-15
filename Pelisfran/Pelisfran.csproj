@@ -74,6 +74,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="acceso-denegado.aspx" />
     <Content Include="admin\default.aspx" />
     <Content Include="admin\generos\crear.aspx" />
     <Content Include="admin\generos\default.aspx" />
@@ -111,6 +112,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="acceso-denegado.aspx.cs">
+      <DependentUpon>acceso-denegado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="acceso-denegado.aspx.designer.cs">
+      <DependentUpon>acceso-denegado.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\default.aspx.cs">
       <DependentUpon>default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -375,6 +383,7 @@
     <Compile Include="Servicios\PeliculaServicio.cs" />
     <Compile Include="Servicios\PortadaPeliculaServicio.cs" />
     <Compile Include="Servicios\PortadaSerieServicio.cs" />
+    <Compile Include="Servicios\RolServicio.cs" />
     <Compile Include="Servicios\SerieFavoritaServicio.cs" />
     <Compile Include="Servicios\SerieServicio.cs" />
     <Compile Include="Servicios\TemporadaServicio.cs" />

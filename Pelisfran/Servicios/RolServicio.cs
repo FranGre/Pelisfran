@@ -1,4 +1,5 @@
 ﻿using Pelisfran.Contexto;
+using Pelisfran.Enums;
 using Pelisfran.Modelos;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,11 @@ namespace Pelisfran.Servicios
         public void CargarRoles()
         {
             roles = _db.Roles.ToList();
+        }
+
+        public bool EsRol(TipoRolesEnum rolActual, TipoRolesEnum rolAComprobar)
+        {
+            return rolActual == rolAComprobar;
         }
     }
 }

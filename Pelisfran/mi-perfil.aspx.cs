@@ -1,14 +1,14 @@
 ﻿using Pelisfran.Contexto;
+using Pelisfran.Core;
 using Pelisfran.Modelos;
 using Pelisfran.Servicios;
 using System;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace Pelisfran
 {
-    public partial class mi_perfil : Page
+    public partial class mi_perfil : Base
     {
         private UsuarioServicio usuarioServicio = new UsuarioServicio();
         private PelisFranDBContexto _db = new PelisFranDBContexto();
@@ -16,7 +16,7 @@ namespace Pelisfran
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (_autenticacionServicio.EstaUsuarioAutenticado())
+            if (!_autenticacionServicio.EstaUsuarioAutenticado())
             {
                 Response.Redirect("~/login.aspx");
                 return;
@@ -27,8 +27,7 @@ namespace Pelisfran
             if (!Page.IsPostBack)
             {
                 rangeFechaNacimiento.MaximumValue = DateTime.Now.ToString("dd/MM/yyyy");
-                Guid usuarioId = Guid.Parse(HttpContext.Current.User.Identity.Name);
-                Usuario usuario = _db.Usuarios.Find(usuarioId);
+                Usuario usuario = _db.Usuarios.Find(this.usuarioId);
                 txtNombreUsuario.Text = usuario.NombreUsuario;
                 txtEmail.Text = usuario.Email;
                 txtNombre.Text = usuario.Nombre;
@@ -39,8 +38,7 @@ namespace Pelisfran
 
         protected void custEmail_ServerValidate(object source, ServerValidateEventArgs args)
         {
-            Guid usuarioId = Guid.Parse(HttpContext.Current.User.Identity.Name);
-            Usuario usuario = _db.Usuarios.Find(usuarioId);
+            Usuario usuario = _db.Usuarios.Find(this.usuarioId);
 
             if (txtEmail.Text == usuario.Email)
             {
@@ -66,8 +64,7 @@ namespace Pelisfran
                 return;
             }
 
-            Guid usuarioId = Guid.Parse(HttpContext.Current.User.Identity.Name);
-            Usuario usuario = _db.Usuarios.Find(usuarioId);
+            Usuario usuario = _db.Usuarios.Find(this.usuarioId);
 
             if (usuario.NombreUsuario == txtNombreUsuario.Text &&
             usuario.Email == txtEmail.Text &&
