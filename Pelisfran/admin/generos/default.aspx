@@ -32,8 +32,8 @@
                     <asp:TemplateField>
                         <ItemTemplate>
                             <div class="buttons">
-                                <asp:Button ID="btnEditar" runat="server" Text="Editar" CommandArgument='<%# Eval("Id") %>' OnClick="btnEditar_Click" CssClass="button is-dark" />
-                                <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" CommandArgument='<%# Eval("Id") %>' OnClick="btnEliminar_Click" CssClass="button is-danger" />
+                                <asp:Button ID="btnEditar" runat="server" Text="Editar" OnCommand="btnEditar_Command" CommandArgument='<%# Eval("Id") %>' CssClass="button is-dark" />
+                                <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" OnCommand="btnEliminar_Command" CommandArgument='<%# Eval("Id") %>' CssClass="button is-danger" />
                             </div>
                         </ItemTemplate>
                     </asp:TemplateField>
