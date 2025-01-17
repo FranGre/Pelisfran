@@ -1,14 +1,16 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PaginasMaestras/Base.Master" AutoEventWireup="true" CodeBehind="default.aspx.cs" Inherits="Pelisfran.admin.peliculas._default" %>
 
 <%@ Register Src="~/Controles/Busqueda/TextSearch.ascx" TagPrefix="controles" TagName="textsearch" %>
+<%@ Register Src="~/Controles/Botones/BotonCrear.ascx" TagPrefix="controles" TagName="botoncrear" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
     <h2 id="titulo" runat="server" class="title is-2 mb-6 is-flex is-justify-content-center">Peliculas</h2>
 
     <div class="mb-5">
-        <asp:Button ID="btnCrearPelicula" runat="server" Text="Crear Pelicula" OnClick="btnCrearPelicula_Click" CssClass="button is-success" />
+        <controles:botoncrear ID="btnCrearPelicula" runat="server" Text="Pelicula" OnClick="btnCrearPelicula_Click" />
         <controles:textsearch ID="textsearch" runat="server" OnBuscar="textsearch_Buscar" Placeholder="Buscar..." />
     </div>
 
