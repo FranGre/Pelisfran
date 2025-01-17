@@ -30,7 +30,7 @@ namespace Pelisfran.admin.usuarios
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCrearUsuarios;
+        protected global::Pelisfran.Controles.Botones.BotonCrear btnCrearUsuarios;
 
         /// <summary>
         /// Control textsearch.
