@@ -10,7 +10,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
     <h2 id="titulo" runat="server" class="title is-2 mb-6 is-flex is-justify-content-center">Generos</h2>
 
-    <div class="mb-5">
+    <div class="mb-5 is-flex is-justify-content-space-between">
         <controles:botoncrear ID="btnCrearGenero" runat="server" Text="Genero" OnClick="btnCrearGenero_Click" />
         <controles:textsearch ID="textsearch" runat="server" OnBuscar="textsearch_Buscar" Placeholder="Buscar..." />
     </div>

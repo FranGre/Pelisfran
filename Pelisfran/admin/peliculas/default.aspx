@@ -9,7 +9,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
     <h2 id="titulo" runat="server" class="title is-2 mb-6 is-flex is-justify-content-center">Peliculas</h2>
 
-    <div class="mb-5">
+    <div class="mb-5 is-flex is-justify-content-space-between">
         <controles:botoncrear ID="btnCrearPelicula" runat="server" Text="Pelicula" OnClick="btnCrearPelicula_Click" />
         <controles:textsearch ID="textsearch" runat="server" OnBuscar="textsearch_Buscar" Placeholder="Buscar..." />
     </div>

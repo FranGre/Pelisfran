@@ -2,8 +2,8 @@
 
 <%@ Register Src="~/Controles/Botones/BotonBuscar.ascx" TagPrefix="controles" TagName="botonbuscar" %>
 
-<div class="field is-grouped">
-    <div class="control is-expanded">
+<div class="is-flex">
+    <div class="control">
         <asp:TextBox ID="tbBusqueda" runat="server" CssClass="input"></asp:TextBox>
     </div>
     <div class="control">
