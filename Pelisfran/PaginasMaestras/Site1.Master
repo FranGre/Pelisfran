@@ -15,8 +15,6 @@
         <div class="py-5 px-6">
             <asp:ContentPlaceHolder ID="body" runat="server">
             </asp:ContentPlaceHolder>
-
-            <footer>:)</footer>
         </div>
     </form>
 </body>
