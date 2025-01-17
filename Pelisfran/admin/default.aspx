@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
     <h2 id="titulo" runat="server" class="title is-2 mb-6 is-flex is-justify-content-center">Admin</h2>
-    <div class="columns  is-gap-4">
+    <div class="columns is-variable is-5 is-gap-4">
         <asp:LinkButton ID="lbGeneros" runat="server" CssClass="column box is-flex is-justify-content-space-between has-background-grey-dark" OnClick="lbGeneros_Click">
             <p>Generos</p>
             <p id="pGenerosTotal" runat="server"></p>
@@ -15,7 +15,7 @@
             <p id="pPeliculasTotal" runat="server"></p>
         </asp:LinkButton>
 
-        <asp:LinkButton ID="lbUsuarios" runat="server" class="column box is-flex is-justify-content-space-between has-background-grey-dark" OnClick="lbUsuarios_Click">
+        <asp:LinkButton ID="lbUsuarios" runat="server" class="column box is-flex is-justify-content-space-between has-background-grey-dark mb-5" OnClick="lbUsuarios_Click">
             <p>Usuarios</p>
             <p id="pUsuariosTotal" runat="server"></p>
         </asp:LinkButton>
