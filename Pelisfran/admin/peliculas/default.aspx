@@ -52,7 +52,7 @@
                     <asp:TemplateField>
                         <ItemTemplate>
                             <div class="buttons">
-                                <asp:Button ID="btnEditar" runat="server" Text="Editar" CommandArgument='<%# Eval("Id") %>' />
+                                <asp:Button ID="btnEditar" runat="server" Text="Editar" CommandArgument='<%# Eval("Id") %>' CssClass="button is-dark" />
                                 <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" CommandArgument='<%# Eval("Id") %>' CssClass="button is-danger" />
                             </div>
                         </ItemTemplate>
