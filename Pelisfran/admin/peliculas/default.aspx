@@ -41,9 +41,11 @@
                         HeaderStyle-CssClass="has-text-weight-bold has-text-centered"
                         ItemStyle-CssClass="has-text-centered" />
 
-                    <asp:BoundField HeaderText="Comentarios" DataField="Comentarios"
+                    <asp:HyperLinkField HeaderText="Comentarios" DataTextField="Comentarios"
                         HeaderStyle-CssClass="has-text-weight-bold has-text-centered"
-                        ItemStyle-CssClass="has-text-centered" />
+                        ItemStyle-CssClass="has-text-centered"
+                        DataNavigateUrlFields="Id"
+                        DataNavigateUrlFormatString="~/admin/comentarios/pelicula.aspx?id={0}" />
 
                     <asp:BoundField HeaderText="Visitas" DataField="Visitas"
                         HeaderStyle-CssClass="has-text-weight-bold has-text-centered"

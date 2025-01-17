@@ -75,6 +75,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="acceso-denegado.aspx" />
+    <Content Include="admin\comentarios\pelicula.aspx" />
     <Content Include="admin\default.aspx" />
     <Content Include="admin\generos\crear.aspx" />
     <Content Include="admin\generos\default.aspx" />
@@ -120,6 +121,13 @@
     </Compile>
     <Compile Include="acceso-denegado.aspx.designer.cs">
       <DependentUpon>acceso-denegado.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\comentarios\pelicula.aspx.cs">
+      <DependentUpon>pelicula.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\comentarios\pelicula.aspx.designer.cs">
+      <DependentUpon>pelicula.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\default.aspx.cs">
       <DependentUpon>default.aspx</DependentUpon>

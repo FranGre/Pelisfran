@@ -25,9 +25,8 @@ namespace Pelisfran.admin.peliculas
                     Response.Redirect("~/acceso-denegado.aspx");
                     return;
                 }
-            }
 
-            var peliculas = _db.Peliculas
+                var peliculas = _db.Peliculas
                 .Include("Usuario").Include("PeliculasLikes").Include("ComentarioPeliculas").Include("VisitasPeliculas")
                 .AsEnumerable().Select(p => new
                 {
@@ -41,8 +40,9 @@ namespace Pelisfran.admin.peliculas
                     Visitas = p.VisitasPeliculas.Count.ToString() ?? "0",
                 }).ToList();
 
-            gvPeliculas.DataSource = peliculas;
-            gvPeliculas.DataBind();
+                gvPeliculas.DataSource = peliculas;
+                gvPeliculas.DataBind();
+            }
         }
 
         protected void btnCrearPelicula_Click(object sender, EventArgs e)
