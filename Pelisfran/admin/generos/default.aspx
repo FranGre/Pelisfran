@@ -2,14 +2,16 @@
 
 <%@ Register Src="~/Controles/Modales/ModalConfirmar.ascx" TagPrefix="controles" TagName="modalconfirmar" %>
 <%@ Register Src="~/Controles/Busqueda/TextSearch.ascx" TagPrefix="controles" TagName="textsearch" %>
+<%@ Register Src="~/Controles/Botones/BotonCrear.ascx" TagPrefix="controles" TagName="botoncrear" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
     <h2 id="titulo" runat="server" class="title is-2 mb-6 is-flex is-justify-content-center">Generos</h2>
 
     <div class="mb-5">
-        <asp:Button ID="btnCrearGenero" runat="server" Text="Crear Genero" OnClick="btnCrearGenero_Click" CssClass="button is-success" />
+        <controles:botoncrear ID="btnCrearGenero" runat="server" Text="Genero" OnClick="btnCrearGenero_Click" />
         <controles:textsearch ID="textsearch" runat="server" OnBuscar="textsearch_Buscar" Placeholder="Buscar..." />
     </div>
 
