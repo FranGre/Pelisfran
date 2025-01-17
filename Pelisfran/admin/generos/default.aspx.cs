@@ -27,11 +27,19 @@ namespace Pelisfran.admin.generos
                     Response.Redirect("~/acceso-denegado.aspx");
                     return;
                 }
-
-                var generos = _db.Generos.Include("Peliculas").Select(g => new { g.Id, g.Nombre, TotalPeliculas = g.GenerosPeliculas.Count() }).ToList();
-                gvGeneros.DataSource = generos;
-                gvGeneros.DataBind();
             }
+
+            var generos = _db.Generos.Include("Peliculas")
+                   .Select(g => new
+                   {
+                       g.Id,
+                       g.Nombre,
+                       TotalPeliculas = g.GenerosPeliculas.Count()
+                   }).ToList();
+
+            gvGeneros.DataSource = generos;
+            gvGeneros.DataBind();
+            upGeneros.Update();
         }
 
         protected void btnCrearGenero_Click(object sender, EventArgs e)
@@ -68,6 +76,30 @@ namespace Pelisfran.admin.generos
             var id = btnEditar.CommandArgument;
 
             Response.Redirect($"~/admin/generos/editar.aspx?id={id}");
+        }
+
+        protected void textsearch_Buscar(object sender, string busqueda)
+        {
+            var query = _db.Generos
+            .Include("GenerosPeliculas").AsQueryable();
+
+            if (!string.IsNullOrEmpty(busqueda))
+            {
+                query = query.Where(p => p.Nombre.Contains(busqueda));
+            }
+
+            var generos = query
+                .Select(g => new
+                {
+                    g.Id,
+                    g.Nombre,
+                    TotalPeliculas = g.GenerosPeliculas.Count().ToString(),
+                })
+                .ToList();
+
+            gvGeneros.DataSource = generos;
+            gvGeneros.DataBind();
+            upGeneros.Update();
         }
     }
 }

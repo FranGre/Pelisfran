@@ -33,6 +33,15 @@ namespace Pelisfran.admin.generos
         protected global::System.Web.UI.WebControls.Button btnCrearGenero;
 
         /// <summary>
+        /// Control textsearch.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Pelisfran.Controles.Busqueda.TextSearch textsearch;
+
+        /// <summary>
         /// Control upGeneros.
         /// </summary>
         /// <remarks>
