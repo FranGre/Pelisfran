@@ -20,6 +20,8 @@ namespace Pelisfran.Modelos
         [Required]
         public DateTime FechaNacimiento { get; set; }
         [Required]
+        public bool Activo { get; set; }
+        [Required]
         public DateTime CreadoEn { get; set; }
         public DateTime? ActualizadoEn { get; set; }
 
