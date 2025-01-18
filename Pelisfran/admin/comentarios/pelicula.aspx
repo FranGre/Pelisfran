@@ -9,13 +9,13 @@
     </div>
 
     <asp:UpdatePanel ID="UpComentarios" runat="server" UpdateMode="Conditional">
-        <contenttemplate>
+        <ContentTemplate>
             <div class="mx-6">
                 <asp:ListView ID="lvComentarios" runat="server" OnPagePropertiesChanging="lvComentarios_PagePropertiesChanging" OnItemDataBound="lvComentarios_ItemDataBound">
 
-                    <emptydatatemplate>No hay comentarios</emptydatatemplate>
+                    <EmptyDataTemplate>No hay comentarios</EmptyDataTemplate>
 
-                    <itemtemplate>
+                    <ItemTemplate>
                         <div class="mb-4 box">
                             <div class="flex is-display-flex is-justify-content-space-between">
                                 <div class="is-display-flex">
@@ -25,20 +25,21 @@
                                 <small id="fecha" runat="server" class="ml-6 has-text-weight-semibold"></small>
                             </div>
                             <p id="comentario" runat="server" class="ml-3"></p>
+                            <asp:Button ID="btnEstado" runat="server" OnCommand="btnEstado_Command" CommandArgument='<%#Eval("Id") %>' />
                         </div>
-                    </itemtemplate>
+                    </ItemTemplate>
 
-                    <layouttemplate>
+                    <LayoutTemplate>
                         <asp:PlaceHolder ID="itemPlaceHolder" runat="server"></asp:PlaceHolder>
                         <asp:DataPager ID="dpComentarios" runat="server" PagedControlID="lvComentarios" PageSize="10">
-                            <fields>
+                            <Fields>
                                 <asp:NumericPagerField ButtonType="Button" />
-                            </fields>
+                            </Fields>
                         </asp:DataPager>
-                    </layouttemplate>
+                    </LayoutTemplate>
 
                 </asp:ListView>
             </div>
-        </contenttemplate>
+        </ContentTemplate>
     </asp:UpdatePanel>
 </asp:Content>
