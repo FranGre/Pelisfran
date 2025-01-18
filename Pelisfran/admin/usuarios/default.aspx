@@ -41,7 +41,7 @@
                         HeaderStyle-CssClass="has-text-weight-bold has-text-centered"
                         ItemStyle-CssClass="has-text-centered">
                         <ItemTemplate>
-                            <asp:DropDownList ID="ddlRoles" runat="server" OnSelectedIndexChanged="ddlRoles_SelectedIndexChanged" AutoPostBack="true" />
+                            <asp:DropDownList ID="ddlRoles" runat="server" OnSelectedIndexChanged="ddlRoles_SelectedIndexChanged" AutoPostBack="true" CssClass="select has-text-centered is-family-monospace has-text-weight-semibold	 has-radius-rounded is-fullwidth" />
                         </ItemTemplate>
                     </asp:TemplateField>
 
