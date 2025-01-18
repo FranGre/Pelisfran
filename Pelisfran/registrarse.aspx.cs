@@ -38,6 +38,7 @@ namespace Pelisfran
                 Password = txtPassword.Text,
                 Nombre = "-",
                 FechaNacimiento = Convert.ToDateTime(txtFechaNacimiento.Text),
+                Activo = true,
                 CreadoEn = DateTime.Now
             };
 
