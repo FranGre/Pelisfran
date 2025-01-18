@@ -35,6 +35,16 @@ namespace Pelisfran
                 return;
             }
 
+            if (!autenticacionServicio.EstaActivo(txtEmail.Text))
+            {
+                if (!alerta.Attributes["class"].Contains(" notification is-danger"))
+                {
+                    alerta.Attributes["class"] += " notification is-danger";
+                }
+                alerta.InnerText = "Usuario inactivo";
+                return;
+            }
+
             alerta.Attributes["class"] = string.Empty;
             alerta.InnerText = string.Empty;
 
