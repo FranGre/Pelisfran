@@ -9,6 +9,8 @@ namespace Pelisfran.Modelos
         public Guid Id { get; set; }
         [Required, MaxLength(255)]
         public string Comentario { get; set; }
+        [Required]
+        public bool Visible { get; set; }
         public DateTime FechaCreacion { get; set; }
 
         [ForeignKey("Usuario")]
