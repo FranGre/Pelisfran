@@ -39,6 +39,7 @@ namespace Pelisfran.admin.usuarios
                         u.Email,
                         u.FechaNacimiento,
                         u.RolId,
+                        u.Activo,
                         Likes = u.PeliculasLikes.Count(),
                         Comentarios = u.ComentariosPeliculas.Count(),
                     });
@@ -51,6 +52,7 @@ namespace Pelisfran.admin.usuarios
                     u.Email,
                     FechaNacimiento = u.FechaNacimiento.ToString("dd/MM/yyyy"),
                     u.RolId,
+                    u.Activo,
                     u.Likes,
                     u.Comentarios
                 });
@@ -86,6 +88,7 @@ namespace Pelisfran.admin.usuarios
                     u.Email,
                     u.FechaNacimiento,
                     u.RolId,
+                    u.Activo,
                     Likes = u.PeliculasLikes.Count(),
                     Comentarios = u.ComentariosPeliculas.Count()
                 })
@@ -99,6 +102,7 @@ namespace Pelisfran.admin.usuarios
                 u.Email,
                 FechaNacimiento = u.FechaNacimiento.ToString("dd/MM/yyyy"),
                 u.RolId,
+                u.Activo,
                 u.Likes,
                 u.Comentarios
             });
@@ -126,7 +130,7 @@ namespace Pelisfran.admin.usuarios
                 return;
             }
 
-            var dataItem = (dynamic)e.Row.DataItem;
+            var usuario = (dynamic)e.Row.DataItem;
 
             DropDownList ddlRoles = (DropDownList)e.Row.FindControl("ddlRoles");
 
@@ -136,7 +140,7 @@ namespace Pelisfran.admin.usuarios
 
             foreach (var role in _rolServicio.roles)
             {
-                if (role.Id == dataItem.RolId)
+                if (role.Id == usuario.RolId)
                 {
                     ddlRoles.SelectedValue = role.Id.ToString();
                     break;
@@ -144,6 +148,14 @@ namespace Pelisfran.admin.usuarios
             }
 
             ddlRoles.DataBind();
+
+            Button btnActivo = (Button)e.Row.FindControl("btnActivo");
+            btnActivo.Text = "Inactivo";
+
+            if (usuario.Activo)
+            {
+                btnActivo.Text = "Activo";
+            }
         }
 
         protected void ddlRoles_SelectedIndexChanged(object sender, EventArgs e)
@@ -161,5 +173,17 @@ namespace Pelisfran.admin.usuarios
             _db.SaveChanges();
             upUsuarios.Update();
         }
+        protected void btnActivo_Command(object sender, CommandEventArgs e)
+        {
+            Button btnActivo = (Button)sender;
+            var usuarioId = Guid.Parse(e.CommandArgument.ToString());
+
+            var usuario = _db.Usuarios.Find(usuarioId);
+
+            usuario.Activo = !usuario.Activo;
+            _db.SaveChanges();
+            btnActivo.Text = usuario.Activo ? "Activo" : "Inactivo";
+            upUsuarios.Update();
+        }
     }
-}
+};

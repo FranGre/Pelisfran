@@ -49,6 +49,14 @@
                         HeaderStyle-CssClass="has-text-weight-bold has-text-centered"
                         ItemStyle-CssClass="has-text-centered" />
 
+                    <asp:TemplateField HeaderText="Estado">
+                        <ItemTemplate>
+                            <div class="buttons">
+                                <asp:Button ID="btnActivo" runat="server" OnCommand="btnActivo_Command" CommandArgument='<%# Eval("Id") %>' />
+                            </div>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+
                     <asp:BoundField HeaderText="Likes" DataField="Likes"
                         HeaderStyle-CssClass="has-text-weight-bold has-text-centered"
                         ItemStyle-CssClass="has-text-centered" />
