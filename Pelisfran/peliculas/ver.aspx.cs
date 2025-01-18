@@ -45,9 +45,9 @@ namespace Pelisfran.peliculas
 
                 var item = _db.Peliculas.Include("ComentarioPeliculas").Include("PeliculasLikes").Include("VisitasPeliculas").Where(p => p.Id == peliculaId).FirstOrDefault();
 
-                visitas.InnerText = item.VisitasPeliculas.Count().ToString() ?? "0";
-                likes.InnerText = item.PeliculasLikes.Count().ToString() ?? "0";
-                estadisticaComentarios.InnerText = item.ComentarioPeliculas.Count().ToString() ?? "0";
+                visitas.InnerText = item.VisitasPeliculas.Count().ToString();
+                likes.InnerText = item.PeliculasLikes.Count().ToString();
+                estadisticaComentarios.InnerText = item.ComentarioPeliculas.Where(c => c.Visible).Count().ToString();
 
                 botonFavorito.DesactivarFavorito();
                 if (_peliculaFavoritaServicio.PeliculaEstaMarcadaComoFavorita(this.usuarioId, peliculaId))
@@ -64,10 +64,10 @@ namespace Pelisfran.peliculas
                 upLikes.Update();
 
 
-                if (_db.ComentariosPeliculas.Where(c => c.PeliculaId == peliculaId).Any())
+                if (_db.ComentariosPeliculas.Where(c => c.Visible && c.PeliculaId == peliculaId).Any())
                 {
                     // REF
-                    var comentarios = ObtenerComentarios();
+                    var comentarios = ObtenerComentarios(peliculaId);
                     BindearComentarios(comentarios);
                 }
             }
@@ -119,6 +119,7 @@ namespace Pelisfran.peliculas
                 Id = Guid.NewGuid(),
                 Comentario = tbComentario.Text,
                 FechaCreacion = DateTime.Now,
+                Visible = true,
                 UsuarioId = this.usuarioId,
                 PeliculaId = Guid.Parse(Request.QueryString["id"])
             };
@@ -145,9 +146,9 @@ namespace Pelisfran.peliculas
             Response.Redirect("login.aspx", false);
         }
 
-        private List<ComentarioPelicula> ObtenerComentarios()
+        private List<ComentarioPelicula> ObtenerComentarios(Guid peliculaId)
         {
-            return _db.ComentariosPeliculas.OrderByDescending(c => c.FechaCreacion).ToList();
+            return _db.ComentariosPeliculas.Where(c => c.Visible && c.PeliculaId == peliculaId).OrderByDescending(c => c.FechaCreacion).ToList();
         }
 
         private void BindearComentarios(List<ComentarioPelicula> comentarios)
@@ -160,8 +161,9 @@ namespace Pelisfran.peliculas
         {
             DataPager dpComentarios = (DataPager)lvComentarios.FindControl("dpComentarios");
             dpComentarios.SetPageProperties(e.StartRowIndex, e.MaximumRows, false);
+            Guid peliculaId = Guid.Parse(Request.QueryString["id"]);
 
-            var comentarios = ObtenerComentarios();
+            var comentarios = ObtenerComentarios(peliculaId);
             BindearComentarios(comentarios);
         }
 
