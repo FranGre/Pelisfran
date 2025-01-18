@@ -34,5 +34,11 @@ namespace Pelisfran.Servicios
         {
             return HttpContext.Current.User.Identity.IsAuthenticated;
         }
+
+        public bool EstaActivo(string email)
+        {
+            Usuario usuario = _usuarioServicio.ObtenerUsuario(email);
+            return usuario.Activo;
+        }
     }
 }
