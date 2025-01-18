@@ -1,10 +1,8 @@
 ﻿using Pelisfran.Contexto;
 using Pelisfran.Core;
 using Pelisfran.Enums;
-using Pelisfran.Modelos;
 using Pelisfran.Servicios;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -15,6 +13,8 @@ namespace Pelisfran.admin.usuarios
     {
         private PelisFranDBContexto _db = new PelisFranDBContexto();
         private RolServicio _rolServicio = new RolServicio();
+        private const string CLASS_BTN_ACTIVO = "button is-fullwidth has-text-weight-semibold is-family-code is-light";
+        private const string CLASS_BTN_INACTIVO = "button is-fullwidth has-text-weight-semibold is-family-code is-dark";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -151,10 +151,12 @@ namespace Pelisfran.admin.usuarios
 
             Button btnActivo = (Button)e.Row.FindControl("btnActivo");
             btnActivo.Text = "Inactivo";
+            btnActivo.CssClass = CLASS_BTN_INACTIVO;
 
             if (usuario.Activo)
             {
                 btnActivo.Text = "Activo";
+                btnActivo.CssClass =CLASS_BTN_ACTIVO;
             }
         }
 
@@ -182,7 +184,14 @@ namespace Pelisfran.admin.usuarios
 
             usuario.Activo = !usuario.Activo;
             _db.SaveChanges();
-            btnActivo.Text = usuario.Activo ? "Activo" : "Inactivo";
+            btnActivo.Text = "Inactivo";
+            btnActivo.CssClass = CLASS_BTN_INACTIVO;
+
+            if (usuario.Activo)
+            {
+                btnActivo.Text = "Activo";
+                btnActivo.CssClass = CLASS_BTN_ACTIVO;
+            }
             upUsuarios.Update();
         }
     }

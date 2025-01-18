@@ -52,7 +52,7 @@
                     <asp:TemplateField HeaderText="Estado">
                         <ItemTemplate>
                             <div class="buttons">
-                                <asp:Button ID="btnActivo" runat="server" OnCommand="btnActivo_Command" CommandArgument='<%# Eval("Id") %>' />
+                                <asp:Button ID="btnActivo" runat="server" OnCommand="btnActivo_Command" CommandArgument='<%# Eval("Id") %>' CssClass="button is-fullwidth"/>
                             </div>
                         </ItemTemplate>
                     </asp:TemplateField>
