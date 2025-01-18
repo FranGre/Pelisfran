@@ -61,7 +61,7 @@ namespace Pelisfran
             autenticacionServicio.AutenticarUsuario(usuario.Email, usuario.Password);
             this.usuarioId = usuario.Id;
 
-            Response.Redirect("~/autenticado.aspx");
+            Response.Redirect("~/peliculas/default.aspx");
         }
 
         protected void custEmail_ServerValidate(object source, ServerValidateEventArgs args)
