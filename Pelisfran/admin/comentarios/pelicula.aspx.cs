@@ -79,9 +79,12 @@ namespace Pelisfran.admin.comentarios
             comentario.InnerText = comentarioPelicula.Comentario;
 
             btnEstado.Text = "Oculto";
+            btnEstado.CssClass = "button is-small is-dark";
+
             if (comentarioPelicula.Visible)
             {
                 btnEstado.Text = "Visible";
+                btnEstado.CssClass = "button is-small is-white";
             }
 
             var usuario = _db.Usuarios.Include("FotoPerfil").Where(u => u.Id == usuarioId).FirstOrDefault();
@@ -99,9 +102,12 @@ namespace Pelisfran.admin.comentarios
             _db.SaveChanges();
 
             btnEstado.Text = "Oculto";
+            btnEstado.CssClass = "button is-small is-dark";
+
             if (comentarioPelicula.Visible)
             {
                 btnEstado.Text = "Visible";
+                btnEstado.CssClass = "button is-small is-white";
             }
 
             UpComentarios.Update();
