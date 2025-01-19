@@ -11,53 +11,70 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
     <input type="hidden" id="originalFileName" name="originalFileName" />
     <input type="hidden" id="tempFileName" name="tempFileName" />
+    <div class="columns">
+        <div class="column">
+            <div class="field">
+                <asp:Label ID="lbTitulo" runat="server" CssClass="label">Titulo</asp:Label>
+                <div class="control">
+                    <asp:TextBox ID="txtTitulo" runat="server" CssClass="input" />
+                </div>
+                <asp:RequiredFieldValidator ID="reqTitulo" runat="server" ControlToValidate="txtTitulo" ErrorMessage="Campo obligatorio" Display="Dynamic" CssClass="help is-danger" />
+                <asp:RegularExpressionValidator ID="regexTitulo" runat="server" ControlToValidate="txtTitulo" ErrorMessage="Maximo 50 caracteres" Display="Dynamic" ValidationExpression="^[a-zA-Z0-9\s]{1,50}$" CssClass="help is-danger" />
+            </div>
 
-    <div>
-        <asp:Label ID="lbTitulo" runat="server">Titulo</asp:Label>
-        <asp:TextBox ID="txtTitulo" runat="server" />
-        <asp:RequiredFieldValidator ID="reqTitulo" runat="server" ControlToValidate="txtTitulo" ErrorMessage="Campo obligatorio" Display="Dynamic" />
-        <asp:RegularExpressionValidator ID="regexTitulo" runat="server" ControlToValidate="txtTitulo" ErrorMessage="Maximo 50 caracteres" Display="Dynamic" ValidationExpression="^[a-zA-Z0-9\s]{1,50}$" />
-    </div>
+            <div class="field">
+                <asp:Label ID="lbPelicula" runat="server" Text="Pelicula" CssClass="label" />
+                <div class="control">
+                    <div id="video" class="dropzone">
+                        <!-- Los archivos se soltarán aquí -->
+                    </div>
+                </div>
+            </div>
 
-    <div>
-        <div id="video" class="dropzone">
-            <!-- Los archivos se soltarán aquí -->
+            <div class="field">
+                <asp:Label ID="lbSinopsisBreve" runat="server" Text="Sinopsis" CssClass="label" />
+                <div class="control">
+                    <asp:TextBox ID="txtSinopsisBreve" runat="server" TextMode="MultiLine" CssClass="input" />
+                </div>
+                <asp:RequiredFieldValidator ID="reqSinopsisBreve" runat="server" ControlToValidate="txtSinopsisBreve" ErrorMessage="Campo obligatorio" Display="Dynamic" CssClass="help is-danger" />
+                <asp:RegularExpressionValidator ID="regexSinopsisBreve" runat="server" ControlToValidate="txtSinopsisBreve" ErrorMessage="Maximo 600 caracteres" Display="Dynamic" ValidationExpression="^(.|\n){1,600}$" CssClass="help is-danger" />
+            </div>
+        </div>
+        <div class="column">
+            <div class="field">
+                <asp:Label ID="lbFechaLanzamiento" runat="server" Text="Fecha Lanzamiento" CssClass="label" />
+                <div class="control">
+                    <asp:TextBox ID="txtFechaLanzamiento" runat="server" TextMode="Date" CssClass="input" />
+                </div>
+                <asp:RequiredFieldValidator ID="reqFechaLanzamiento" runat="server" ControlToValidate="txtFechaLanzamiento" ErrorMessage="Campo obligatorio" Display="Dynamic" CssClass="help is-danger" />
+                <asp:RangeValidator ID="rangeFechaLanzamiento" runat="server" ControlToValidate="txtFechaLanzamiento" Display="Dynamic" Type="Date" CssClass="help is-danger"></asp:RangeValidator>
+            </div>
+
+            <div class="field">
+                <asp:Label ID="lbDuracion" runat="server" Text="Duracion" CssClass="label" />
+                <div class="control">
+                    <asp:TextBox ID="txtDuracion" runat="server" TextMode="Number" CssClass="input" />
+                </div>
+                <asp:RequiredFieldValidator ID="reqDuracion" runat="server" ControlToValidate="txtDuracion" ErrorMessage="Campo obligatorio" Display="Dynamic" CssClass="help is-danger" />
+                <asp:RangeValidator ID="rangeDuracion" runat="server" ControlToValidate="txtDuracion" ErrorMessage="Debe estar entre 1 y 300" Display="Dynamic" Type="Integer" MinimumValue="1" MaximumValue="300" CssClass="help is-danger"></asp:RangeValidator>
+            </div>
+
+            <div class="field">
+                <controles:checkboxListGeneros ID="generos" runat="server" />
+                <span id="reqGeneros" runat="server" class="help is-danger" />
+            </div>
+
+            <div class="field">
+                <asp:Label ID="lbPortada" runat="server" Text="Portada" CssClass="label" />
+                <div class="control">
+                    <input type="file" name="fuPortada" runat="server" class="filepond-portada" cssclass="label" />
+                </div>
+                <span id="reqPortada" runat="server" class="help is-danger" />
+            </div>
         </div>
     </div>
 
-    <div>
-        <asp:Label ID="lbSinopsisBreve" runat="server" Text="Sinopsis" />
-        <asp:TextBox ID="txtSinopsisBreve" runat="server" TextMode="MultiLine" />
-        <asp:RequiredFieldValidator ID="reqSinopsisBreve" runat="server" ControlToValidate="txtSinopsisBreve" ErrorMessage="Campo obligatorio" Display="Dynamic" />
-        <asp:RegularExpressionValidator ID="regexSinopsisBreve" runat="server" ControlToValidate="txtSinopsisBreve" ErrorMessage="Maximo 600 caracteres" Display="Dynamic" ValidationExpression="^(.|\n){1,600}$" />
-    </div>
-
-    <div>
-        <asp:Label ID="lbFechaLanzamiento" runat="server" Text="Fecha Lanzamiento" />
-        <asp:TextBox ID="txtFechaLanzamiento" runat="server" TextMode="Date" />
-        <asp:RequiredFieldValidator ID="reqFechaLanzamiento" runat="server" ControlToValidate="txtFechaLanzamiento" ErrorMessage="Campo obligatorio" Display="Dynamic" />
-        <asp:RangeValidator ID="rangeFechaLanzamiento" runat="server" ControlToValidate="txtFechaLanzamiento" Display="Dynamic" Type="Date"></asp:RangeValidator>
-    </div>
-
-    <div>
-        <asp:Label ID="lbDuracion" runat="server" Text="Duracion" />
-        <asp:TextBox ID="txtDuracion" runat="server" TextMode="Number" />
-        <asp:RequiredFieldValidator ID="reqDuracion" runat="server" ControlToValidate="txtDuracion" ErrorMessage="Campo obligatorio" Display="Dynamic" />
-        <asp:RangeValidator ID="rangeDuracion" runat="server" ControlToValidate="txtDuracion" ErrorMessage="Debe estar entre 1 y 300" Display="Dynamic" Type="Integer" MinimumValue="1" MaximumValue="300"></asp:RangeValidator>
-    </div>
-
-    <div>
-        <controles:checkboxListGeneros ID="generos" runat="server" />
-        <span id="reqGeneros" runat="server" />
-    </div>
-
-    <div>
-        <asp:Label ID="lbPortada" runat="server" Text="Portada" />
-        <input type="file" name="fuPortada" runat="server" class="filepond-portada" />
-        <span id="reqPortada" runat="server" />
-    </div>
-
-    <asp:Button ID="btnAceptar" runat="server" Text="Crear" OnClick="btnAceptar_Click" />
+    <asp:Button ID="btnAceptar" runat="server" Text="Crear" OnClick="btnAceptar_Click" CssClass="button is-success" />
 
     <script src="<%=ResolveUrl("~/Scripts/FilePond/filepond.js")%>" type="text/javascript"></script>
     <script src="<%=ResolveUrl("~/Scripts/FilePond/plugins/filepond-plugin-file-validate-type.js")%>" type="text/javascript"></script>
