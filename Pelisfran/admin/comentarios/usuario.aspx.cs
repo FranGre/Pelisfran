@@ -69,6 +69,7 @@ namespace Pelisfran.admin.comentarios
             HtmlGenericControl fecha = (HtmlGenericControl)repeaterItem.FindControl("fecha");
             HtmlGenericControl comentario = (HtmlGenericControl)repeaterItem.FindControl("comentario");
             Image fotoPerfil = (Image)repeaterItem.FindControl("fotoPerfil");
+            Button btnEstado = (Button)repeaterItem.FindControl("btnEstado");
 
             ComentarioPelicula comentarioPelicula = (ComentarioPelicula)repeaterItem.DataItem;
 
@@ -76,9 +77,40 @@ namespace Pelisfran.admin.comentarios
             tituloPelicula.InnerText = comentarioPelicula.Pelicula.Titulo;
             fecha.InnerText = HelperFecha.ObtenerTiempoTranscurrido(comentarioPelicula.FechaCreacion);
             comentario.InnerText = comentarioPelicula.Comentario;
+
+            btnEstado.Text = "Oculto";
+            btnEstado.CssClass = "button is-small is-dark";
+
+            if (comentarioPelicula.Visible)
+            {
+                btnEstado.Text = "Visible";
+                btnEstado.CssClass = "button is-small is-white";
+            }
+
             var usuario = _db.Usuarios.Include("FotoPerfil").Where(u => u.Id == this.idUsuarioQuery).FirstOrDefault();
             string rutaFotoPerfil = usuario.FotoPerfil.Ruta;
             fotoPerfil.ImageUrl = $"~/{rutaFotoPerfil}";
+        }
+
+        protected void btnEstado_Command(object sender, CommandEventArgs e)
+        {
+            Button btnEstado = (Button)sender;
+            Guid comentarioId = Guid.Parse(e.CommandArgument.ToString());
+
+            ComentarioPelicula comentarioPelicula = _db.ComentariosPeliculas.Find(comentarioId);
+            comentarioPelicula.Visible = !comentarioPelicula.Visible;
+            _db.SaveChanges();
+
+            btnEstado.Text = "Oculto";
+            btnEstado.CssClass = "button is-small is-dark";
+
+            if (comentarioPelicula.Visible)
+            {
+                btnEstado.Text = "Visible";
+                btnEstado.CssClass = "button is-small is-white";
+            }
+
+            UpComentarios.Update();
         }
     }
 }

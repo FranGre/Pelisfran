@@ -25,6 +25,7 @@
                                 <small id="fecha" runat="server" class="ml-6 has-text-weight-semibold"></small>
                             </div>
                             <p id="comentario" runat="server" class="ml-3"></p>
+                            <asp:Button ID="btnEstado" runat="server" OnCommand="btnEstado_Command" CommandArgument='<%#Eval("Id") %>' />
                         </div>
                     </ItemTemplate>
 
