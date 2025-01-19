@@ -29,7 +29,7 @@
         <asp:Label ID="lbSinopsisBreve" runat="server" Text="Sinopsis" />
         <asp:TextBox ID="txtSinopsisBreve" runat="server" TextMode="MultiLine" />
         <asp:RequiredFieldValidator ID="reqSinopsisBreve" runat="server" ControlToValidate="txtSinopsisBreve" ErrorMessage="Campo obligatorio" Display="Dynamic" />
-        <asp:RegularExpressionValidator ID="regexSinopsisBreve" runat="server" ControlToValidate="txtSinopsisBreve" ErrorMessage="Maximo 600 caracteres" Display="Dynamic" ValidationExpression="^[a-zA-Z0-9\s]{1,600}$" />
+        <asp:RegularExpressionValidator ID="regexSinopsisBreve" runat="server" ControlToValidate="txtSinopsisBreve" ErrorMessage="Maximo 600 caracteres" Display="Dynamic" ValidationExpression="^(.|\n){1,600}$" />
     </div>
 
     <div>
@@ -99,7 +99,7 @@
         });
 
         let myDropzone = new Dropzone("div#video", {
-            paramName: "file", 
+            paramName: "file",
             url: "/Handlers/HttpHandlerVideoTemporal.ashx",
             maxFilesize: 10 * 1024 * 1024 * 1024,
             chunking: true,
