@@ -13,7 +13,7 @@ namespace Pelisfran.Modelos
         public string Email { get; set; }
         [Required]
         public string Password { get; set; }
-        [Required, MaxLength(40)]
+        [MaxLength(40)]
         public string Nombre { get; set; }
         [MaxLength(50)]
         public string Apellidos { get; set; }
