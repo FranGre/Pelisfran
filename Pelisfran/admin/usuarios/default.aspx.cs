@@ -4,6 +4,7 @@ using Pelisfran.Enums;
 using Pelisfran.Servicios;
 using System;
 using System.Linq;
+using System.Linq.Dynamic;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -30,34 +31,6 @@ namespace Pelisfran.admin.usuarios
                 }
 
                 _rolServicio.roles = _db.Roles.ToList();
-                var usuarios = _db.Usuarios.Include("PeliculasLikes").Include("ComentariosPeliculas").ToList()
-                    .Select(u => new
-                    {
-                        u.Id,
-                        u.NombreUsuario,
-                        u.Nombre,
-                        u.Email,
-                        u.FechaNacimiento,
-                        u.RolId,
-                        u.Activo,
-                        Likes = u.PeliculasLikes.Count(),
-                        Comentarios = u.ComentariosPeliculas.Count(),
-                    });
-
-                var usuariosFechaFormateada = usuarios.Select(u => new
-                {
-                    u.Id,
-                    u.NombreUsuario,
-                    u.Nombre,
-                    u.Email,
-                    FechaNacimiento = u.FechaNacimiento.ToString("dd/MM/yyyy"),
-                    u.RolId,
-                    u.Activo,
-                    u.Likes,
-                    u.Comentarios
-                });
-
-                gvUsuarios.DataSource = usuariosFechaFormateada;
                 gvUsuarios.DataBind();
                 upUsuarios.Update();
             }
@@ -70,44 +43,6 @@ namespace Pelisfran.admin.usuarios
 
         protected void textsearch_Buscar(object sender, string busqueda)
         {
-            var query = _db.Usuarios
-            .Include("PeliculasLikes").Include("ComentariosPeliculas")
-            .AsQueryable();
-
-            if (!string.IsNullOrEmpty(busqueda))
-            {
-                query = query.Where(u => u.Nombre.Contains(busqueda) || u.NombreUsuario.Contains(busqueda) || u.Email.Contains(busqueda));
-            }
-
-            var usuarios = query
-                .Select(u => new
-                {
-                    u.Id,
-                    u.NombreUsuario,
-                    u.Nombre,
-                    u.Email,
-                    u.FechaNacimiento,
-                    u.RolId,
-                    u.Activo,
-                    Likes = u.PeliculasLikes.Count(),
-                    Comentarios = u.ComentariosPeliculas.Count()
-                })
-                .ToList();
-
-            var usuariosFechaFormateada = usuarios.Select(u => new
-            {
-                u.Id,
-                u.NombreUsuario,
-                u.Nombre,
-                u.Email,
-                FechaNacimiento = u.FechaNacimiento.ToString("dd/MM/yyyy"),
-                u.RolId,
-                u.Activo,
-                u.Likes,
-                u.Comentarios
-            });
-
-            gvUsuarios.DataSource = usuariosFechaFormateada;
             gvUsuarios.DataBind();
             upUsuarios.Update();
         }
@@ -156,7 +91,7 @@ namespace Pelisfran.admin.usuarios
             if (usuario.Activo)
             {
                 btnActivo.Text = "Activo";
-                btnActivo.CssClass =CLASS_BTN_ACTIVO;
+                btnActivo.CssClass = CLASS_BTN_ACTIVO;
             }
         }
 
@@ -193,6 +128,42 @@ namespace Pelisfran.admin.usuarios
                 btnActivo.CssClass = CLASS_BTN_ACTIVO;
             }
             upUsuarios.Update();
+        }
+
+        // El tipo devuelto puede ser modificado a IEnumerable, sin embargo, para ser compatible con la paginación y ordenación de 
+        //, se deben agregar los siguientes parametros:
+        //     int maximumRows
+        //     int startRowIndex
+        //     out int totalRowCount
+        //     string sortByExpression
+        public IQueryable gvUsuarios_GetData(int maximumRows, int startRowIndex, out int totalRowCount, string sortByExpression)
+        {
+            var usuarios = _db.Usuarios.Include("PeliculasLikes").Include("ComentariosPeliculas").AsQueryable();
+
+            if (!string.IsNullOrEmpty(textsearch.Text))
+            {
+                usuarios = usuarios.Where(u => u.Nombre.Contains(textsearch.Text) || u.NombreUsuario.Contains(textsearch.Text) || u.Email.Contains(textsearch.Text));
+            }
+
+            if (string.IsNullOrEmpty(sortByExpression))
+            {
+                sortByExpression = "NombreUsuario";
+            }
+
+            totalRowCount = usuarios.Count();
+
+            return usuarios.Select(u => new
+            {
+                u.Id,
+                u.NombreUsuario,
+                u.Nombre,
+                u.Email,
+                u.FechaNacimiento,
+                u.RolId,
+                u.Activo,
+                Likes = u.PeliculasLikes.Count(),
+                Comentarios = u.ComentariosPeliculas.Count()
+            }).OrderBy(sortByExpression).Skip(startRowIndex).Take(maximumRows);
         }
     }
 };

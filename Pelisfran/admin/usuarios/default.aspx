@@ -19,6 +19,7 @@
     <asp:UpdatePanel ID="upUsuarios" runat="server" UpdateMode="Conditional">
         <ContentTemplate>
             <asp:GridView ID="gvUsuarios" runat="server" AutoGenerateColumns="false"
+                AllowSorting="true" AllowPaging="true" PageSize="2" SelectMethod="gvUsuarios_GetData"
                 CssClass="table is-hoverable is-striped is-bordered is-fullwidth" EnableViewState="true" DataKeyNames="Id"
                 OnRowDataBound="gvUsuarios_RowDataBound">
                 <EmptyDataTemplate>
@@ -27,15 +28,18 @@
                 <Columns>
                     <asp:BoundField HeaderText="Nombre Usuario" DataField="NombreUsuario"
                         HeaderStyle-CssClass="has-text-weight-bold has-text-centered"
-                        ItemStyle-CssClass="has-text-centered" />
+                        ItemStyle-CssClass="has-text-centered"
+                        SortExpression="NombreUsuario" />
 
                     <asp:BoundField HeaderText="Nombre" DataField="Nombre"
                         HeaderStyle-CssClass="has-text-weight-bold has-text-centered"
-                        ItemStyle-CssClass="has-text-centered" />
+                        ItemStyle-CssClass="has-text-centered"
+                        SortExpression="Nombre" />
 
                     <asp:BoundField HeaderText="Email" DataField="Email"
                         HeaderStyle-CssClass="has-text-weight-bold has-text-centered"
-                        ItemStyle-CssClass="has-text-centered" />
+                        ItemStyle-CssClass="has-text-centered"
+                        SortExpression="Email" />
 
                     <asp:TemplateField HeaderText="Rol"
                         HeaderStyle-CssClass="has-text-weight-bold has-text-centered"
@@ -47,25 +51,28 @@
 
                     <asp:BoundField HeaderText="Fecha Nacimiento" DataField="FechaNacimiento"
                         HeaderStyle-CssClass="has-text-weight-bold has-text-centered"
-                        ItemStyle-CssClass="has-text-centered" />
+                        ItemStyle-CssClass="has-text-centered"
+                        SortExpression="FechaNacimiento" />
 
                     <asp:TemplateField HeaderText="Estado">
                         <ItemTemplate>
                             <div class="buttons">
-                                <asp:Button ID="btnActivo" runat="server" OnCommand="btnActivo_Command" CommandArgument='<%# Eval("Id") %>' CssClass="button is-fullwidth"/>
+                                <asp:Button ID="btnActivo" runat="server" OnCommand="btnActivo_Command" CommandArgument='<%# Eval("Id") %>' CssClass="button is-fullwidth" />
                             </div>
                         </ItemTemplate>
                     </asp:TemplateField>
 
                     <asp:BoundField HeaderText="Likes" DataField="Likes"
                         HeaderStyle-CssClass="has-text-weight-bold has-text-centered"
-                        ItemStyle-CssClass="has-text-centered" />
+                        ItemStyle-CssClass="has-text-centered"
+                        SortExpression="Likes" />
 
                     <asp:HyperLinkField HeaderText="Comentarios" DataTextField="Comentarios"
                         HeaderStyle-CssClass="has-text-weight-bold has-text-centered"
                         ItemStyle-CssClass="has-text-centered"
                         DataNavigateUrlFields="Id"
-                        DataNavigateUrlFormatString="~/admin/comentarios/usuario.aspx?id={0}" />
+                        DataNavigateUrlFormatString="~/admin/comentarios/usuario.aspx?id={0}"
+                        SortExpression="Comentarios" />
 
                     <asp:TemplateField>
                         <ItemTemplate>
