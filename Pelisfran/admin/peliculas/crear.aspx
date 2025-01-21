@@ -37,7 +37,7 @@
                     <asp:TextBox ID="txtSinopsisBreve" runat="server" TextMode="MultiLine" CssClass="input" />
                 </div>
                 <asp:RequiredFieldValidator ID="reqSinopsisBreve" runat="server" ControlToValidate="txtSinopsisBreve" ErrorMessage="Campo obligatorio" Display="Dynamic" CssClass="help is-danger" />
-                <asp:RegularExpressionValidator ID="regexSinopsisBreve" runat="server" ControlToValidate="txtSinopsisBreve" ErrorMessage="Maximo 600 caracteres" Display="Dynamic" ValidationExpression="^(.|\n){1,600}$" CssClass="help is-danger" />
+                <asp:RegularExpressionValidator ID="regexSinopsisBreve" runat="server" ControlToValidate="txtSinopsisBreve" ErrorMessage="Maximo 1000 caracteres" Display="Dynamic" ValidationExpression="^(.|\n){1,1000}$" CssClass="help is-danger" />
             </div>
         </div>
         <div class="column">
