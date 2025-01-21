@@ -17,6 +17,7 @@
     <asp:UpdatePanel ID="upPeliculas" runat="server" UpdateMode="Conditional">
         <ContentTemplate>
             <asp:GridView ID="gvPeliculas" runat="server" AutoGenerateColumns="false"
+                AllowSorting="true" AllowPaging="true" PageSize="2" SelectMethod="gvPeliculas_GetData"
                 CssClass="table is-hoverable is-striped is-bordered is-fullwidth" EnableViewState="true">
                 <EmptyDataTemplate>
                     <p>No hay peliculas disponibles</p>
@@ -24,32 +25,39 @@
                 <Columns>
                     <asp:BoundField HeaderText="Titulo" DataField="Titulo"
                         HeaderStyle-CssClass="has-text-weight-bold has-text-centered"
-                        ItemStyle-CssClass="has-text-centered" />
+                        ItemStyle-CssClass="has-text-centered"
+                        SortExpression="Titulo" />
                     <asp:BoundField HeaderText="Lanzamiento" DataField="FechaLanzamiento"
                         HeaderStyle-CssClass="has-text-weight-bold has-text-centered"
-                        ItemStyle-CssClass="has-text-centered" />
+                        ItemStyle-CssClass="has-text-centered"
+                        SortExpression="FechaLanzamiento" />
 
                     <asp:BoundField HeaderText="Duracion" DataField="Duracion"
                         HeaderStyle-CssClass="has-text-weight-bold has-text-centered"
-                        ItemStyle-CssClass="has-text-centered" />
+                        ItemStyle-CssClass="has-text-centered"
+                        SortExpression="Duracion" />
 
                     <asp:BoundField HeaderText="Creado Por" DataField="CreadoPor"
                         HeaderStyle-CssClass="has-text-weight-bold has-text-centered"
-                        ItemStyle-CssClass="has-text-centered" />
+                        ItemStyle-CssClass="has-text-centered"
+                        SortExpression="CreadoPor" />
 
                     <asp:BoundField HeaderText="Likes" DataField="Likes"
                         HeaderStyle-CssClass="has-text-weight-bold has-text-centered"
-                        ItemStyle-CssClass="has-text-centered" />
+                        ItemStyle-CssClass="has-text-centered"
+                        SortExpression="Likes" />
 
                     <asp:HyperLinkField HeaderText="Comentarios" DataTextField="Comentarios"
                         HeaderStyle-CssClass="has-text-weight-bold has-text-centered"
                         ItemStyle-CssClass="has-text-centered"
                         DataNavigateUrlFields="Id"
-                        DataNavigateUrlFormatString="~/admin/comentarios/pelicula.aspx?id={0}" />
+                        DataNavigateUrlFormatString="~/admin/comentarios/pelicula.aspx?id={0}"
+                        SortExpression="Likes" />
 
                     <asp:BoundField HeaderText="Visitas" DataField="Visitas"
                         HeaderStyle-CssClass="has-text-weight-bold has-text-centered"
-                        ItemStyle-CssClass="has-text-centered" />
+                        ItemStyle-CssClass="has-text-centered"
+                        SortExpression="Visitas" />
 
                     <asp:TemplateField>
                         <ItemTemplate>

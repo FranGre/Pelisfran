@@ -4,6 +4,7 @@ using Pelisfran.Enums;
 using Pelisfran.Servicios;
 using System;
 using System.Linq;
+using System.Linq.Dynamic;
 using System.Web.UI;
 
 namespace Pelisfran.admin.peliculas
@@ -26,21 +27,6 @@ namespace Pelisfran.admin.peliculas
                     return;
                 }
 
-                var peliculas = _db.Peliculas
-                .Include("Usuario").Include("PeliculasLikes").Include("ComentarioPeliculas").Include("VisitasPeliculas")
-                .AsEnumerable().Select(p => new
-                {
-                    p.Id,
-                    p.Titulo,
-                    FechaLanzamiento = p.FechaLanzamiento.ToShortDateString(),
-                    p.Duracion,
-                    CreadoPor = p.Usuario.NombreUsuario,
-                    Likes = p.PeliculasLikes.Count().ToString() ?? "0",
-                    Comentarios = p.ComentarioPeliculas.Count.ToString() ?? "0",
-                    Visitas = p.VisitasPeliculas.Count.ToString() ?? "0",
-                }).ToList();
-
-                gvPeliculas.DataSource = peliculas;
                 gvPeliculas.DataBind();
             }
         }
@@ -52,16 +38,36 @@ namespace Pelisfran.admin.peliculas
 
         protected void textsearch_Buscar(object sender, string busqueda)
         {
-            var query = _db.Peliculas
+            gvPeliculas.DataBind();
+            upPeliculas.Update();
+        }
+
+        // El tipo devuelto puede ser modificado a IEnumerable, sin embargo, para ser compatible con la paginación y ordenación de 
+        //, se deben agregar los siguientes parametros:
+        //     int maximumRows
+        //     int startRowIndex
+        //     out int totalRowCount
+        //     string sortByExpression
+        public IQueryable gvPeliculas_GetData(int maximumRows, int startRowIndex, out int totalRowCount, string sortByExpression)
+        {
+
+            var peliculas = _db.Peliculas
             .Include("Usuario").Include("PeliculasLikes").Include("ComentarioPeliculas").Include("VisitasPeliculas")
             .AsQueryable();
 
-            if (!string.IsNullOrEmpty(busqueda))
+            if (!string.IsNullOrEmpty(textsearch.Text))
             {
-                query = query.Where(p => p.Titulo.Contains(busqueda));
+                peliculas = peliculas.Where(p => p.Titulo.Contains(textsearch.Text) || p.Duracion.ToString().Contains(textsearch.Text) || p.FechaLanzamiento.ToString().Contains(textsearch.Text));
             }
 
-            var peliculas = query
+            if (string.IsNullOrEmpty(sortByExpression))
+            {
+                sortByExpression = "Titulo";
+            }
+
+            totalRowCount = peliculas.Count();
+
+            return peliculas
                 .Select(p => new
                 {
                     p.Id,
@@ -72,24 +78,7 @@ namespace Pelisfran.admin.peliculas
                     Likes = p.PeliculasLikes.Count().ToString(),
                     Comentarios = p.ComentarioPeliculas.Count.ToString(),
                     Visitas = p.VisitasPeliculas.Count.ToString(),
-                })
-                .ToList();
-
-            var peliculasFechaFormateda = peliculas.Select(p => new
-            {
-                p.Id,
-                p.Titulo,
-                FechaLanzamiento = p.FechaLanzamiento.ToShortDateString(),
-                p.Duracion,
-                p.CreadoPor,
-                p.Likes,
-                p.Comentarios,
-                p.Visitas
-            });
-
-            gvPeliculas.DataSource = peliculasFechaFormateda;
-            gvPeliculas.DataBind();
-            upPeliculas.Update();
+                }).OrderBy(sortByExpression).Skip(startRowIndex).Take(maximumRows);
         }
     }
 }
