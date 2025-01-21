@@ -21,7 +21,7 @@
                     <asp:TextBox ID="txtTitulo" runat="server" CssClass="input" />
                 </div>
                 <asp:RequiredFieldValidator ID="reqTitulo" runat="server" ControlToValidate="txtTitulo" ErrorMessage="Campo obligatorio" Display="Dynamic" CssClass="help is-danger" />
-                <asp:RegularExpressionValidator ID="regexTitulo" runat="server" ControlToValidate="txtTitulo" ErrorMessage="Maximo 50 caracteres" Display="Dynamic" ValidationExpression="^[a-zA-Z0-9\s]{1,50}$" CssClass="help is-danger" />
+                <asp:RegularExpressionValidator ID="regexTitulo" runat="server" ControlToValidate="txtTitulo" ErrorMessage="Maximo 50 caracteres" Display="Dynamic" ValidationExpression="^.{1,50}$" CssClass="help is-danger" />
             </div>
 
             <div class="field">
