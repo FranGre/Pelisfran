@@ -5,6 +5,7 @@ using Pelisfran.Modelos;
 using Pelisfran.Servicios;
 using System;
 using System.Linq;
+using System.Linq.Dynamic;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -28,15 +29,6 @@ namespace Pelisfran.admin.generos
                     return;
                 }
 
-                var generos = _db.Generos.Include("Peliculas")
-                   .Select(g => new
-                   {
-                       g.Id,
-                       g.Nombre,
-                       TotalPeliculas = g.GenerosPeliculas.Count()
-                   }).ToList();
-
-                gvGeneros.DataSource = generos;
                 gvGeneros.DataBind();
                 upGeneros.Update();
             }
@@ -54,8 +46,6 @@ namespace Pelisfran.admin.generos
             _db.Generos.Remove(genero);
             _db.SaveChanges();
 
-            var generos = _db.Generos.Include("Peliculas").Select(g => new { g.Id, g.Nombre, TotalPeliculas = g.GenerosPeliculas.Count() }).ToList();
-            gvGeneros.DataSource = generos;
             gvGeneros.DataBind();
             upGeneros.Update();
         }
@@ -63,24 +53,6 @@ namespace Pelisfran.admin.generos
 
         protected void textsearch_Buscar(object sender, string busqueda)
         {
-            var query = _db.Generos
-            .Include("GenerosPeliculas").AsQueryable();
-
-            if (!string.IsNullOrEmpty(busqueda))
-            {
-                query = query.Where(p => p.Nombre.Contains(busqueda));
-            }
-
-            var generos = query
-                .Select(g => new
-                {
-                    g.Id,
-                    g.Nombre,
-                    TotalPeliculas = g.GenerosPeliculas.Count().ToString(),
-                })
-                .ToList();
-
-            gvGeneros.DataSource = generos;
             gvGeneros.DataBind();
             upGeneros.Update();
         }
@@ -99,6 +71,36 @@ namespace Pelisfran.admin.generos
             controlesModalConfirmar.Id = generoId;
 
             ScriptManager.RegisterStartupScript(this, this.GetType(), "mostrarModal", "mostrarModal()", true);
+        }
+
+        // El tipo devuelto puede ser modificado a IEnumerable, sin embargo, para ser compatible con la paginación y ordenación de 
+        //, se deben agregar los siguientes parametros:
+        //     int maximumRows
+        //     int startRowIndex
+        //     out int totalRowCount
+        //     string sortByExpression
+        public IQueryable gvGeneros_GetData(int maximumRows, int startRowIndex, out int totalRowCount, string sortByExpression)
+        {
+            var generos = _db.Generos.Include("GenerosPeliculas").AsQueryable();
+
+            if (!string.IsNullOrEmpty(textsearch.Text))
+            {
+                generos = generos.Where(g => g.Nombre.Contains(textsearch.Text));
+            }
+
+            if (string.IsNullOrEmpty(sortByExpression))
+            {
+                sortByExpression = "Nombre";
+            }
+
+            totalRowCount = generos.Count();
+
+            return generos.Select(g => new
+            {
+                g.Id,
+                g.Nombre,
+                TotalPeliculas = g.GenerosPeliculas.Count().ToString(),
+            }).OrderBy(sortByExpression).Skip(startRowIndex).Take(maximumRows);
         }
     }
 }

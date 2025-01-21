@@ -18,17 +18,20 @@
     <asp:UpdatePanel ID="upGeneros" runat="server" UpdateMode="Conditional">
         <ContentTemplate>
             <asp:GridView ID="gvGeneros" runat="server" AutoGenerateColumns="false"
+                PageSize="5" AllowPaging="true" AllowSorting="true" SelectMethod="gvGeneros_GetData"
                 CssClass="table is-hoverable is-striped is-bordered is-fullwidth" EnableViewState="true">
                 <EmptyDataTemplate>
-                    <p>No hay Géneros disponibles</p>
+                    <p>No hay Géneros disponibles</p> 
                 </EmptyDataTemplate>
                 <Columns>
                     <asp:BoundField HeaderText="Nombre" DataField="Nombre"
                         HeaderStyle-CssClass="has-text-weight-bold has-text-centered"
-                        ItemStyle-CssClass="has-text-centered" />
+                        ItemStyle-CssClass="has-text-centered"
+                        SortExpression="Nombre" />
                     <asp:BoundField HeaderText="Películas" DataField="TotalPeliculas"
                         HeaderStyle-CssClass="has-text-weight-bold has-text-centered"
-                        ItemStyle-CssClass="has-text-centered" />
+                        ItemStyle-CssClass="has-text-centered"
+                        SortExpression="TotalPeliculas" />
                     <asp:TemplateField>
                         <ItemTemplate>
                             <div class="buttons">
