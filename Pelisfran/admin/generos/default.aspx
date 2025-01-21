@@ -17,11 +17,12 @@
 
     <asp:UpdatePanel ID="upGeneros" runat="server" UpdateMode="Conditional">
         <ContentTemplate>
-            <asp:GridView ID="gvGeneros" runat="server" AutoGenerateColumns="false"
+            <asp:GridView ID="gvGeneros" runat="server"
+                AutoGenerateColumns="false" ShowFooter="true"
                 PageSize="5" AllowPaging="true" AllowSorting="true" SelectMethod="gvGeneros_GetData"
                 CssClass="table is-hoverable is-striped is-bordered is-fullwidth" EnableViewState="true">
                 <EmptyDataTemplate>
-                    <p>No hay Géneros disponibles</p> 
+                    <p class="has-text-centered">No hay Géneros disponibles</p>
                 </EmptyDataTemplate>
                 <Columns>
                     <asp:BoundField HeaderText="Nombre" DataField="Nombre"
