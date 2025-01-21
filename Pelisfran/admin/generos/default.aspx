@@ -8,10 +8,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
-    <h2 id="titulo" runat="server" class="title is-2 mb-6 is-flex is-justify-content-center">Generos</h2>
+    <h2 id="titulo" runat="server" class="title is-2 mb-6 is-flex is-justify-content-center">Géneros</h2>
 
     <div class="mb-5 is-flex is-justify-content-space-between">
-        <controles:botoncrear ID="btnCrearGenero" runat="server" Text="Genero" OnClick="btnCrearGenero_Click" />
+        <controles:botoncrear ID="btnCrearGenero" runat="server" Text="Género" OnClick="btnCrearGenero_Click" />
         <controles:textsearch ID="textsearch" runat="server" OnBuscar="textsearch_Buscar" Placeholder="Buscar..." />
     </div>
 

@@ -7,10 +7,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
-    <h2 id="titulo" runat="server" class="title is-2 mb-6 is-flex is-justify-content-center">Peliculas</h2>
+    <h2 id="titulo" runat="server" class="title is-2 mb-6 is-flex is-justify-content-center">Películas</h2>
 
     <div class="mb-5 is-flex is-justify-content-space-between">
-        <controles:botoncrear ID="btnCrearPelicula" runat="server" Text="Pelicula" OnClick="btnCrearPelicula_Click" />
+        <controles:botoncrear ID="btnCrearPelicula" runat="server" Text="Película" OnClick="btnCrearPelicula_Click" />
         <controles:textsearch ID="textsearch" runat="server" OnBuscar="textsearch_Buscar" Placeholder="Buscar..." />
     </div>
 
@@ -20,10 +20,10 @@
                 AllowSorting="true" AllowPaging="true" PageSize="2" SelectMethod="gvPeliculas_GetData"
                 CssClass="table is-hoverable is-striped is-bordered is-fullwidth" EnableViewState="true">
                 <EmptyDataTemplate>
-                    <p>No hay peliculas disponibles</p>
+                    <p>No hay películas disponibles</p>
                 </EmptyDataTemplate>
                 <Columns>
-                    <asp:BoundField HeaderText="Titulo" DataField="Titulo"
+                    <asp:BoundField HeaderText="Título" DataField="Titulo"
                         HeaderStyle-CssClass="has-text-weight-bold has-text-centered"
                         ItemStyle-CssClass="has-text-centered"
                         SortExpression="Titulo" />
@@ -32,7 +32,7 @@
                         ItemStyle-CssClass="has-text-centered"
                         SortExpression="FechaLanzamiento" />
 
-                    <asp:BoundField HeaderText="Duracion" DataField="Duracion"
+                    <asp:BoundField HeaderText="Duración" DataField="Duracion"
                         HeaderStyle-CssClass="has-text-weight-bold has-text-centered"
                         ItemStyle-CssClass="has-text-centered"
                         SortExpression="Duracion" />

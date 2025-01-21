@@ -51,6 +51,9 @@
       <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Linq.Dynamic, Version=1.0.6132.35681, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Linq.Dynamic.1.0.8\lib\net40\System.Linq.Dynamic.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -98,6 +101,7 @@
     <Content Include="Controles\Navegacion\AdminMenu.ascx" />
     <Content Include="Controles\Navegacion\Menu.ascx" />
     <Content Include="Controles\Peliculas\Peliculas.ascx" />
+    <Content Include="Controles\Tags\TagsGeneros.ascx" />
     <Content Include="mi-perfil.aspx" />
     <Content Include="Scripts\FilePond\plugins\filepond-plugin-file-validate-size.js" />
     <Content Include="Scripts\FilePond\plugins\filepond-plugin-file-validate-type.js" />
@@ -270,6 +274,13 @@
     </Compile>
     <Compile Include="Controles\Peliculas\Peliculas.ascx.designer.cs">
       <DependentUpon>Peliculas.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\Tags\TagsGeneros.ascx.cs">
+      <DependentUpon>TagsGeneros.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controles\Tags\TagsGeneros.ascx.designer.cs">
+      <DependentUpon>TagsGeneros.ascx</DependentUpon>
     </Compile>
     <Compile Include="Core\Base.cs">
       <SubType>ASPXCodeBehind</SubType>

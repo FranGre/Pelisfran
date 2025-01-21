@@ -6,7 +6,7 @@
     <div class="navbar-menu">
         <div class="navbar-start">
             <asp:LinkButton ID="lbPelisFran" runat="server" Text="PelisFran" CausesValidation="false" CssClass="navbar-item" OnClick="lbPelisFran_Click"></asp:LinkButton>
-            <asp:LinkButton ID="lkPeliculas" runat="server" Text="Peliculas" CausesValidation="false" CssClass="navbar-item" OnClick="lkPeliculas_Click"></asp:LinkButton>
+            <asp:LinkButton ID="lkPeliculas" runat="server" Text="Películas" CausesValidation="false" CssClass="navbar-item" OnClick="lkPeliculas_Click"></asp:LinkButton>
             <asp:LinkButton ID="lkSeries" runat="server" Text="Series" CausesValidation="false" CssClass="navbar-item" OnClick="lkSeries_Click"></asp:LinkButton>
         </div>
 

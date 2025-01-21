@@ -15,6 +15,15 @@ namespace Pelisfran.admin.peliculas
     {
 
         /// <summary>
+        /// Control titulo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl titulo;
+
+        /// <summary>
         /// Control lbTitulo.
         /// </summary>
         /// <remarks>
@@ -166,6 +175,15 @@ namespace Pelisfran.admin.peliculas
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RangeValidator rangeDuracion;
+
+        /// <summary>
+        /// Control lbGeneros.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbGeneros;
 
         /// <summary>
         /// Control generos.

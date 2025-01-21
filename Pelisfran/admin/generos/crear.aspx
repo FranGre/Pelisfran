@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
-    <h2 id="titulo" runat="server" class="title is-2 mb-6 is-flex is-justify-content-center">Crear Genero</h2>
+    <h2 id="titulo" runat="server" class="title is-2 mb-6 is-flex is-justify-content-center">Crear Género</h2>
 
     <div class="field">
         <asp:Label ID="lbNombre" runat="server" Text="Nombre" CssClass="label" />

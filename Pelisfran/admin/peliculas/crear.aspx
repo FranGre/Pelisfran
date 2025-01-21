@@ -9,12 +9,14 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
+    <h2 id="titulo" runat="server" class="title is-2 mb-6 is-flex is-justify-content-center">Crear Película</h2>
+
     <input type="hidden" id="originalFileName" name="originalFileName" />
     <input type="hidden" id="tempFileName" name="tempFileName" />
     <div class="columns">
         <div class="column">
             <div class="field">
-                <asp:Label ID="lbTitulo" runat="server" CssClass="label">Titulo</asp:Label>
+                <asp:Label ID="lbTitulo" runat="server" CssClass="label">Título</asp:Label>
                 <div class="control">
                     <asp:TextBox ID="txtTitulo" runat="server" CssClass="input" />
                 </div>
@@ -23,7 +25,7 @@
             </div>
 
             <div class="field">
-                <asp:Label ID="lbPelicula" runat="server" Text="Pelicula" CssClass="label" />
+                <asp:Label ID="lbPelicula" runat="server" Text="Película" CssClass="label" />
                 <div class="control">
                     <div id="video" class="dropzone">
                         <!-- Los archivos se soltarán aquí -->
@@ -51,7 +53,7 @@
             </div>
 
             <div class="field">
-                <asp:Label ID="lbDuracion" runat="server" Text="Duracion" CssClass="label" />
+                <asp:Label ID="lbDuracion" runat="server" Text="Duración" CssClass="label" />
                 <div class="control">
                     <asp:TextBox ID="txtDuracion" runat="server" TextMode="Number" CssClass="input" />
                 </div>
@@ -60,7 +62,11 @@
             </div>
 
             <div class="field">
-                <controles:checkboxListGeneros ID="generos" runat="server" />
+                <asp:Label ID="lbGeneros" runat="server" Text="Género/s" CssClass="label" />
+                <div class="control">
+                    <controles:checkboxListGeneros ID="generos" runat="server" />
+                </div>
+
                 <span id="reqGeneros" runat="server" class="help is-danger" />
             </div>
 

@@ -7,7 +7,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
-    <h2 class="title is-2 mb-6 is-flex is-justify-content-center">Peliculas</h2>
+    <h2 class="title is-2 mb-6 is-flex is-justify-content-center">Películas</h2>
 
     <div class="mb-5">
         <controles:checkboxListGeneros ID="generos" runat="server" />
