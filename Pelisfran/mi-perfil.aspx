@@ -24,7 +24,6 @@
                 <div class="control">
                     <asp:TextBox ID="txtNombreUsuario" runat="server" CssClass="input" />
                 </div>
-                <asp:RequiredFieldValidator ID="reqNombreUsuario" runat="server" ControlToValidate="txtNombreUsuario" ErrorMessage="Campo obligatorio" Display="Dynamic" CssClass="help is-danger" />
                 <asp:RegularExpressionValidator ID="regexNombreUsuario" runat="server" ControlToValidate="txtNombreUsuario" ErrorMessage="Maximo 20 caracteres" Display="Dynamic" ValidationExpression="^[a-zA-Z0-9]{1,20}$" CssClass="help is-danger" />
             </div>
 

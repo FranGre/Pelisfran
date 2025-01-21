@@ -51,15 +51,6 @@ namespace Pelisfran
         protected global::System.Web.UI.WebControls.TextBox txtNombreUsuario;
 
         /// <summary>
-        /// Control reqNombreUsuario.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqNombreUsuario;
-
-        /// <summary>
         /// Control regexNombreUsuario.
         /// </summary>
         /// <remarks>
