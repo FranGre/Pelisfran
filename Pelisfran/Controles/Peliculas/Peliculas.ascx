@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Peliculas.ascx.cs" Inherits="Pelisfran.Controles.Peliculas.Peliculas" %>
 
 <div class="mt-6">
-    <p id="pPeliculasNoEncontradas" runat="server"></p>
+    <p id="pPeliculasNoEncontradas" runat="server" class="has-text-centered"></p>
     <div class="columns is-multiline">
         <asp:Repeater ID="repPeliculas" runat="server" OnItemDataBound="repPeliculas_ItemDataBound">
             <ItemTemplate>
