@@ -9,9 +9,12 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
     <h2 class="title is-2 mb-6 is-flex is-justify-content-center">Peliculas</h2>
 
-    <controles:checkboxListGeneros ID="generos" runat="server" />
-
-    <controles:textSearch ID="tsBusqueda" runat="server" Placeholder="Buscar pelicula..." OnBuscar="tsBusqueda_Buscar" />
+    <div class="mb-5">
+        <controles:checkboxListGeneros ID="generos" runat="server" />
+    </div>
+    <div class="is-flex is-justify-content-right">
+        <controles:textSearch ID="tsBusqueda" runat="server" Placeholder="Buscar pelicula..." OnBuscar="tsBusqueda_Buscar" />
+    </div>
 
     <asp:UpdatePanel ID="upPeliculas" runat="server" UpdateMode="Conditional">
         <Triggers>
