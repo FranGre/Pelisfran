@@ -87,7 +87,6 @@
     <Content Include="admin\peliculas\crear.aspx" />
     <Content Include="admin\peliculas\default.aspx" />
     <Content Include="admin\usuarios\default.aspx" />
-    <Content Include="autenticado.aspx" />
     <Content Include="Content\Bulma\bulma.min.css" />
     <Content Include="Content\FilePond\filepond.css" />
     <Content Include="Controles\Botones\BotonBuscar.ascx" />
@@ -101,7 +100,6 @@
     <Content Include="Controles\Navegacion\AdminMenu.ascx" />
     <Content Include="Controles\Navegacion\Menu.ascx" />
     <Content Include="Controles\Peliculas\Peliculas.ascx" />
-    <Content Include="Controles\Tags\TagsGeneros.ascx" />
     <Content Include="mi-perfil.aspx" />
     <Content Include="Scripts\FilePond\plugins\filepond-plugin-file-validate-size.js" />
     <Content Include="Scripts\FilePond\plugins\filepond-plugin-file-validate-type.js" />
@@ -190,13 +188,6 @@
     <Compile Include="admin\usuarios\default.aspx.designer.cs">
       <DependentUpon>default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="autenticado.aspx.cs">
-      <DependentUpon>autenticado.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="autenticado.aspx.designer.cs">
-      <DependentUpon>autenticado.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Contexto\PelisFranDBContexto.cs" />
     <Compile Include="Controles\Botones\BotonBuscar.ascx.cs">
       <DependentUpon>BotonBuscar.ascx</DependentUpon>
@@ -274,13 +265,6 @@
     </Compile>
     <Compile Include="Controles\Peliculas\Peliculas.ascx.designer.cs">
       <DependentUpon>Peliculas.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Controles\Tags\TagsGeneros.ascx.cs">
-      <DependentUpon>TagsGeneros.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controles\Tags\TagsGeneros.ascx.designer.cs">
-      <DependentUpon>TagsGeneros.ascx</DependentUpon>
     </Compile>
     <Compile Include="Core\Base.cs">
       <SubType>ASPXCodeBehind</SubType>
