@@ -9,6 +9,23 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
     <h2 id="titulo" runat="server" class="title is-2 mb-6 is-flex is-justify-content-center">Peliculas</h2>
 
+    <div class="columns is-mobile is-centered">
+        <div class="column is-narrow">
+            <asp:UpdatePanel ID="upLikes" runat="server" UpdateMode="Conditional">
+                <ContentTemplate>
+                    <controles:botonlike ID="botonLike" runat="server" OnClick="botonLike_Click" />
+                </ContentTemplate>
+            </asp:UpdatePanel>
+        </div>
+
+        <div class="column is-narrow">
+            <asp:UpdatePanel ID="upBotonFavorito" runat="server" UpdateMode="Conditional">
+                <ContentTemplate>
+                    <controles:botonfavorito ID="botonFavorito" runat="server" OnClick="botonFavorito_Click" />
+                </ContentTemplate>
+            </asp:UpdatePanel>
+        </div>
+    </div>
     <div class="block has-text-centered">
         <p id="descripcion" runat="server"></p>
     </div>
@@ -37,19 +54,7 @@
             </nav>
         </ContentTemplate>
     </asp:UpdatePanel>
-
-    <asp:UpdatePanel ID="upLikes" runat="server" UpdateMode="Conditional">
-        <ContentTemplate>
-            <controles:botonlike ID="botonLike" runat="server" OnClick="botonLike_Click" />
-        </ContentTemplate>
-    </asp:UpdatePanel>
     <asp:HiddenField ID="hfId" runat="server" />
-
-    <asp:UpdatePanel ID="upBotonFavorito" runat="server" UpdateMode="Conditional">
-        <ContentTemplate>
-            <controles:botonfavorito ID="botonFavorito" runat="server" OnClick="botonFavorito_Click" />
-        </ContentTemplate>
-    </asp:UpdatePanel>
 
     <h3>aqui va la peli</h3>
 

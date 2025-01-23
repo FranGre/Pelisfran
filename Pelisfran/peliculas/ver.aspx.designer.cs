@@ -24,6 +24,42 @@ namespace Pelisfran.peliculas
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl titulo;
 
         /// <summary>
+        /// Control upLikes.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel upLikes;
+
+        /// <summary>
+        /// Control botonLike.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Pelisfran.Controles.Botones.BotonLike botonLike;
+
+        /// <summary>
+        /// Control upBotonFavorito.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel upBotonFavorito;
+
+        /// <summary>
+        /// Control botonFavorito.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Pelisfran.Controles.Botones.BotonFavorito botonFavorito;
+
+        /// <summary>
         /// Control descripcion.
         /// </summary>
         /// <remarks>
@@ -69,24 +105,6 @@ namespace Pelisfran.peliculas
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl estadisticaComentarios;
 
         /// <summary>
-        /// Control upLikes.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel upLikes;
-
-        /// <summary>
-        /// Control botonLike.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Pelisfran.Controles.Botones.BotonLike botonLike;
-
-        /// <summary>
         /// Control hfId.
         /// </summary>
         /// <remarks>
@@ -94,24 +112,6 @@ namespace Pelisfran.peliculas
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hfId;
-
-        /// <summary>
-        /// Control upBotonFavorito.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel upBotonFavorito;
-
-        /// <summary>
-        /// Control botonFavorito.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Pelisfran.Controles.Botones.BotonFavorito botonFavorito;
 
         /// <summary>
         /// Control upComentarios.
