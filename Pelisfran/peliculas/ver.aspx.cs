@@ -40,7 +40,7 @@ namespace Pelisfran.peliculas
 
             if (pelicula == null)
             {
-                Response.Redirect("~/autenticado.aspx");
+                Response.Redirect("~/404.aspx");
                 return;
             }
 
