@@ -19,18 +19,25 @@ namespace Pelisfran.admin.comentarios
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Request.QueryString["id"] == null)
+            Guid peliculaId = Guid.Empty;
+            try
             {
-                Response.Redirect("~/autenticado.aspx");
-                return;
+                peliculaId = Guid.Parse(Request.QueryString["id"]);
+            }
+            catch (ArgumentException ex)
+            {
+                Response.Redirect("~/404.aspx");
+            }
+            catch (FormatException ex)
+            {
+                Response.Redirect("~/404.aspx");
             }
 
-            Guid peliculaId = Guid.Parse(Request.QueryString["id"]);
             var pelicula = _db.Peliculas.Find(peliculaId);
 
             if (pelicula == null)
             {
-                Response.Redirect("~/autenticado.aspx");
+                Response.Redirect("~/404.aspx");
                 return;
             }
 
