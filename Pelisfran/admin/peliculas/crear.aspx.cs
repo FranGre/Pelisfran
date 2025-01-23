@@ -106,6 +106,8 @@ namespace Pelisfran.admin.peliculas
             imagenPortada.MoveTo($"{rutaAbsolutaCarpetaDestino}/{tempFileName}");
 
             _portadaPeliculaServicio.AgregarPortadaAPelicula(portada);
+
+            Response.Redirect("~/admin/peliculas/default");
             //_fileServicio.GuardarPortadaDeUnaPelicula(fuPortada, pelicula.Id);
         }
 
