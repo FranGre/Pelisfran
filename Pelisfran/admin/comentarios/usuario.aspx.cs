@@ -31,7 +31,7 @@ namespace Pelisfran.admin.comentarios
                 Response.Redirect("~/404.aspx");
             }
 
-            var usuario = _db.Usuarios.Find(idUsuarioQuery);
+            var usuario = _db.Usuarios.Find(usuarioId);
 
             if (usuario == null)
             {
